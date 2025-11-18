@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wai Hyn Htun - Full Stack Web Application Developer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home">Wai Hyn Htun</a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-image-section">
+          <div class="profile-image">
+            <img
+              src="my-profile.jpg"
+              alt="Wai Hyn Htun - Full Stack Developer"
+              class="profile-img"
+            />
+          </div>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">Wai Hyn Htun</h1>
+          <h2 class="hero-subtitle">Full Stack Web Application Developer</h2>
+          <p class="hero-description">
+            10+ years experienced software engineer specializing in scalable web
+            applications, IoT systems, and microservices architecture.
+          </p>
+          <div class="hero-buttons">
+            <button id="contact-btn" class="btn btn-primary">Contact Me</button>
+            <a href="#experience" class="btn btn-outline">Experience</a>
+            <a href="my-cv.docx" class="btn btn-outline" download>
+              <i class="fas fa-download"></i>
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">About</h2>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Years</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Companies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Passionate Full Stack Developer with expertise in building
+              scalable web applications, microservices architecture, and IoT
+              systems. Experienced across industries from travel & tourism to
+              social impact projects.
+            </p>
+          </div>
+          <div class="personal-info">
+            <div class="info-item">
+              <i class="fas fa-graduation-cap"></i>
+              <span
+                >Bachelor of Computer Science, University of Computer Study,
+                Mandalay</span
+              >
+            </div>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Thailand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Professional Experience
+        </h2>
+        <div class="timeline">
+          <!-- Current Position -->
+          <div class="timeline-item">
+            <div class="timeline-date">Nov 2021 – Present</div>
+            <div class="timeline-content">
+              <h3>Full Stack Web Application Developer</h3>
+              <h4>Issara Institute, Thailand</h4>
+              <ul class="timeline-list">
+                <li>
+                  Developed a scalable job marketplace for immigrant workers
+                  using Django, React.js, Firebase
+                </li>
+                <li>Built mobile app experiences using Bubblewrap TWA</li>
+                <li>Optimized MySQL queries, frontend/backend performance</li>
+                <li>
+                  Created RESTful APIs, conducted UI/UX design, testing, and
+                  stakeholder collaboration
+                </li>
+                <li>
+                  Implemented Authkit multi authentication systems for secure
+                  user management
+                </li>
+                <li>
+                  Designed and implemented microservices architecture for
+                  scalable applications
+                </li>
+                <li>Developed Case Management System</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Senior Software Engineer -->
+          <div class="timeline-item">
+            <div class="timeline-date">Jul 2018 – Oct 2021</div>
+            <div class="timeline-content">
+              <h3>Senior Software Engineer</h3>
+              <h4>Yoma Strategic Holdings, Myanmar</h4>
+              <ul class="timeline-list">
+                <li>Developed IoT-based vehicle rental system</li>
+                <li>Used Laravel, MySQL, React.js, and third-party APIs</li>
+                <li>Developed Yoma's Internal ERP system software</li>
+                <li>Mentored junior developers</li>
+                <li>
+                  Enhanced performance and scalability of application platforms
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Software Development Engineer -->
+          <div class="timeline-item">
+            <div class="timeline-date">Feb 2017 – Jun 2018</div>
+            <div class="timeline-content">
+              <h3>Software Development Engineer</h3>
+              <h4>Oway Travels & Tours, Myanmar</h4>
+              <ul class="timeline-list">
+                <li>
+                  Built flight, bus ticket, and hotel booking system using
+                  Laravel and React.js
+                </li>
+                <li>Integrated payment gateways and services</li>
+                <li>Focused on scalability and customer demand</li>
+                <li>Developed RESTful API Services</li>
+                <li>Third-Party API integration with WebHooks</li>
+                <li>Worked on Server to Server Synchronization</li>
+                <li>MySQL query Optimization</li>
+                <li>UI/UX designs</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Web Developer -->
+          <div class="timeline-item">
+            <div class="timeline-date">Jan 2014 – Jan 2017</div>
+            <div class="timeline-content">
+              <h3>Web Developer</h3>
+              <h4>Myanmar Digital Solutions, Myanmar</h4>
+              <ul class="timeline-list">
+                <li>
+                  Developed inventory, POS, ERP systems using CakePHP, Laravel,
+                  CodeIgniter
+                </li>
+                <li>Created custom WordPress themes</li>
+                <li>Developed WordPress Websites</li>
+                <li>Developed Mobile/Desktop App using Cordova</li>
+                <li>Developed Responsive UI designs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Education</h2>
+        <div class="timeline">
+          <!-- Bachelor's Degree -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline-date">Completed</div>
+            <div class="timeline-content">
+              <h3>Bachelor of Computer Science</h3>
+              <h4>B.C.Sc Degree</h4>
+              <ul class="timeline-list">
+                <li>Comprehensive study of computer science fundamentals</li>
+                <li>Software engineering principles and practices</li>
+                <li>Database design and management systems</li>
+                <li>Programming languages and algorithms</li>
+                <li>System analysis and web development</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Master's Application -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-date">Applied</div>
+            <div class="timeline-content">
+              <h3>Master of Computer Science</h3>
+              <h4>Robotics and Artificial Intelligence Specialization</h4>
+              <ul class="timeline-list">
+                <li>Advanced machine learning and AI algorithms</li>
+                <li>Robotics systems and autonomous navigation</li>
+                <li>Computer vision and neural networks</li>
+                <li>Research in emerging AI technologies</li>
+                <li>Applied robotics in real-world scenarios</li>
+              </ul>
+              <div class="education-status">
+                <span class="status-badge">Application Submitted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Technical Expertise</h2>
+
+        <!-- Core Technical Skills -->
+        <div class="skills-section">
+          <h3 class="skills-section-title">Core Technical Skills</h3>
+          <div class="skills-progress-grid">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript / TypeScript</span>
+                <span class="skill-percentage">95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="95"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">React.js / Next.js</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python / Django</span>
+                <span class="skill-percentage">92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="92"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">PHP / Laravel</span>
+                <span class="skill-percentage">88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="88"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Node.js / Express</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">MySQL / PostgreSQL</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="90"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="skills-section">
+          <h3 class="skills-section-title">Technology Stack</h3>
+          <div class="tech-stack-grid">
+            <div class="tech-category">
+              <h4><i class="fas fa-code"></i> Frontend</h4>
+              <div class="tech-items">
+                <span class="tech-item">React.js</span>
+                <span class="tech-item">Vue.js</span>
+                <span class="tech-item">Angular</span>
+                <span class="tech-item">TypeScript</span>
+                <span class="tech-item">HTML5/CSS3</span>
+                <span class="tech-item">SASS/SCSS</span>
+                <span class="tech-item">Tailwind CSS</span>
+                <span class="tech-item">Bootstrap</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4><i class="fas fa-server"></i> Backend</h4>
+              <div class="tech-items">
+                <span class="tech-item">Django/DRF</span>
+                <span class="tech-item">Laravel</span>
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express.js</span>
+                <span class="tech-item">FastAPI</span>
+                <span class="tech-item">RESTful APIs</span>
+                <span class="tech-item">GraphQL</span>
+                <span class="tech-item">Microservices</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4><i class="fas fa-database"></i> Database</h4>
+              <div class="tech-items">
+                <span class="tech-item">MySQL</span>
+                <span class="tech-item">PostgreSQL</span>
+                <span class="tech-item">MongoDB</span>
+                <span class="tech-item">Redis</span>
+                <span class="tech-item">Firebase</span>
+                <span class="tech-item">Elasticsearch</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4><i class="fas fa-cloud"></i> Cloud & DevOps</h4>
+              <div class="tech-items">
+                <span class="tech-item">AWS</span>
+                <span class="tech-item">Google Cloud</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Kubernetes</span>
+                <span class="tech-item">CI/CD</span>
+                <span class="tech-item">Jenkins</span>
+                <span class="tech-item">Git/GitHub</span>
+                <span class="tech-item">Linux</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4><i class="fas fa-mobile-alt"></i> Mobile & IoT</h4>
+              <div class="tech-items">
+                <span class="tech-item">React Native</span>
+                <span class="tech-item">PWA</span>
+                <span class="tech-item">Cordova</span>
+                <span class="tech-item">IoT Systems</span>
+                <span class="tech-item">MQTT</span>
+                <span class="tech-item">WebSocket</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4><i class="fas fa-tools"></i> Tools & Others</h4>
+              <div class="tech-items">
+                <span class="tech-item">Authkit</span>
+                <span class="tech-item">Payment Gateways</span>
+                <span class="tech-item">Third-party APIs</span>
+                <span class="tech-item">WordPress</span>
+                <span class="tech-item">ERP Systems</span>
+                <span class="tech-item">Agile/Scrum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications & Achievements -->
+        <div class="skills-section">
+          <h3 class="skills-section-title">Key Achievements</h3>
+          <div class="achievements-grid">
+            <div class="achievement-item">
+              <i class="fas fa-award"></i>
+              <h4>10+ Years Experience</h4>
+              <p>Full-stack development across multiple industries</p>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-users"></i>
+              <h4>Team Leadership</h4>
+              <p>Mentored junior developers and led development teams</p>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-rocket"></i>
+              <h4>Scalable Solutions</h4>
+              <p>Built applications serving thousands of users</p>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-cogs"></i>
+              <h4>System Architecture</h4>
+              <p>Designed microservices and distributed systems</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Let's work together</h3>
+            <p>
+              I'm always interested in new opportunities and exciting projects.
+              Feel free to reach out if you'd like to discuss potential
+              collaborations.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+66 0947124485</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>waihynhtun90s@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Thailand</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Get In Touch</h2>
+          <button class="close-btn" id="close-modal">&times;</button>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Tell me about your project..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>
+            &copy; <span id="current-year">2024</span> Wai Hyn Htun. All rights
+            reserved.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
