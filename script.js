@@ -1,20 +1,16 @@
-// Mobile Navigation Toggle
-const navToggle = document.getElementById("nav-toggle");
-const navMenu = document.getElementById("nav-menu");
-
-if (navToggle) {
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-    navToggle.classList.toggle("active");
-  });
-}
-
-// Close mobile menu when clicking on nav links
+// Close mobile menu when clicking on nav links (Bootstrap handles toggle)
 const navLinks = document.querySelectorAll(".nav-link");
+const navbarCollapse = document.getElementById("navbarNav");
+
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-    navToggle.classList.remove("active");
+    // Close Bootstrap navbar on mobile
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false,
+      });
+      bsCollapse.hide();
+    }
   });
 });
 
