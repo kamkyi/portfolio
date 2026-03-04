@@ -166,7 +166,7 @@ section {
 .cta-link {
   border: 1px solid var(--ink-strong);
   border-radius: var(--radius-sm);
-  padding: 0.45rem 0.9rem !important;
+  padding: var(--space-xs) var(--space-sm) !important;
 }
 
 .cta-link::after {
@@ -176,7 +176,7 @@ section {
 .navbar-toggler {
   border-color: var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 0.35rem 0.45rem;
+  padding: var(--space-xs);
 }
 
 .navbar-toggler:focus {
@@ -189,7 +189,7 @@ section {
 
 /* ===== Hero ===== */
 .hero-section {
-  min-height: calc(100vh - 72px);
+  min-height: calc(100svh - var(--nav-height));
   display: flex;
   align-items: center;
   background:
@@ -212,7 +212,7 @@ section {
   border: 1px solid var(--border-light);
   color: var(--ink-soft);
   border-radius: var(--radius-pill);
-  padding: 0.45rem 0.9rem;
+  padding: var(--space-xs) var(--space-sm);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -249,7 +249,7 @@ section {
 .btn {
   border: 1px solid var(--ink-strong);
   border-radius: var(--radius-sm);
-  padding: 0.72rem 1.25rem;
+  padding: var(--space-sm) var(--space-md);
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.06em;
@@ -281,7 +281,7 @@ section {
 .btn-secondary:hover {
   background: var(--paper);
   box-shadow: var(--shadow-sm);
-  color:black;
+  color: black;
 }
 
 .btn-cv {
@@ -349,7 +349,7 @@ section {
   color: var(--ink-strong);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   letter-spacing: -0.02em;
-  margin-bottom: 0.35rem;
+  margin-bottom: var(--space-xs);
 }
 
 .stat p {
@@ -362,10 +362,10 @@ section {
   background: var(--paper);
   --about-profile-size: clamp(7.625rem, 10vw, 9rem);
   min-height: calc(100svh - var(--nav-height));
-  padding: var(--space-lg) 0;
+  padding: var(--space-xxl) 0;
   display: flex;
   align-items: center;
-  scroll-margin-top: var(--space-lg);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-xs));
 }
 
 .about-section .container-xl {
@@ -420,7 +420,9 @@ section {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.82rem;
-  transition: gap 0.2s ease, color 0.2s ease;
+  transition:
+    gap 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn-text:hover {
@@ -441,7 +443,9 @@ section {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .highlight-card:hover {
@@ -491,7 +495,10 @@ section {
   border: 1px solid var(--border-dark);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
   display: flex;
   flex-direction: column;
 }
@@ -528,8 +535,16 @@ section {
   z-index: 0;
   opacity: 0;
   background:
-    radial-gradient(circle at 68% 28%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 58%),
-    linear-gradient(140deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 62%);
+    radial-gradient(
+      circle at 68% 28%,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0) 58%
+    ),
+    linear-gradient(
+      140deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 62%
+    );
   transition: opacity 0.28s ease;
 }
 
@@ -563,7 +578,9 @@ section {
   opacity: 0;
   z-index: 1;
   pointer-events: none;
-  transition: opacity 0.28s ease, transform 0.28s ease;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
 }
 
 .project-card:hover .project-image::after,
@@ -591,7 +608,7 @@ section {
   color: #ffc5c7;
   border: 1px solid rgba(232, 33, 39, 0.35);
   border-radius: var(--radius-pill);
-  padding: 0.34rem 0.72rem;
+  padding: var(--space-xs) var(--space-sm);
   font-size: 0.73rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -658,7 +675,6 @@ section {
   padding: var(--space-lg) 0;
 }
 
-
 .timeline-item {
   display: grid;
   grid-template-columns: 1fr;
@@ -706,7 +722,7 @@ section {
   background: var(--ink-strong);
   color: var(--paper);
   border-radius: var(--radius-pill);
-  padding: 0.32rem 0.7rem;
+  padding: var(--space-xs) var(--space-sm);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -731,7 +747,7 @@ section {
 .timeline-content ul li {
   color: var(--ink-soft);
   padding-left: var(--space-sm);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-xs);
   position: relative;
 }
 
@@ -753,8 +769,86 @@ section {
   border-radius: var(--radius-pill);
   background: var(--paper-soft);
   color: var(--ink-soft);
-  padding: 0.28rem 0.65rem;
+  padding: var(--space-xs) var(--space-sm);
   font-size: 0.74rem;
+}
+
+.projects-subsection {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--paper-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.projects-subsection h5 {
+  color: var(--ink-strong);
+  font-size: 0.98rem;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+.projects-subsection p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  margin-bottom: var(--space-sm);
+}
+
+.projects-subsection ul {
+  list-style: none;
+  margin: 0;
+}
+
+.projects-subsection li {
+  color: var(--ink-soft);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  position: relative;
+  font-size: 0.94rem;
+}
+
+.projects-subsection li::before {
+  content: "–";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+}
+
+.experience-contributions {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(232, 33, 39, 0.06);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+}
+
+.experience-contributions strong {
+  color: var(--ink-strong);
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 0.96rem;
+}
+
+.experience-contributions ul {
+  list-style: none;
+  margin: 0;
+}
+
+.experience-contributions li {
+  color: var(--ink-soft);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  position: relative;
+  font-size: 0.94rem;
+}
+
+.experience-contributions li::before {
+  content: "•";
+  color: var(--ink-strong);
+  position: absolute;
+  left: 0;
+  font-weight: 600;
 }
 
 /* ===== Skills ===== */
@@ -807,7 +901,7 @@ section {
   border-radius: var(--radius-pill);
   color: #d3d9e1;
   background: #20252d;
-  padding: 0.36rem 0.72rem;
+  padding: var(--space-xs) var(--space-sm);
   font-size: 0.78rem;
   font-weight: 500;
 }
@@ -830,7 +924,9 @@ section {
   padding: var(--space-lg);
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .achievement:hover {
@@ -848,7 +944,7 @@ section {
 .achievement h4 {
   color: var(--ink-strong);
   font-size: 1.02rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: var(--space-xs);
 }
 
 .achievement p {
@@ -894,7 +990,7 @@ section {
 .contact-item > i {
   color: #e4e8ef;
   font-size: 1.1rem;
-  margin-top: 0.2rem;
+  margin-top: 0;
 }
 
 .contact-item > div {
@@ -1000,8 +1096,10 @@ section {
   border-radius: var(--radius-sm);
   color: var(--paper);
   font-family: var(--font-primary);
-  padding: 0.72rem 0.9rem;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  padding: var(--space-sm) var(--space-md);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .form-group input::placeholder,
@@ -1063,6 +1161,10 @@ section {
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
+  section {
+    padding: var(--space-xl) 0;
+  }
+
   .about-section {
     min-height: auto;
     display: block;
@@ -1102,7 +1204,11 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
+  }
+
+  .about-section {
+    padding: var(--space-lg) 0;
   }
 
   .container-xl {
@@ -1145,7 +1251,6 @@ section {
     grid-template-columns: 1fr;
     gap: 0;
   }
-
 }
 
 @media (max-width: 480px) {
