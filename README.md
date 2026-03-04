@@ -24,7 +24,7 @@ A modern, responsive portfolio website showcasing full-stack development experti
 ### Interactive Features
 
 - **Contact Form Modal** - Modern popup instead of page scrolling
-- **CV Download** - Direct download button for resume (my-cv.docx)
+- **CV Download** - Direct download button for resume (`wai-hyn-htun-resume.docx`)
 - **Smooth Navigation** - Seamless scrolling between sections
 - **Mobile Menu** - Responsive hamburger navigation
 - **Dynamic Footer** - Auto-updating copyright year
@@ -56,7 +56,7 @@ A modern, responsive portfolio website showcasing full-stack development experti
 
 2. **Add your CV file**
 
-   - Place your CV file as `my-cv.docx` in the root directory
+   - Place your CV file as `wai-hyn-htun-resume.docx` in the root directory
    - Or update the link in `index.html` to match your CV filename
 
 3. **Add your profile image**
@@ -98,7 +98,7 @@ portfolio/
 ├── styles.css          # All CSS styles
 ├── script.js           # JavaScript functionality
 ├── my-profile.jpg      # Profile image (add this)
-├── my-cv.docx         # CV file for download (add this)
+├── wai-hyn-htun-resume.docx # CV file for download (add this)
 └── README.md          # This file
 ```
 
