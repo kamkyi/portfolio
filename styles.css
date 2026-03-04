@@ -769,8 +769,10 @@ section {
   border-radius: var(--radius-pill);
   background: var(--paper-soft);
   color: var(--ink-soft);
-  padding: var(--space-xs) var(--space-sm);
+  padding: 0.28rem 0.65rem;
   font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .projects-subsection {
@@ -783,32 +785,34 @@ section {
 
 .projects-subsection h5 {
   color: var(--ink-strong);
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   margin-bottom: var(--space-xs);
   font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .projects-subsection p {
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  font-size: 0.92rem;
   margin-bottom: var(--space-sm);
+  line-height: 1.5;
 }
 
 .projects-subsection ul {
-  list-style: none;
-  margin: 0;
+  padding: 0;
 }
 
 .projects-subsection li {
   color: var(--ink-soft);
   padding-left: var(--space-sm);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.35rem;
   position: relative;
-  font-size: 0.94rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .projects-subsection li::before {
-  content: "–";
+  content: "•";
   color: var(--accent);
   position: absolute;
   left: 0;
@@ -826,24 +830,28 @@ section {
 .experience-contributions strong {
   color: var(--ink-strong);
   display: block;
-  margin-bottom: var(--space-xs);
-  font-size: 0.96rem;
+  margin-bottom: var(--space-sm);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .experience-contributions ul {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .experience-contributions li {
   color: var(--ink-soft);
   padding-left: var(--space-sm);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.35rem;
   position: relative;
-  font-size: 0.94rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
-.experience-contributions li::before {
+.experience-contrifore {
   content: "•";
   color: var(--ink-strong);
   position: absolute;
