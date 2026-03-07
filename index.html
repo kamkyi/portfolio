@@ -3,818 +3,952 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wai Hyn Htun | Senior Full Stack Developer</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Wai Hyn Htun is a senior full-stack and mobile developer building polished web and mobile products with React, React Native, Expo, Node.js, and scalable backend systems."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <title>Wai Hyn Htun | Full-Stack &amp; Mobile Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Sora:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-      <div class="container-xl">
-        <a class="navbar-brand" href="#home">
-          <span class="brand-dot"></span>Wai Hyn Htun
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Work</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#experience">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cta-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header class="site-header">
+      <div class="container-shell">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="brand-mark" href="#home">
+            <span class="brand-dot" aria-hidden="true"></span>
+            <span class="brand-name">
+              <span class="brand-name-main">Wai Hyn</span>
+              <span class="brand-name-accent">Htun</span>
+            </span>
+          </a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-      <div class="container-xl">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <i class="bi bi-code-slash"></i>
-            <span>Available for Freelance &amp; Full-time</span>
-          </div>
-          <h1 class="hero-title">
-            Senior Full Stack Developer <br />
-            <span class="gradient-text">Mr.Wai Hyn Htun</span>
-          </h1>
-          <p class="hero-subtitle">
-            I am highly proficient in React.js and JSX, building
-            high-performance, scalable web applications with Python, Node.js,
-            and PHP. I specialize in microservices architecture and
-            enterprise-grade solutions.
-          </p>
-          <div class="hero-skills" aria-label="Core technology stack">
-            <span class="hero-skill">
-              <i class="bi bi-window-stack" aria-hidden="true"></i>
-              React.js
-            </span>
-            <span class="hero-skill">
-              <i class="bi bi-database" aria-hidden="true"></i>
-              Python/Django
-            </span>
-            <span class="hero-skill">
-              <i class="bi bi-hdd-network" aria-hidden="true"></i>
-              Node.js
-            </span>
-            <span class="hero-skill">
-              <i class="bi bi-layers" aria-hidden="true"></i>
-              PHP/Laravel
-            </span>
-          </div>
-          <div class="hero-ctas">
-            <button class="btn btn-primary" id="contact-btn">
-              <i class="bi bi-envelope"></i> Get In Touch
-            </button>
-            <a href="#projects" class="btn btn-secondary">
-              <i class="bi bi-briefcase"></i> View My Work
-            </a>
-            <a
-              href="wai-hyn-htun-resume.docx"
-              class="btn btn-secondary"
-              download="wai-hyn-htun-resume.docx"
-            >
-              <i class="bi bi-download"></i> Download CV
-            </a>
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <h3>12+</h3>
-            <p>Years of Experience</p>
-          </div>
-          <div class="stat">
-            <h3>50+</h3>
-            <p>Projects Delivered</p>
-          </div>
-          <div class="stat">
-            <h3>4</h3>
-            <p>Companies</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="Open navigation"
+          >
+            <span></span>
+            <span></span>
+          </button>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>About Me</h2>
-          <p>Get to know me better</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-text">
-            <div class="about-profile">
-              <img src="profile.jpg" alt="Wai Hyn Htun profile photo" />
-            </div>
-            <h3>Professional Journey</h3>
-            <p>
-              I'm a Senior Full Stack Developer with 12+ years of hands-on
-              experience building enterprise-grade applications. My career spans
-              multiple industries—from travel &amp; tourism to fintech and
-              social impact initiatives.
-            </p>
-            <p>
-              I specialize in designing scalable microservices architectures,
-              optimizing system performance, and delivering solutions that drive
-              measurable business value. I'm passionate about clean code, best
-              practices, and mentoring other developers.
-            </p>
-            <p>
-              Currently, I focus on modern full-stack development, and I am very
-              strong in React.js and JSX, alongside Python/Django, Node.js, and
-              cloud infrastructure.
-            </p>
-            <a href="#contact" class="btn-text">
-              Let's work together <i class="bi bi-arrow-right"></i>
-            </a>
+          <div class="nav-panel" id="nav-panel">
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#work">Work</a>
+            <a class="nav-link" href="#experience">Experience</a>
+            <a class="nav-link" href="#skills">Capabilities</a>
+            <a class="nav-link" href="#certificates">Certificates</a>
+            <a class="nav-link nav-link-accent" href="#contact">Contact</a>
           </div>
-          <div class="about-highlights">
-            <div class="highlight-card">
-              <i class="bi bi-rocket-takeoff"></i>
-              <h4>Fast &amp; Scalable</h4>
-              <p>Building applications that perform at scale</p>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="container-shell hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Full-stack engineer for web, mobile, and impact products</p>
+            <h1 class="hero-title">
+              I build premium digital products from interface to backend.
+            </h1>
+            <p class="hero-lead">
+              I am Wai Hyn Htun, a senior developer with core strength in
+              Python, React, and PHP, supported by mobile and backend delivery
+              across React Native, Expo, Node.js, and Express. My recent work
+              supports Issara Organization, where I help ship nonprofit
+              products alongside volunteer contributors from AWS, Microsoft,
+              MIT, Stanford, and metaverse communities.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">
+                <i class="bi bi-envelope"></i>
+                <span>Start a Conversation</span>
+              </a>
+              <a class="button button-secondary" href="#work">
+                <i class="bi bi-grid-1x2"></i>
+                <span>See Selected Work</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="mr-wai-hyn-htun-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-file-earmark-text"></i>
+                <span>View CV</span>
+              </a>
             </div>
-            <div class="highlight-card">
-              <i class="bi bi-shield-check"></i>
-              <h4>Secure &amp; Reliable</h4>
-              <p>Enterprise-grade security practices</p>
+
+            <ul class="hero-points" aria-label="Professional highlights">
+              <li>Primary engineering strengths in Python, React, and PHP</li>
+              <li>12+ years across nonprofit, mobility, travel, and enterprise software</li>
+              <li>React Native and Expo delivery for real-world worker-facing mobile apps</li>
+              <li>Supporting strengths in AuthKit, microservice architecture, and performance optimization</li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel reveal">
+            <div class="profile-card">
+              <img src="profile.jpg" alt="Portrait of Wai Hyn Htun" />
+              <div class="profile-copy">
+                <p class="panel-label">Based in Thailand</p>
+                <h2>Senior Full-Stack &amp; Mobile Developer</h2>
+                <p>
+                  Product-minded, delivery-focused, and comfortable moving from
+                  user experience details to backend architecture decisions.
+                </p>
+              </div>
             </div>
-            <div class="highlight-card">
-              <i class="bi bi-layers"></i>
-              <h4>Architecture Focus</h4>
-              <p>Microservices &amp; distributed systems expert</p>
+
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span class="metric-value">70k+</span>
+                <p class="metric-copy">Users supported through Golden Dreams.</p>
+              </article>
+              <article class="metric-card">
+                <span class="metric-value">2M+</span>
+                <p class="metric-copy">Travel platform users served in prior product work.</p>
+              </article>
+              <article class="metric-card">
+                <span class="metric-value">React Native</span>
+                <p class="metric-copy">Mobile delivery paired with Expo, APIs, and real-world operations.</p>
+              </article>
+              <article class="metric-card">
+                <span class="metric-value">Node + Express</span>
+                <p class="metric-copy">Backend services, integrations, and scalable application flows.</p>
+              </article>
             </div>
-            <div class="highlight-card">
+          </aside>
+        </div>
+      </section>
+
+      <section class="trust-section">
+        <div class="container-shell">
+          <div class="section-intro reveal">
+            <p class="section-kicker">Positioning</p>
+            <h2>Structured around shipped work, not template language.</h2>
+            <p class="section-copy">
+              This portfolio is designed to show how I think, what I have built,
+              and where I create the most value: polished interfaces, stable
+              backend systems, and products with real users and operational
+              consequences.
+            </p>
+          </div>
+
+          <div class="trust-grid">
+            <article class="trust-card reveal">
+              <i class="bi bi-heart-pulse"></i>
+              <h3>Mission-driven engineering</h3>
+              <p>
+                I build for organizations where quality matters because the
+                product supports workers, operations, and decision-making in the
+                real world.
+              </p>
+            </article>
+
+            <article class="trust-card reveal">
+              <i class="bi bi-phone"></i>
+              <h3>Web and mobile delivery</h3>
+              <p>
+                I can design and ship both browser-based products and mobile
+                apps using React Native, Expo, React, and service-oriented
+                backends.
+              </p>
+            </article>
+
+            <article class="trust-card reveal">
               <i class="bi bi-people"></i>
-              <h4>Team Leader</h4>
-              <p>Mentoring and technical guidance</p>
-            </div>
+              <h3>Strong collaboration context</h3>
+              <p>
+                Through Issara Organization, I work in an environment shaped by
+                volunteer contributors from AWS, Microsoft, MIT, Stanford, and
+                metaverse-focused communities.
+              </p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>Featured Projects</h2>
-          <p>A selection of my recent work</p>
-        </div>
-        <div class="projects-container">
-          <!-- Project 1 -->
-          <div class="project-card large">
-            <div class="project-image">
-              <div class="project-graphic">
-                <span class="project-graphic-overlay" aria-hidden="true">
-                  <i class="bi bi-cart3"></i>
-                </span>
-                <i class="bi bi-cart3"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <div class="project-tag">React / Django / Firebase</div>
-              <h3>Job Marketplace Platform</h3>
-              <p>
-                A scalable job marketplace connecting immigrant workers with
-                employers. Built responsive frontend with React.js, robust
-                backend with Django, integrated Firebase for real-time updates,
-                and Authkit for multi-factor authentication.
-              </p>
-              <ul class="project-features">
-                <li>
-                  <i class="bi bi-check2"></i> Real-time notifications &amp;
-                  messaging
-                </li>
-                <li>
-                  <i class="bi bi-check2"></i> Mobile app with Bubblewrap TWA
-                </li>
-                <li>
-                  <i class="bi bi-check2"></i> Advanced database optimization
-                </li>
-              </ul>
-              <a href="#contact" class="btn-text"
-                >View Case Study <i class="bi bi-arrow-right"></i
-              ></a>
-            </div>
+      <section id="about" class="story-section">
+        <div class="container-shell story-grid">
+          <div class="section-intro section-intro-left reveal">
+            <p class="section-kicker">About</p>
+            <h2>I work best where product clarity and technical rigor need to exist together.</h2>
+            <p class="section-copy">
+              My background spans full-stack web engineering, mobile app
+              development, backend service design, integrations, and
+              performance-focused delivery. I enjoy turning rough ideas into
+              well-structured products that feel clean to use and stay reliable
+              as they grow.
+            </p>
+            <p class="section-copy">
+              I am especially comfortable in environments where teams need
+              someone who can move between frontend polish, Node.js and Express
+              services, React Native implementation, API decisions, and the
+              practical realities of shipping.
+            </p>
           </div>
 
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="project-image">
-              <div class="project-graphic">
-                <span class="project-graphic-overlay" aria-hidden="true">
-                  <i class="bi bi-car-front"></i>
-                </span>
-                <i class="bi bi-car-front"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <div class="project-tag">Laravel / React / IoT</div>
-              <h3>IoT Vehicle Management</h3>
+          <div class="story-stack">
+            <article class="story-card reveal">
+              <p class="panel-label">What I bring</p>
+              <h3>Python, React, and PHP at the center of my stack.</h3>
               <p>
-                End-to-end IoT solution for fleet management with real-time GPS
-                tracking, payment integration, and intelligent analytics.
+                My main delivery strength comes from building with Python,
+                React, and PHP, then extending products with the right
+                supporting tools when mobile, integrations, or infrastructure
+                needs are involved.
               </p>
-              <ul class="project-features">
-                <li><i class="bi bi-check2"></i> Real-time vehicle tracking</li>
-                <li>
-                  <i class="bi bi-check2"></i> Payment gateway integration
-                </li>
-                <li><i class="bi bi-check2"></i> Scalable infrastructure</li>
-              </ul>
-            </div>
-          </div>
+            </article>
 
-          <!-- Project 3 -->
-          <div class="project-card">
-            <div class="project-image">
-              <div class="project-graphic">
-                <span class="project-graphic-overlay" aria-hidden="true">
-                  <i class="bi bi-airplane"></i>
-                </span>
-                <i class="bi bi-airplane"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <div class="project-tag">Laravel / React / APIs</div>
-              <h3>Travel Booking Platform</h3>
+            <article class="story-card reveal">
+              <p class="panel-label">How I work</p>
+              <h3>Fast iteration without losing production discipline.</h3>
               <p>
-                Comprehensive booking system for flights, buses, and hotels with
-                multi-provider integration and automated synchronization.
+                I am comfortable with AI-assisted and vibe coding workflows for
+                prototyping, but I still care about maintainability, clear
+                structure, performance optimization, and reliable release
+                quality.
               </p>
-              <ul class="project-features">
-                <li><i class="bi bi-check2"></i> Multi-provider search</li>
-                <li><i class="bi bi-check2"></i> Payment processing</li>
-                <li><i class="bi bi-check2"></i> Webhook synchronization</li>
-              </ul>
-            </div>
-          </div>
+            </article>
 
-          <!-- Project 4 -->
-          <div class="project-card large">
-            <div class="project-image">
-              <div class="project-graphic">
-                <span class="project-graphic-overlay" aria-hidden="true">
-                  <i class="bi bi-bar-chart-line"></i>
-                </span>
-                <i class="bi bi-bar-chart-line"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <div class="project-tag">Laravel / MySQL / Reports</div>
-              <h3>Enterprise ERP System</h3>
+            <article class="story-card reveal">
+              <p class="panel-label">Where I fit</p>
+              <h3>Teams that need calm delivery across multiple layers.</h3>
               <p>
-                Internal ERP platform handling inventory, accounting, and
-                business intelligence with role-based access control.
+                I work well with product owners, designers, nonprofit
+                stakeholders, and engineers who value clear communication and
+                practical technical decisions.
               </p>
-              <ul class="project-features">
-                <li><i class="bi bi-check2"></i> Complex business logic</li>
-                <li><i class="bi bi-check2"></i> Advanced reporting</li>
-                <li><i class="bi bi-check2"></i> System scaling</li>
-              </ul>
-            </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>Professional Experience</h2>
-          <p>My career journey</p>
-        </div>
-        <div class="timeline">
-          <!-- Experience 1 - Issara Institute -->
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <span class="marker-dot"></span>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3>Senior Full Stack Developer</h3>
-                <span class="badge">2021 - Present</span>
+      <section id="work" class="work-section">
+        <div class="container-shell">
+          <div class="section-intro reveal">
+            <p class="section-kicker">Selected Work</p>
+            <h2>Products and systems crafted across impact, mobility, and operations.</h2>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card work-card-featured reveal">
+              <div class="work-header">
+                <p class="work-tag">Issara Organization · Social Impact Platform</p>
+                <h3>Golden Dreams and labor-focused digital systems</h3>
               </div>
-              <h4>Issara Institute</h4>
-              <p>
-                A U.S.-based non-profit organization focused on improving
-                transparency and worker protection in global supply chains. I
-                collaborate with volunteers and experts from major tech
-                companies (AWS, Microsoft, Google, MIT, Stanford), providing
-                valuable exposure to modern engineering practices.
+              <p class="work-body">
+                I contribute to platforms that help migrant workers access
+                opportunities, information, and support while also improving
+                visibility into labor conditions and operational risk.
               </p>
+              <ul class="work-list">
+                <li>Worker-facing product thinking across web and mobile surfaces</li>
+                <li>Backend services, data handling, and scalable application flows</li>
+                <li>System support for monitoring, dashboards, and workflow tooling</li>
+              </ul>
+              <p class="impact-note">
+                Impact: supporting a nonprofit product ecosystem with 70k+ users.
+              </p>
+            </article>
 
-              <div class="projects-subsection">
-                <h5>Inclusive Labor Monitoring (ILM) System</h5>
-                <p>
-                  A comprehensive platform used to monitor labor conditions and
-                  identify risks in supply chains.
-                </p>
-                <ul>
-                  <li>Data analytics and visualization dashboards</li>
-                  <li>Ethical risk scoring and compliance metrics</li>
-                  <li>Case management workflows and automation</li>
-                </ul>
+            <article class="work-card reveal">
+              <div class="work-header">
+                <p class="work-tag">Yoma Strategic Holdings · Mobility</p>
+                <h3>Vehicle platforms with IoT and payment workflows</h3>
               </div>
+              <p class="work-body">
+                Built and improved systems for car sharing, rental operations,
+                payment handling, and connected vehicle flows with operational
+                dependencies beyond a typical CRUD product.
+              </p>
+              <ul class="work-list">
+                <li>Laravel and React delivery across operational interfaces</li>
+                <li>IoT-aware system logic, billing, and booking flows</li>
+                <li>Performance improvements under growing traffic and usage</li>
+              </ul>
+            </article>
 
-              <div class="projects-subsection">
-                <h5>Golden Dreams Mobile Application</h5>
-                <p>
-                  An Android application for migrant workers and job seekers
-                  with 70,000+ active users.
-                </p>
-                <ul>
-                  <li>Job marketplace platform with advanced search</li>
-                  <li>News and educational resources portal</li>
-                  <li>Job application and CV creation tools</li>
-                  <li>Worker guidance and support resources</li>
-                </ul>
+            <article class="work-card reveal">
+              <div class="work-header">
+                <p class="work-tag">Oway Travels &amp; Tours · Travel Tech</p>
+                <h3>Booking products serving millions of users</h3>
               </div>
+              <p class="work-body">
+                Worked across tours, flights, hotels, and ride-hailing related
+                systems with third-party integrations, search performance work,
+                and payment-enabled product flows.
+              </p>
+              <ul class="work-list">
+                <li>2M+ user scale context for booking and ticketing systems</li>
+                <li>API integrations, secure communication, and search tuning</li>
+                <li>Hands-on work with MySQL, MongoDB, AWS, Go, and Python</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
 
-              <div class="experience-contributions">
-                <strong>Key Focus:</strong>
-                <ul>
-                  <li>Backend service development and optimization</li>
-                  <li>Performance tuning for large-scale systems</li>
-                  <li>System architecture improvements</li>
-                  <li>Building scalable APIs and microservices</li>
-                </ul>
+      <section id="experience" class="experience-section">
+        <div class="container-shell">
+          <div class="section-intro reveal">
+            <p class="section-kicker">Experience</p>
+            <h2>A career built through real products, not isolated demos.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <p class="timeline-period">2021 - Present</p>
+                <p class="timeline-role">Senior Full-Stack Developer</p>
               </div>
-
-              <div class="tech-stack">
-                <span>Python/Django</span>
-                <span>Node.js/Express</span>
-                <span>React.js</span>
-                <span>TypeScript</span>
-                <span>Microservices</span>
+              <h3>Issara Organization</h3>
+              <p>
+                Building and improving nonprofit systems that support worker
+                safety, labor monitoring, and digital services for migrant
+                communities.
+              </p>
+              <div class="timeline-tags">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>Django</span>
                 <span>Firebase</span>
+                <span>Product Support</span>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Experience 2 - Yoma Strategic Holdings -->
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <span class="marker-dot"></span>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3>Senior Software Engineer</h3>
-                <span class="badge">2018 - 2021</span>
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <p class="timeline-period">2018 - 2021</p>
+                <p class="timeline-role">Senior Software Engineer</p>
               </div>
-              <h4>Yoma Strategic Holdings</h4>
+              <h3>Yoma Strategic Holdings</h3>
               <p>
-                Focused on developing and optimizing digital platforms for large
-                user bases, with emphasis on system performance and reliability.
+                Delivered mobility and operational products covering car share,
+                rental workflows, employee financing systems, and reliability
+                improvements for growing usage.
               </p>
-
-              <div class="projects-subsection">
-                <h5>Yoma CarShare</h5>
-                <p>
-                  A vehicle sharing platform integrated with IoT systems for
-                  remote control capabilities.
-                </p>
-                <ul>
-                  <li>Vehicle booking and rental management system</li>
-                  <li>Mileage tracking and automated billing calculations</li>
-                  <li>Payment gateway integrations for secure transactions</li>
-                  <li>IoT device communication and remote vehicle control</li>
-                </ul>
-              </div>
-
-              <div class="projects-subsection">
-                <h5>Yoma Rental Platform &amp; Yoma Home</h5>
-                <p>
-                  Vehicle rental operations system and internal employee
-                  financing platform for smartphone purchases via salary-based
-                  installment plans.
-                </p>
-              </div>
-
-              <div class="experience-contributions">
-                <strong>Key Achievements:</strong>
-                <ul>
-                  <li>
-                    System performance optimization for 10x traffic growth
-                  </li>
-                  <li>Handling large-scale database queries and operations</li>
-                  <li>Improved software reliability and scalability</li>
-                  <li>
-                    Backend service architecture and third-party integrations
-                  </li>
-                  <li>Mentored junior developers on architecture patterns</li>
-                </ul>
-              </div>
-
-              <div class="tech-stack">
+              <div class="timeline-tags">
                 <span>Laravel</span>
-                <span>React.js</span>
+                <span>React</span>
                 <span>MySQL</span>
                 <span>AWS</span>
-                <span>IoT Systems</span>
-                <span>Payment Gateways</span>
+                <span>IoT</span>
+                <span>Payments</span>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Experience 3 - Oway Travels & Tours -->
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <span class="marker-dot"></span>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3>Product Owner / Software Development Engineer</h3>
-                <span class="badge">2017 - 2018</span>
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <p class="timeline-period">2017 - 2018</p>
+                <p class="timeline-role">Product Owner / Software Development Engineer</p>
               </div>
-              <h4>Oway Travels &amp; Tours</h4>
+              <h3>Oway Travels &amp; Tours</h3>
               <p>
-                Worked on large-scale travel platforms serving millions of
-                users. Served as Product Owner for Tours API, managing
-                third-party integrations and backend API development.
+                Helped ship travel products operating at significant scale,
+                working on APIs, integrations, search optimization, and booking
+                system performance.
               </p>
-
-              <div class="projects-subsection">
-                <h5>Travel Booking Platforms</h5>
-                <p>
-                  Comprehensive booking systems for tours, flights, hotels, and
-                  ride-hailing services supporting 2M+ users.
-                </p>
-              </div>
-
-              <div class="experience-contributions">
-                <strong>Key Contributions:</strong>
-                <ul>
-                  <li>
-                    Third-party API integrations (BeMyGuest ticketing services)
-                  </li>
-                  <li>
-                    2C2P payment gateway integration for secure transactions
-                  </li>
-                  <li>Secure server-to-server communication protocol design</li>
-                  <li>
-                    Booking and ticketing systems with automated confirmations
-                  </li>
-                  <li>
-                    ElasticSearch implementation for faster search performance
-                  </li>
-                  <li>
-                    MySQL query optimization and database performance tuning
-                  </li>
-                  <li>
-                    Working with multiple backend technologies: MongoDB, Go,
-                    Python, DynamoDB
-                  </li>
-                  <li>AWS services for scalability and reliability</li>
-                </ul>
-              </div>
-
-              <div class="tech-stack">
+              <div class="timeline-tags">
                 <span>Laravel</span>
-                <span>React.js</span>
                 <span>MySQL</span>
                 <span>MongoDB</span>
                 <span>Elasticsearch</span>
                 <span>AWS</span>
                 <span>Go</span>
-                <span>Python</span>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Experience 4 - Myanmar Digital Solutions -->
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <span class="marker-dot"></span>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3>Web Developer</h3>
-                <span class="badge">2014 - 2017</span>
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <p class="timeline-period">2014 - 2017</p>
+                <p class="timeline-role">Web Developer</p>
               </div>
-              <h4>Myanmar Digital Solutions</h4>
+              <h3>Myanmar Digital Solutions</h3>
               <p>
-                Early career experience developing internal business
-                applications and location-based mobile services. Built strong
-                foundation in full-stack development and practical system
-                design.
+                Built the early foundation of my career through internal
+                systems, responsive interfaces, and a location-based mobile
+                product that required practical performance work.
               </p>
-
-              <div class="projects-subsection">
-                <h5>Inventory Management System</h5>
-                <p>
-                  Enterprise business application for internal operations using
-                  CodeIgniter and Laravel frameworks.
-                </p>
-                <ul>
-                  <li>Backend development with robust business logic</li>
-                  <li>Database design and optimization</li>
-                  <li>Responsive UI/UX with Bootstrap, CSS, and SCSS</li>
-                </ul>
-              </div>
-
-              <div class="projects-subsection">
-                <h5>MMNearby</h5>
-                <p>
-                  Location-based mobile application helping users discover
-                  nearby local businesses (shops, services).
-                </p>
-                <ul>
-                  <li>Google Maps API integration</li>
-                  <li>Local business directory database</li>
-                  <li>Location-based data query optimization</li>
-                  <li>Performance optimization for map-based services</li>
-                </ul>
-              </div>
-
-              <div class="experience-contributions">
-                <strong>Skills Developed:</strong>
-                <ul>
-                  <li>User experience (UX) and responsive UI design</li>
-                  <li>Database query optimization for location-based data</li>
-                  <li>Application performance enhancement</li>
-                  <li>Full-stack development foundation</li>
-                </ul>
-              </div>
-
-              <div class="tech-stack">
+              <div class="timeline-tags">
                 <span>PHP</span>
                 <span>Laravel</span>
                 <span>CodeIgniter</span>
                 <span>Bootstrap</span>
-                <span>CSS/SCSS</span>
                 <span>Google Maps API</span>
                 <span>MySQL</span>
               </div>
-            </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>Technical Skills</h2>
-          <p>Technologies I work with</p>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3><i class="bi bi-window-stack"></i> Frontend</h3>
-            <div class="skill-items">
-              <span class="skill-item">React.js</span>
-              <span class="skill-item">Next.js</span>
-              <span class="skill-item">Vue.js</span>
-              <span class="skill-item">TypeScript</span>
-              <span class="skill-item">HTML5/CSS3</span>
-              <span class="skill-item">Tailwind CSS</span>
-              <span class="skill-item">Bootstrap</span>
-              <span class="skill-item">SASS/SCSS</span>
-            </div>
+      <section id="skills" class="capabilities-section">
+        <div class="container-shell">
+          <div class="section-intro reveal">
+            <p class="section-kicker">Capabilities</p>
+            <h2>Primary strengths first, with broader delivery skills in support.</h2>
           </div>
 
-          <div class="skill-category">
-            <h3><i class="bi bi-hdd-network"></i> Backend</h3>
-            <div class="skill-items">
-              <span class="skill-item">Python/Django</span>
-              <span class="skill-item">Node.js/Express</span>
-              <span class="skill-item">Laravel/PHP</span>
-              <span class="skill-item">FastAPI</span>
-              <span class="skill-item">RESTful APIs</span>
-              <span class="skill-item">GraphQL</span>
-              <span class="skill-item">Microservices</span>
-              <span class="skill-item">Authentication</span>
-            </div>
-          </div>
+          <div class="capability-grid">
+            <article class="capability-card reveal">
+              <i class="bi bi-window-stack"></i>
+              <h3>React</h3>
+              <p>My main frontend strength for building structured, scalable interfaces.</p>
+              <div class="capability-tags">
+                <span>React</span>
+                <span>React.js</span>
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>HTML/CSS</span>
+                <span>Bootstrap</span>
+              </div>
+            </article>
 
-          <div class="skill-category">
-            <h3><i class="bi bi-database"></i> Database</h3>
-            <div class="skill-items">
-              <span class="skill-item">PostgreSQL</span>
-              <span class="skill-item">MySQL</span>
-              <span class="skill-item">MongoDB</span>
-              <span class="skill-item">Redis</span>
-              <span class="skill-item">Firebase</span>
-              <span class="skill-item">DynamoDB</span>
-              <span class="skill-item">Elasticsearch</span>
-            </div>
-          </div>
+            <article class="capability-card reveal">
+              <i class="bi bi-code-square"></i>
+              <h3>Python</h3>
+              <p>Primary backend and application logic strength for reliable product systems.</p>
+              <div class="capability-tags">
+                <span>Python</span>
+                <span>Django</span>
+                <span>API Design</span>
+                <span>Data Handling</span>
+                <span>Backend Logic</span>
+              </div>
+            </article>
 
-          <div class="skill-category">
-            <h3><i class="bi bi-cloud"></i> DevOps &amp; Cloud</h3>
-            <div class="skill-items">
-              <span class="skill-item">AWS</span>
-              <span class="skill-item">Google Cloud</span>
-              <span class="skill-item">Docker</span>
-              <span class="skill-item">Kubernetes</span>
-              <span class="skill-item">CI/CD</span>
-              <span class="skill-item">Jenkins</span>
-              <span class="skill-item">GitHub</span>
-              <span class="skill-item">Linux</span>
-            </div>
-          </div>
+            <article class="capability-card reveal">
+              <i class="bi bi-hdd-network"></i>
+              <h3>PHP</h3>
+              <p>Strong experience delivering business systems and operational platforms in PHP stacks.</p>
+              <div class="capability-tags">
+                <span>Laravel</span>
+                <span>PHP</span>
+                <span>CodeIgniter</span>
+                <span>Business Systems</span>
+                <span>Platform Delivery</span>
+              </div>
+            </article>
 
-          <div class="skill-category">
-            <h3><i class="bi bi-phone"></i> Mobile &amp; IoT</h3>
-            <div class="skill-items">
-              <span class="skill-item">React Native</span>
-              <span class="skill-item">PWA</span>
-              <span class="skill-item">Cordova</span>
-              <span class="skill-item">IoT Systems</span>
-              <span class="skill-item">MQTT</span>
-              <span class="skill-item">WebSocket</span>
-            </div>
-          </div>
+            <article class="capability-card reveal">
+              <i class="bi bi-phone"></i>
+              <h3>Additional Mobile Skills</h3>
+              <p>Supporting mobile app work when products need cross-platform delivery.</p>
+              <div class="capability-tags">
+                <span>React Native</span>
+                <span>Expo</span>
+                <span>PWA</span>
+                <span>Firebase</span>
+                <span>Mobile UX</span>
+              </div>
+            </article>
 
-          <div class="skill-category">
-            <h3>
-              <i class="bi bi-wrench-adjustable-circle"></i> Tools &amp;
-              Methodologies
-            </h3>
-            <div class="skill-items">
-              <span class="skill-item">Agile/Scrum</span>
-              <span class="skill-item">Git</span>
-              <span class="skill-item">API Design</span>
-              <span class="skill-item">System Design</span>
-              <span class="skill-item">Testing</span>
-              <span class="skill-item">Performance Optimization</span>
-              <span class="skill-item">WordPress</span>
-              <span class="skill-item">Figma</span>
-              <span class="skill-item">WorkOS (AuthKit)</span>
-            </div>
+            <article class="capability-card reveal">
+              <i class="bi bi-diagram-3"></i>
+              <h3>Additional Backend &amp; Delivery Skills</h3>
+              <p>Broader tooling used to support architecture, authentication, integrations, and shipping.</p>
+              <div class="capability-tags">
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>AuthKit / WorkOS</span>
+                <span>Microservices</span>
+                <span>MySQL</span>
+                <span>AWS</span>
+                <span>API Design</span>
+                <span>Performance Optimization</span>
+                <span>Agile</span>
+                <span>Git</span>
+                <span>AI-assisted prototyping</span>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Achievements Section -->
-    <section class="achievements-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>Key Achievements</h2>
-          <p>Results delivered across products and teams</p>
-        </div>
-        <div class="achievements-grid">
-          <div class="achievement">
-            <i class="bi bi-people"></i>
-            <h4>Led Technical Teams</h4>
-            <p>Mentored 10+ junior developers</p>
+      <section id="certificates" class="certificates-section">
+        <div class="container-shell">
+          <div class="section-intro reveal">
+            <p class="section-kicker">Certificates</p>
+            <h2>Training records and academic documents that shaped my foundation.</h2>
+            <p class="section-copy">
+              This gallery includes technical course certificates, formal
+              academic records, and early credentials that reflect the path
+              behind my current engineering work.
+            </p>
           </div>
-          <div class="achievement">
-            <i class="bi bi-graph-up"></i>
-            <h4>Performance Optimization</h4>
-            <p>Improved query performance by 50%+</p>
-          </div>
-          <div class="achievement">
-            <i class="bi bi-globe2"></i>
-            <h4>Scalable Systems</h4>
-            <p>Built systems serving 100k+ users</p>
-          </div>
-          <div class="achievement">
-            <i class="bi bi-rocket-takeoff"></i>
-            <h4>50+ Projects Delivered</h4>
-            <p>Across multiple industries</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <div class="container-xl">
-        <div class="section-header">
-          <h2>Let's Work Together</h2>
-          <p>Have a project in mind? Let's discuss it.</p>
-        </div>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="bi bi-envelope"></i>
-              <div>
-                <h4>Email</h4>
-                <a href="mailto:waihynhtun90s@gmail.com"
-                  >waihynhtun90s@gmail.com</a
+          <div class="certificate-slider reveal" data-certificate-slider>
+            <div class="certificate-slider-top">
+              <div class="certificate-slider-heading" role="status" aria-live="polite">
+                <p class="panel-label">Curated Archive</p>
+                <p class="certificate-slider-index">
+                  <span data-slider-current>01</span>
+                  <span class="certificate-slider-divider" aria-hidden="true"></span>
+                  <span data-slider-total>09</span>
+                </p>
+              </div>
+
+              <div class="certificate-slider-actions" aria-label="Certificate navigation">
+                <button
+                  class="slider-button"
+                  type="button"
+                  data-slider-prev
+                  aria-label="Show previous certificate"
                 >
+                  <i class="bi bi-arrow-left"></i>
+                </button>
+                <button
+                  class="slider-button"
+                  type="button"
+                  data-slider-next
+                  aria-label="Show next certificate"
+                >
+                  <i class="bi bi-arrow-right"></i>
+                </button>
               </div>
             </div>
-            <div class="contact-item">
-              <i class="bi bi-telephone"></i>
-              <div>
-                <h4>Phone</h4>
-                <div class="contact-channel-list">
-                  <a href="tel:+66947124485">+66 94 712 4485</a>
+
+            <div
+              class="certificate-slider-stage"
+              tabindex="0"
+              aria-label="Certificate showcase"
+              data-slider-stage
+            >
+              <article class="certificate-slide is-active" data-slide>
+                <div class="certificate-slide-shell">
                   <a
-                    href="https://wa.me/66947124485"
+                    class="certificate-slide-media"
+                    href="images/img014.jpg"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="contact-whatsapp-link"
-                    aria-label="Chat on WhatsApp with +66 94 712 4485"
+                    aria-label="Open Dynamic Web Application Development certificate"
                   >
-                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                    <span>WhatsApp</span>
+                    <img
+                      src="images/img014.jpg"
+                      alt="Certificate for Dynamic Web Application Development with PHP and MySQL"
+                      loading="lazy"
+                    />
                   </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Professional Training</p>
+                      <h3>Dynamic Web Application Development with PHP &amp; MySQL</h3>
+                      <p>Course certificate from Gusto Higher Education Institute.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img014.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <p class="certificate-slide-note">Swipe, use arrows, or tap the side cards.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img016.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Programming Fundamental course certificate"
+                  >
+                    <img
+                      src="images/img016.jpg"
+                      alt="Certificate for Programming Fundamental Course"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Professional Training</p>
+                      <h3>Programming Fundamental Course</h3>
+                      <p>Early software development training that supported my core engineering foundation.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img016.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img017.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Software Solution with Java certificate"
+                  >
+                    <img
+                      src="images/img017.jpg"
+                      alt="Certificate for Software Solution with Java Course"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Professional Training</p>
+                      <h3>Software Solution with Java</h3>
+                      <p>Coursework in Java-based application development and software problem solving.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img017.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img018.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Web Java course certificate"
+                  >
+                    <img
+                      src="images/img018.jpg"
+                      alt="Certificate for Web Java Course"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Professional Training</p>
+                      <h3>Web Java Course</h3>
+                      <p>Training in Java-oriented web development concepts and implementation.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img018.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img019.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Information Technology certificate"
+                  >
+                    <img
+                      src="images/img019.jpg"
+                      alt="Certificate of competence in Information Technology"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Technical Education</p>
+                      <h3>Information Technology Certificate of Competence</h3>
+                      <p>KMD training record covering software engineering fundamentals and practical tools.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img019.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img020.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Bachelor of Computer Science degree document in English"
+                  >
+                    <img
+                      src="images/img020.jpg"
+                      alt="Bachelor of Computer Science degree document in English"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Academic Record</p>
+                      <h3>Bachelor of Computer Science</h3>
+                      <p>University of Computer Studies, Mandalay degree documentation in English.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img020.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img021.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Bachelor of Computer Science degree document in Myanmar"
+                  >
+                    <img
+                      src="images/img021.jpg"
+                      alt="Bachelor of Computer Science degree document in Myanmar"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Academic Record</p>
+                      <h3>Bachelor of Computer Science Document</h3>
+                      <p>Myanmar-language academic record connected to my B.C.Sc. degree.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img021.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/img013.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open archived academic certificate"
+                  >
+                    <img
+                      src="images/img013.jpg"
+                      alt="Archived academic certificate document"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Academic Archive</p>
+                      <h3>Archived Academic Certificate</h3>
+                      <p>Early official document preserved as part of my academic background.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/img013.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="certificate-slide" data-slide>
+                <div class="certificate-slide-shell">
+                  <a
+                    class="certificate-slide-media"
+                    href="images/matriculation-mark.jpeg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open matriculation mark document"
+                  >
+                    <img
+                      src="images/matriculation-mark.jpeg"
+                      alt="Matriculation mark record document"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="certificate-slide-copy">
+                    <div class="certificate-slide-meta">
+                      <p class="certificate-type">Academic Archive</p>
+                      <h3>Matriculation Mark Record</h3>
+                      <p>Earlier academic record included as part of my educational journey.</p>
+                    </div>
+                    <div class="certificate-slide-actions">
+                      <a
+                        class="button button-secondary certificate-slide-link"
+                        href="images/matriculation-mark.jpeg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open Record</span>
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="contact-item">
-              <i class="bi bi-geo-alt"></i>
-              <div>
-                <h4>Location</h4>
-                <p>Thailand</p>
+
+            <div class="certificate-slider-bottom">
+              <div class="certificate-slider-progress" aria-hidden="true">
+                <span data-slider-progress></span>
               </div>
+              <div
+                class="certificate-slider-dots"
+                role="tablist"
+                aria-label="Select certificate"
+                data-slider-dots
+              ></div>
             </div>
-            <div class="social-links">
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container-shell contact-grid">
+          <div class="contact-copy reveal">
+            <p class="section-kicker">Contact</p>
+            <h2>If you need someone who can ship across web, mobile, and backend, let’s talk.</h2>
+            <p class="section-copy">
+              I am open to product engineering roles, freelance work, and
+              collaborations where strong delivery and clear thinking matter.
+            </p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:waihynhtun90s@gmail.com">
+                <i class="bi bi-envelope"></i>
+                <span>Email Me</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="wai-hyn-htun-resume.docx"
+                download="wai-hyn-htun-resume.docx"
+              >
+                <i class="bi bi-download"></i>
+                <span>Download Resume</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-panel reveal">
+            <div class="contact-card">
+              <p class="panel-label">Reach out directly</p>
+              <a href="mailto:waihynhtun90s@gmail.com">waihynhtun90s@gmail.com</a>
+            </div>
+
+            <div class="contact-card">
+              <p class="panel-label">Phone and WhatsApp</p>
+              <a href="tel:+66947124485">+66 94 712 4485</a>
+              <a
+                href="https://wa.me/66947124485"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp chat
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <p class="panel-label">Profiles</p>
               <a
                 href="https://linkedin.com/in/wai-hyn-htun-67180b115/"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="LinkedIn"
               >
-                <i class="bi bi-linkedin"></i>
+                LinkedIn
               </a>
               <a
                 href="https://github.com/kamkyi"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="GitHub"
               >
-                <i class="bi bi-github"></i>
+                GitHub
               </a>
             </div>
-          </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <input type="text" placeholder="Your Name" required />
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Your Email" required />
-            </div>
-            <div class="form-group">
-              <input type="text" placeholder="Subject" required />
-            </div>
-            <div class="form-group">
-              <textarea placeholder="Your Message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-send"></i> Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container-xl">
-        <div class="footer-content">
-          <p>
-            &copy; <span id="year"></span> Wai Hyn Htun. All rights reserved.
-          </p>
-          <p>
-            Crafted with <i class="bi bi-heart-fill"></i> using modern web
-            technologies
-          </p>
+            <div class="contact-card">
+              <p class="panel-label">Location</p>
+              <p>Thailand</p>
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-shell footer-shell">
+        <p>&copy; <span id="year"></span> Wai Hyn Htun</p>
+        <p>Full-stack web and mobile developer</p>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
