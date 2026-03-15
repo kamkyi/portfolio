@@ -29,7 +29,7 @@ const agentApiEndpoint =
     : "/api/portfolio-agent";
 
 const agentWelcomeMessage =
-  "Hi, I can answer questions about Wai Hyn Htun's background, experience, and project fit. I can also help you draft your own resume. Ask a direct question or use one of the prompt chips above.";
+  "I am Wai Hyn's Agent. Ask me about his background, role fit, delivery style, and business impact. If needed, I can ask deeper follow-up questions to assess team fit or profit potential.";
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -142,7 +142,7 @@ const createAgentMessageElement = (role, content, options = {}) => {
   messageEl.dataset.role = role;
   roleEl.className = "agent-message-role";
   bubbleEl.className = "agent-bubble";
-  roleEl.textContent = role === "assistant" ? "AI Assistant" : "You";
+  roleEl.textContent = role === "assistant" ? "Wai Hyn's Agent" : "You";
   bubbleEl.textContent = content;
 
   if (options.loading) {
@@ -274,7 +274,7 @@ const sendAgentMessage = async (message) => {
     if (!response.ok) {
       const errorMessage =
         (await extractErrorMessage(response)) ||
-        "The AI assistant is not configured yet. Add the OpenAI server endpoint and try again.";
+        "Wai Hyn's Agent is not configured yet. Add the OpenAI server endpoint and try again.";
       throw new Error(errorMessage);
     }
 
@@ -282,7 +282,7 @@ const sendAgentMessage = async (message) => {
     const reply =
       data && typeof data.reply === "string" && data.reply.trim()
         ? data.reply.trim()
-        : "I couldn't generate a reply from the assistant.";
+        : "I couldn't generate a reply from Wai Hyn's Agent.";
 
     if (loadingMessageEl instanceof HTMLElement) {
       loadingMessageEl.classList.remove("is-loading");
@@ -297,7 +297,7 @@ const sendAgentMessage = async (message) => {
     const fallbackReply =
       error instanceof Error && error.message.trim()
         ? error.message.trim()
-        : "The assistant request failed.";
+        : "Wai Hyn's Agent request failed.";
 
     if (loadingMessageEl instanceof HTMLElement) {
       loadingMessageEl.classList.remove("is-loading");

@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/portfolio-agent", "destination": "/api/portfolio-agent" }
+  ]
+}
