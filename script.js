@@ -6,6 +6,30 @@ const sections = Array.from(document.querySelectorAll("main section[id]"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 const siteHeader = document.querySelector(".site-header");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const agentRoot = document.querySelector("[data-portfolio-agent]");
+const agentLauncher = document.getElementById("agent-launcher");
+const agentPanel = document.getElementById("agent-panel");
+const agentClose = document.getElementById("agent-close");
+const agentFeed = document.getElementById("agent-feed");
+const agentForm = document.getElementById("agent-form");
+const agentInput = document.getElementById("agent-input");
+const agentSend = document.getElementById("agent-send");
+const agentPrompts = Array.from(document.querySelectorAll("[data-agent-prompt]"));
+
+const agentState = {
+  hasWelcomed: false,
+  isOpen: false,
+  isSending: false,
+  messages: [],
+};
+
+const agentApiEndpoint =
+  agentRoot instanceof HTMLElement
+    ? agentRoot.dataset.agentEndpoint || "/api/portfolio-agent"
+    : "/api/portfolio-agent";
+
+const agentWelcomeMessage =
+  "Hi, I can answer questions about Wai Hyn Htun's background, experience, and project fit. I can also help you draft your own resume. Ask a direct question or use one of the prompt chips above.";
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -97,6 +121,204 @@ const updateHeaderState = () => {
   }
 
   siteHeader.classList.toggle("is-scrolled", window.scrollY > 16);
+};
+
+const scrollAgentFeedToBottom = () => {
+  if (!(agentFeed instanceof HTMLElement)) {
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    agentFeed.scrollTop = agentFeed.scrollHeight;
+  });
+};
+
+const createAgentMessageElement = (role, content, options = {}) => {
+  const messageEl = document.createElement("article");
+  const roleEl = document.createElement("span");
+  const bubbleEl = document.createElement("div");
+
+  messageEl.className = "agent-message";
+  messageEl.dataset.role = role;
+  roleEl.className = "agent-message-role";
+  bubbleEl.className = "agent-bubble";
+  roleEl.textContent = role === "assistant" ? "AI Assistant" : "You";
+  bubbleEl.textContent = content;
+
+  if (options.loading) {
+    messageEl.classList.add("is-loading");
+  }
+
+  messageEl.append(roleEl, bubbleEl);
+
+  return messageEl;
+};
+
+const appendAgentMessage = (role, content, options = {}) => {
+  if (!(agentFeed instanceof HTMLElement)) {
+    return null;
+  }
+
+  const messageEl = createAgentMessageElement(role, content, options);
+  agentFeed.append(messageEl);
+  scrollAgentFeedToBottom();
+  return messageEl;
+};
+
+const ensureAgentWelcome = () => {
+  if (agentState.hasWelcomed) {
+    return;
+  }
+
+  appendAgentMessage("assistant", agentWelcomeMessage);
+  agentState.hasWelcomed = true;
+};
+
+const updateAgentControls = () => {
+  const isDisabled = agentState.isSending;
+
+  if (agentInput instanceof HTMLTextAreaElement) {
+    agentInput.disabled = isDisabled;
+  }
+
+  if (agentSend instanceof HTMLButtonElement) {
+    agentSend.disabled = isDisabled;
+  }
+
+  agentPrompts.forEach((promptButton) => {
+    promptButton.disabled = isDisabled;
+  });
+};
+
+const resizeAgentInput = () => {
+  if (!(agentInput instanceof HTMLTextAreaElement)) {
+    return;
+  }
+
+  agentInput.style.height = "auto";
+  agentInput.style.height = `${Math.min(agentInput.scrollHeight, 144)}px`;
+};
+
+const setAgentOpen = (isOpen) => {
+  if (
+    !(agentLauncher instanceof HTMLButtonElement) ||
+    !(agentPanel instanceof HTMLElement)
+  ) {
+    return;
+  }
+
+  agentState.isOpen = isOpen;
+  agentLauncher.setAttribute("aria-expanded", String(isOpen));
+  agentPanel.classList.toggle("is-open", isOpen);
+  agentPanel.setAttribute("aria-hidden", String(!isOpen));
+
+  if (isOpen) {
+    ensureAgentWelcome();
+    resizeAgentInput();
+    if (agentInput instanceof HTMLTextAreaElement) {
+      window.requestAnimationFrame(() => agentInput.focus());
+    }
+  }
+};
+
+const extractErrorMessage = async (response) => {
+  try {
+    const data = await response.json();
+    if (data && typeof data.error === "string" && data.error.trim()) {
+      return data.error.trim();
+    }
+  } catch (error) {
+    return null;
+  }
+
+  return null;
+};
+
+const sendAgentMessage = async (message) => {
+  const trimmedMessage = message.trim();
+  if (!trimmedMessage || agentState.isSending) {
+    return;
+  }
+
+  ensureAgentWelcome();
+  setAgentOpen(true);
+
+  agentState.isSending = true;
+  updateAgentControls();
+
+  appendAgentMessage("user", trimmedMessage);
+  agentState.messages.push({ role: "user", content: trimmedMessage });
+
+  if (agentInput instanceof HTMLTextAreaElement) {
+    agentInput.value = "";
+    resizeAgentInput();
+  }
+
+  const loadingMessageEl = appendAgentMessage(
+    "assistant",
+    "Working on that...",
+    { loading: true },
+  );
+
+  try {
+    const response = await fetch(agentApiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: agentState.messages,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorMessage =
+        (await extractErrorMessage(response)) ||
+        "The AI assistant is not configured yet. Add the OpenAI server endpoint and try again.";
+      throw new Error(errorMessage);
+    }
+
+    const data = await response.json();
+    const reply =
+      data && typeof data.reply === "string" && data.reply.trim()
+        ? data.reply.trim()
+        : "I couldn't generate a reply from the assistant.";
+
+    if (loadingMessageEl instanceof HTMLElement) {
+      loadingMessageEl.classList.remove("is-loading");
+      const bubbleEl = loadingMessageEl.querySelector(".agent-bubble");
+      if (bubbleEl instanceof HTMLElement) {
+        bubbleEl.textContent = reply;
+      }
+    }
+
+    agentState.messages.push({ role: "assistant", content: reply });
+  } catch (error) {
+    const fallbackReply =
+      error instanceof Error && error.message.trim()
+        ? error.message.trim()
+        : "The assistant request failed.";
+
+    if (loadingMessageEl instanceof HTMLElement) {
+      loadingMessageEl.classList.remove("is-loading");
+      const bubbleEl = loadingMessageEl.querySelector(".agent-bubble");
+      if (bubbleEl instanceof HTMLElement) {
+        bubbleEl.textContent = fallbackReply;
+      }
+    }
+
+    agentState.messages.push({
+      role: "assistant",
+      content: fallbackReply,
+    });
+  } finally {
+    agentState.isSending = false;
+    updateAgentControls();
+    scrollAgentFeedToBottom();
+    if (agentInput instanceof HTMLTextAreaElement && agentState.isOpen) {
+      agentInput.focus();
+    }
+  }
 };
 
 if (!prefersReducedMotion.matches && "IntersectionObserver" in window) {
@@ -310,6 +532,71 @@ const initCertificateSlider = () => {
 };
 
 initCertificateSlider();
+
+if (
+  agentRoot instanceof HTMLElement &&
+  agentLauncher instanceof HTMLButtonElement &&
+  agentPanel instanceof HTMLElement
+) {
+  agentLauncher.addEventListener("click", () => {
+    setAgentOpen(!agentState.isOpen);
+  });
+
+  agentClose?.addEventListener("click", () => {
+    setAgentOpen(false);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!agentState.isOpen) {
+      return;
+    }
+
+    const target = event.target;
+    if (target instanceof Node && !agentRoot.contains(target)) {
+      setAgentOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && agentState.isOpen) {
+      setAgentOpen(false);
+    }
+  });
+
+  agentPrompts.forEach((promptButton) => {
+    promptButton.addEventListener("click", () => {
+      const promptText = promptButton.dataset.agentPrompt || "";
+      void sendAgentMessage(promptText);
+    });
+  });
+
+  agentInput?.addEventListener("input", () => {
+    resizeAgentInput();
+  });
+
+  agentInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (!(agentInput instanceof HTMLTextAreaElement)) {
+        return;
+      }
+
+      void sendAgentMessage(agentInput.value);
+    }
+  });
+
+  agentForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!(agentInput instanceof HTMLTextAreaElement)) {
+      return;
+    }
+
+    void sendAgentMessage(agentInput.value);
+  });
+
+  resizeAgentInput();
+  updateAgentControls();
+}
 
 window.addEventListener("scroll", () => {
   updateHeaderState();

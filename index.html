@@ -949,6 +949,96 @@
       </div>
     </footer>
 
+    <div
+      class="portfolio-agent"
+      data-portfolio-agent
+      data-agent-endpoint="/api/portfolio-agent"
+    >
+      <section
+        class="agent-panel"
+        id="agent-panel"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="agent-title"
+        aria-hidden="true"
+      >
+        <div class="agent-panel-header">
+          <div class="agent-panel-copy">
+            <p class="panel-label">AI Resume Assistant</p>
+            <h2 id="agent-title">Ask about Wai Hyn or draft your own resume.</h2>
+          </div>
+          <button
+            class="agent-close"
+            id="agent-close"
+            type="button"
+            aria-label="Close AI assistant"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="agent-panel-body">
+          <div class="agent-prompts" aria-label="Suggested prompts">
+            <button type="button" class="agent-prompt" data-agent-prompt="Summarize Wai Hyn Htun's background for a hiring manager.">
+              About Wai Hyn
+            </button>
+            <button type="button" class="agent-prompt" data-agent-prompt="What roles and projects is Wai Hyn Htun strongest for?">
+              Best-fit roles
+            </button>
+            <button type="button" class="agent-prompt" data-agent-prompt="Help me build my own resume. Start by asking the key questions you need.">
+              Build my resume
+            </button>
+          </div>
+
+          <div
+            class="agent-feed"
+            id="agent-feed"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions"
+          ></div>
+        </div>
+
+        <form class="agent-form" id="agent-form">
+          <label class="sr-only" for="agent-input">Message the AI assistant</label>
+          <textarea
+            class="agent-input"
+            id="agent-input"
+            name="message"
+            rows="1"
+            maxlength="1200"
+            placeholder="Ask about experience, availability, or request a resume draft..."
+          ></textarea>
+
+          <div class="agent-form-footer">
+            <p class="agent-form-note">
+              Uses portfolio context and can help visitors generate resume content.
+            </p>
+            <button class="button button-primary agent-send" id="agent-send" type="submit">
+              <span>Send</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <button
+        class="agent-launcher"
+        id="agent-launcher"
+        type="button"
+        aria-expanded="false"
+        aria-controls="agent-panel"
+      >
+        <span class="agent-launcher-icon" aria-hidden="true">
+          <i class="bi bi-stars"></i>
+        </span>
+        <span class="agent-launcher-copy">
+          <span class="agent-launcher-title">AI Resume Assistant</span>
+          <span class="agent-launcher-caption">FAQ-style support for your profile</span>
+        </span>
+      </button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

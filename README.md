@@ -194,6 +194,44 @@ Edit `script.js` to customize:
 
 All dependencies are loaded via CDN, no local installation required.
 
+## 🤖 AI Portfolio Assistant
+
+This project includes a floating AI assistant launcher in the bottom-right corner of the site.
+
+What it does:
+
+- Answers portfolio questions about Wai Hyn Htun
+- Helps visitors draft resume content for themselves
+- Uses a server-side OpenAI route so the API key stays off the client
+
+Implementation files:
+
+- `index.html`
+- `styles.css`
+- `script.js`
+- `api/portfolio-agent.js`
+
+Required environment variables:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=gpt-5-mini
+```
+
+Optional environment variable:
+
+```bash
+OPENAI_VECTOR_STORE_ID=vs_...
+```
+
+If `OPENAI_VECTOR_STORE_ID` is set, the assistant can use OpenAI file search against uploaded resume files such as `mr-wai-hyn-htun-cv.pdf`.
+
+Deployment note:
+
+- GitHub Pages alone cannot run `/api/portfolio-agent`
+- Use Vercel or another host with server-side functions
+- If your backend lives elsewhere, update `data-agent-endpoint` in `index.html`
+
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
