@@ -1,0 +1,8 @@
+name = "portfolio"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# Secrets (BOT_TOKEN and CHAT_ID) should be set via:
+# npx wrangler secret put BOT_TOKEN
+# npx wrangler secret put CHAT_ID

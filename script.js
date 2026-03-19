@@ -5,7 +5,9 @@ const navLinks = Array.from(document.querySelectorAll(".nav-link"));
 const sections = Array.from(document.querySelectorAll("main section[id]"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 const siteHeader = document.querySelector(".site-header");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+);
 const agentRoot = document.querySelector("[data-portfolio-agent]");
 const agentLauncher = document.getElementById("agent-launcher");
 const agentPanel = document.getElementById("agent-panel");
@@ -14,7 +16,9 @@ const agentFeed = document.getElementById("agent-feed");
 const agentForm = document.getElementById("agent-form");
 const agentInput = document.getElementById("agent-input");
 const agentSend = document.getElementById("agent-send");
-const agentPrompts = Array.from(document.querySelectorAll("[data-agent-prompt]"));
+const agentPrompts = Array.from(
+  document.querySelectorAll("[data-agent-prompt]"),
+);
 
 const agentState = {
   hasWelcomed: false,
@@ -611,3 +615,73 @@ window.addEventListener("resize", () => {
 
 updateHeaderState();
 setActiveLink();
+
+const quickMessageForm = document.getElementById("quick-message-form");
+const quickMessageStatus = document.getElementById("quick-message-status");
+
+if (quickMessageForm instanceof HTMLFormElement) {
+  quickMessageForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const nameInput = quickMessageForm.querySelector("#quick-message-name");
+    const messageInput = quickMessageForm.querySelector("#quick-message-input");
+    const submitButton = quickMessageForm.querySelector(
+      ".contact-message-send",
+    );
+    const endpoint = quickMessageForm.dataset.telegramEndpoint;
+
+    if (
+      !(nameInput instanceof HTMLInputElement) ||
+      !(messageInput instanceof HTMLTextAreaElement) ||
+      !endpoint ||
+      endpoint === "YOUR_WORKER_URL"
+    ) {
+      return;
+    }
+
+    const name = nameInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (!name || !message) {
+      return;
+    }
+
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
+
+    if (quickMessageStatus instanceof HTMLElement) {
+      quickMessageStatus.textContent = "Sending...";
+      quickMessageStatus.className = "contact-message-status";
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
+      nameInput.value = "";
+      messageInput.value = "";
+
+      if (quickMessageStatus instanceof HTMLElement) {
+        quickMessageStatus.textContent = "Message sent to Telegram!";
+        quickMessageStatus.className = "contact-message-status is-success";
+      }
+    } catch {
+      if (quickMessageStatus instanceof HTMLElement) {
+        quickMessageStatus.textContent = "Failed to send. Please try again.";
+        quickMessageStatus.className = "contact-message-status is-error";
+      }
+    } finally {
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+    }
+  });
+}
