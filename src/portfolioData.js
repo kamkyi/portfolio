@@ -2,116 +2,109 @@ export const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
-  { id: "skills", label: "Capabilities" },
+  { id: "skills", label: "Skills" },
   { id: "certificates", label: "Certificates" },
-  { id: "projects", label: "My Projects" },
-  { id: "showcase", label: "Showcase" },
+  { id: "projects", label: "Demos" },
+  { id: "showcase", label: "Products" },
   { id: "contact", label: "Contact", accent: true },
 ];
 
 export const HERO_POINTS = [
-  "Core stack: Python, PHP, Node.js, React, and TypeScript",
-  "Proven at scale — 2M+ users served, 70k+ active on current platform",
-  "Performance optimization specialist — faster loads, lower bounce, higher conversion",
-  "Responsive UI and UX engineering that works flawlessly across every device",
+  "12+ years across social impact, mobility, travel, and platform systems",
+  "Lead-level ownership across architecture, delivery, and stakeholder communication",
+  "Hands-on depth in Python/Django, React, Node.js, PHP, and production integrations",
+  "Experience spanning 70k+ user platforms and large-scale travel systems serving 2M+ users",
 ];
 
 export const METRICS = [
   {
-    value: "70k+",
-    copy: "Users supported through Golden Dreams.",
+    value: "Lead-Level",
+    copy: "Hands-on technical leadership across solution design, delivery sequencing, and release quality.",
   },
   {
-    value: "2M+",
-    copy: "Travel platform users served in prior product work.",
+    value: "12+ Years",
+    copy: "Production engineering experience across enterprise, nonprofit, mobility, and platform teams.",
   },
   {
-    value: "5 Core",
-    copy: "Languages mastered: Python, PHP, Node.js, React, TypeScript.",
+    value: "Python/Django + React",
+    copy: "Core stack for scalable product systems, maintainable interfaces, and reliable business workflows.",
   },
   {
-    value: "Full Stack",
-    copy: "From responsive pixel-perfect UI to high-throughput backend APIs.",
+    value: "70k+ / 2M+",
+    copy: "Experience supporting live systems from worker platforms to high-traffic travel demand.",
   },
 ];
 
 export const TRUST_ITEMS = [
   {
+    icon: "bi-diagram-3",
+    title: "Hands-on technical leadership",
+    copy: "I lead from inside the codebase: shaping architecture, sequencing delivery, reviewing implementation quality, and keeping technical decisions aligned with product goals.",
+  },
+  {
+    icon: "bi-filetype-py",
+    title: "Full-stack strength in Python/Django and React",
+    copy: "I can own modern frontend delivery in React while also driving backend systems in Python/Django, integrations, workflows, and production support.",
+  },
+  {
     icon: "bi-speedometer2",
-    title: "Performance optimization at scale",
-    copy:
-      "I profile, measure, and fix. From database query tuning to frontend bundle optimization, I have reduced load times and improved throughput on platforms serving millions of users.",
-  },
-  {
-    icon: "bi-display",
-    title: "Responsive design and UX engineering",
-    copy:
-      "Every interface I build works flawlessly on mobile, tablet, and desktop. I obsess over layout precision, interaction quality, and the kind of polish that makes users trust your product.",
-  },
-  {
-    icon: "bi-people",
-    title: "Large-scale user application experience",
-    copy:
-      "I have built and maintained systems at 2M+ user scale with complex integrations, payment flows, real-time data, and the operational rigor that large products demand.",
+    title: "Built for scalable, high-availability systems",
+    copy: "My work consistently sits in environments where uptime, maintainability, performance, and operational clarity matter to real users and business teams.",
   },
 ];
 
 export const STORY_ITEMS = [
   {
-    label: "What sets me apart",
-    title: "Five production-grade languages. One engineer.",
-    copy:
-      "Python, PHP, Node.js, React, and TypeScript — I do not dabble. Each is a production-tested strength backed by years of real-world delivery across complex systems and demanding users.",
+    label: "For hiring teams",
+    title: "A lead profile that still ships.",
+    copy: "I am strongest in roles where a team needs technical leadership without losing hands-on execution speed. That reduces handoff risk and keeps delivery grounded in reality.",
   },
   {
-    label: "How I add value",
-    title: "I make your product faster, sharper, and more resilient.",
-    copy:
-      "Performance optimization is not an afterthought for me. I profile bottlenecks, optimize queries, reduce bundle sizes, and improve responsive layouts so your product feels premium on every device and connection speed.",
+    label: "Domain background",
+    title: "Social impact, mobility, travel, and platform systems.",
+    copy: "My background is strongest in mission-driven platforms, enterprise mobility products, and high-traffic booking systems, with engineering practices that transfer well into other regulated or enterprise environments.",
   },
   {
-    label: "Why hire me",
-    title: "Proven at scale. Calm under deadline. Ready to ship.",
-    copy:
-      "I have shipped products serving millions, worked across timezone teams, and delivered under tight deadlines. I bring engineering discipline, UX sensibility, and the kind of ownership that lets product managers sleep at night.",
+    label: "How I lead",
+    title: "Calm delivery with technical clarity.",
+    copy: "I work well across engineers, managers, recruiters, and product stakeholders. The goal is clear delivery, sound technical judgment, and fewer surprises during execution.",
   },
 ];
 
 export const WORK_ITEMS = [
   {
     featured: true,
-    tag: "Issara Organization · Large-Scale Impact Platform",
-    title: "Golden Dreams — 70k+ users, mission-critical systems",
-    body:
-      "Lead full-stack engineer on a platform ecosystem serving 70k+ migrant workers. I own React frontends, Node.js/Express APIs, Django backends, and Firebase services — delivering responsive interfaces and optimized data flows across web and mobile.",
+    tag: "Issara Institute",
+    title: "Lead-level full-stack delivery for a 70k+ user platform",
+    body: "Lead delivery across React frontends, Django and Node.js services, and Firebase-connected workflows for a production platform supporting migrant workers at scale.",
     list: [
-      "Built performance-optimized dashboards handling thousands of concurrent sessions",
-      "Designed responsive UIs that work on low-end devices and slow connections",
-      "Architected backend services for monitoring, workflow automation, and data pipelines",
+      "Owned delivery decisions across user-facing flows, backend integrations, and operational tooling",
+      "Supported scalable workflows spanning React, Python/Django, Node.js, and service integrations",
+      "Improved clarity, reliability, and day-to-day usability for production users and internal teams",
     ],
-    impact: "Impact: 70k+ active users across a production nonprofit ecosystem.",
+    impact: "70k+ users supported in production.",
   },
   {
-    tag: "Yoma Strategic Holdings · Mobility Platform",
-    title: "Vehicle systems at enterprise scale with IoT and payments",
-    body:
-      "Built and scaled car sharing, rental, and financing systems with IoT device integration, real-time billing, and payment processing — all requiring sub-second response times under growing load.",
+    tag: "Yoma Strategic Holdings",
+    title: "Enterprise mobility and operational systems",
+    body: "Built and improved web systems for car sharing, rental operations, employee financing, billing, and IoT-aware workflows inside a business-critical enterprise environment.",
     list: [
-      "PHP/Laravel and React delivery across complex operational interfaces",
-      "Performance tuning under increasing traffic — faster queries, better caching, smoother UX",
-      "IoT-aware architecture handling real-time vehicle state and booking logic",
+      "Delivered production interfaces and backend workflows for operational business software",
+      "Handled PHP/Laravel integrations, business logic, and product iterations under active demand",
+      "Worked on reliability and execution quality for systems used in live business operations",
     ],
+    impact: "Enterprise-grade delivery under real usage.",
   },
   {
-    tag: "Oway Travels & Tours · Large-Scale Travel Tech",
-    title: "Booking platform serving 2M+ users at peak",
-    body:
-      "Engineered high-throughput booking, ticketing, and payment systems with third-party API integrations, search optimization, and the kind of performance work that keeps conversion rates high at scale.",
+    tag: "Oway Travels & Tours",
+    title: "High-traffic booking systems at 2M+ user scale",
+    body: "Contributed to large-scale travel booking and payment systems with performance-sensitive user flows, API-heavy product requirements, and real operational traffic.",
     list: [
-      "2M+ user scale — optimized search, payment flows, and API response times",
-      "Python, Go, PHP backend work with MySQL and MongoDB at production scale",
-      "AWS infrastructure, Elasticsearch tuning, and responsive frontend delivery",
+      "Worked across backend services, search flows, integrations, and payment-related user journeys",
+      "Supported product behavior shaped by large traffic volumes and conversion-sensitive workflows",
+      "Contributed across Python, PHP, data handling, and performance-aware engineering work",
     ],
+    impact: "2M+ users served at scale.",
   },
 ];
 
@@ -119,128 +112,112 @@ export const EXPERIENCES = [
   {
     period: "2021 - Present",
     role: "Senior Full-Stack Engineer",
-    company: "Issara Organization",
-    copy:
-      "Own the full-stack delivery of nonprofit platforms serving 70k+ users. Build and optimize React frontends, Node.js APIs, Django services, and Firebase integrations with a focus on responsive design and performance under real-world constraints.",
-    tags: ["React", "TypeScript", "Node.js", "Express", "Django", "Python", "Firebase"],
+    company: "Issara Institute",
+    copy: "Lead delivery across React, Django, Node.js, and Firebase-backed systems for a live platform serving migrant workers in production.",
+    tags: ["React", "Python", "Django", "Node.js", "Firebase"],
   },
   {
     period: "2018 - 2021",
     role: "Senior Software Engineer",
     company: "Yoma Strategic Holdings",
-    copy:
-      "Engineered mobility products from frontend to backend — car sharing, rental workflows, payment systems, and IoT integrations. Drove performance optimization that reduced load times and improved system reliability under growing user traffic.",
-    tags: ["PHP", "Laravel", "React", "MySQL", "AWS", "IoT", "Performance"],
+    copy: "Shipped enterprise mobility and operations software spanning React interfaces, PHP/Laravel workflows, integrations, and business-critical features.",
+    tags: ["React", "PHP", "Laravel", "MySQL", "AWS"],
   },
   {
     period: "2017 - 2018",
     role: "Product Owner / Software Development Engineer",
     company: "Oway Travels & Tours",
-    copy:
-      "Shipped travel products at 2M+ user scale. Led search optimization, API integration, payment flow engineering, and performance tuning across Python, Go, PHP, and cloud infrastructure.",
-    tags: ["Python", "PHP", "Laravel", "MySQL", "MongoDB", "Elasticsearch", "AWS", "Go"],
+    copy: "Worked on high-traffic travel systems across Python, PHP, APIs, search, booking, and performance-sensitive production flows.",
+    tags: ["Python", "PHP", "APIs", "MongoDB", "Elasticsearch"],
   },
   {
     period: "2014 - 2017",
     role: "Web Developer",
     company: "Myanmar Digital Solutions",
-    copy:
-      "Built the foundation of my engineering career through PHP-based business systems, responsive interfaces, and a location-based mobile product that required real performance work from day one.",
-    tags: ["PHP", "Laravel", "CodeIgniter", "Bootstrap", "Google Maps API", "MySQL"],
+    copy: "Built business applications and responsive interfaces, forming the engineering base behind later senior full-stack and leadership work.",
+    tags: ["PHP", "CodeIgniter", "Laravel", "Responsive UI", "MySQL"],
   },
 ];
 
 export const CAPABILITIES = [
   {
-    icon: "bi-filetype-py",
-    title: "Python",
-    copy:
-      "Production-grade backend engineering — Django APIs, data pipelines, automation, and application logic built for reliability and speed.",
-    tags: ["Python", "Django", "API Design", "Data Pipelines", "Automation"],
-  },
-  {
-    icon: "bi-filetype-php",
-    title: "PHP",
-    copy:
-      "Battle-tested PHP delivery across enterprise platforms, business systems, and high-traffic applications with Laravel and legacy frameworks.",
-    tags: ["PHP", "Laravel", "CodeIgniter", "Enterprise Systems", "REST APIs"],
+    icon: "bi-diagram-3",
+    title: "Technical Leadership",
+    copy: "Hands-on leadership across architecture decisions, delivery planning, code quality, stakeholder alignment, and execution risk management.",
+    tags: ["Architecture", "Planning", "Code Review", "Stakeholder Alignment"],
   },
   {
     icon: "bi-filetype-tsx",
-    title: "React & TypeScript",
-    copy:
-      "Pixel-perfect responsive interfaces built with React and TypeScript — component architecture, state management, and UX engineering that drives engagement.",
-    tags: ["React", "TypeScript", "Next.js", "Responsive Design", "UX Engineering"],
+    title: "React Architecture",
+    copy: "Frontend delivery in React with strong component structure, responsive behavior, and maintainable UI systems for product teams.",
+    tags: ["React", "TypeScript", "Component Systems", "Responsive UX"],
+  },
+  {
+    icon: "bi-filetype-py",
+    title: "Python / Django",
+    copy: "Backend engineering in Python and Django for APIs, service workflows, business logic, and stable production systems.",
+    tags: ["Python", "Django", "REST APIs", "Business Logic"],
   },
   {
     icon: "bi-hdd-stack",
-    title: "Node.js",
-    copy:
-      "High-throughput backend services, real-time APIs, and microservice architecture built with Node.js and Express for scalable production systems.",
-    tags: ["Node.js", "Express", "Microservices", "Real-time APIs", "WebSockets"],
+    title: "Node.js Services",
+    copy: "Service delivery in Node.js for integrations, workflow orchestration, APIs, and practical full-stack product needs.",
+    tags: ["Node.js", "Express", "Integrations", "Service Design"],
   },
   {
-    icon: "bi-lightning-charge",
-    title: "Performance & Scale",
-    copy:
-      "The engineering edge that multiplies everything else — query optimization, caching strategies, responsive design mastery, and deployment at scale.",
-    tags: [
-      "Performance Optimization",
-      "AWS",
-      "MySQL",
-      "MongoDB",
-      "Elasticsearch",
-      "Firebase",
-      "React Native",
-      "Git",
-      "CI/CD",
-    ],
+    icon: "bi-filetype-php",
+    title: "PHP / Laravel",
+    copy: "Production PHP work across Laravel applications, enterprise workflows, and operational platforms that require reliability and speed.",
+    tags: ["PHP", "Laravel", "Enterprise Apps", "REST APIs"],
+  },
+  {
+    icon: "bi-speedometer2",
+    title: "Scalability & Reliability",
+    copy: "Engineering shaped for performance, maintainability, high availability, and operational clarity in systems used by real teams and customers.",
+    tags: ["Scalability", "Performance", "Reliability", "Operational Support"],
   },
 ];
 
 export const PROJECTS = [
   {
     icon: "bi-phone",
-    label: "Worker-facing mobile product",
+    label: "Product demo",
     title: "Golden Dreams Lite",
-    copy:
-      "A streamlined mobile experience designed for fast access, clear navigation, and reliable use in the field on everyday phones.",
+    copy: "A focused mobile experience designed around readability, quick actions, and practical day-to-day use in the field.",
     frameTitle: "Golden Dreams Lite mobile app preview",
     frameUrl: "https://issara-institute.github.io/gd-lite/",
     points: [
-      "Touch-first layout with cleaner mobile task flow",
-      "Built for constrained networks and practical daily use",
-      "Focused on clarity, readability, and quick completion",
+      "Strong mobile hierarchy and touch-friendly navigation",
+      "Compact task flow for real users on everyday devices",
+      "Useful reference for practical mobile product thinking",
     ],
     cta: "Open Golden Dreams Lite",
   },
   {
     icon: "bi-car-front",
-    label: "Rental workflow concept",
+    label: "Product demo",
     title: "Rental Hero",
-    copy:
-      "A mobile-first rental interface focused on quick browsing, clearer booking decisions, and a smoother on-phone conversion path.",
+    copy: "A mobile-first rental interface built to present pricing, availability, and booking decisions with better clarity on small screens.",
     frameTitle: "Rental Hero mobile app preview",
     frameUrl: "https://kamkyi.github.io/rental-hero/",
     points: [
-      "Designed around fast browsing and compact decision UI",
-      "Stronger hierarchy for pricing, availability, and CTAs",
-      "Built to feel native inside a handheld viewport",
+      "Designed for fast browsing and mobile decision-making",
+      "Clearer hierarchy for conversion-focused product screens",
+      "Useful as a reference for mobile application product design",
     ],
     cta: "Open Rental Hero",
   },
   {
     icon: "bi-app-indicator",
-    label: "Mobile interaction concept",
+    label: "Interaction demo",
     title: "Mobile App Concept",
-    copy:
-      "A compact mobile UI concept focused on touch-friendly navigation, strong hierarchy, and a simple on-phone browsing experience.",
+    copy: "A compact demonstration of touch-first layout, mobile spacing, and app-style interaction flow for handheld devices.",
     frameTitle: "Mobile App concept preview",
     frameUrl: "https://kamkyi.github.io/mobile-app/",
     points: [
-      "Built around handheld viewport behavior and touch input",
-      "Clean mobile hierarchy with fast, lightweight screens",
-      "Useful as a compact demo for app-style interaction flow",
+      "Built around mobile interface rhythm and touch behavior",
+      "Simple, clean layout intended for handheld usability",
+      "Reflects disciplined mobile-first interaction design",
     ],
     cta: "Open Mobile App Concept",
   },
@@ -326,19 +303,17 @@ export const SHOWCASES = [
     type: "mobile",
     label: "Issara Institute",
     title: "Golden Dreams Mobile App",
-    copy:
-      "A mission-critical platform serving 70k+ migrant workers with information, resources, and support services through a production mobile-first experience.",
+    copy: "A live mobile-first platform supporting migrant workers through practical information and service access in production.",
     frameTitle: "Golden Dreams Mobile App",
     frameUrl: "https://app.golden-dreams.org/",
     cta: "Open Mobile App",
-    note: "Live mobile app preview",
+    note: "Live mobile product",
   },
   {
     type: "desktop",
     label: "Oway Travel and Tours",
     title: "Travel Booking Platform",
-    copy:
-      "A high-throughput travel booking platform serving 2M+ users with flights, buses, hotels, and tour packages.",
+    copy: "A high-traffic travel platform with booking, payments, and large-scale product workflows shaped by backend and performance demands.",
     frameTitle: "Oway Travel and Tours",
     frameUrl: "https://oway.com.mm/",
     cta: "Visit Live Site",
@@ -346,26 +321,25 @@ export const SHOWCASES = [
   {
     type: "desktop",
     label: "Yoma Strategic Holdings",
-    title: "Yoma Fleet — Mobility Platform",
-    copy:
-      "Enterprise vehicle management, car sharing, and fleet operations platform with IoT integration and real-time billing.",
-    frameTitle: "Yoma Fleet — Yoma Strategic Holdings",
+    title: "Yoma Fleet Mobility Platform",
+    copy: "Operational web software for fleet and mobility workflows with business logic, integrations, and real product usage requirements.",
+    frameTitle: "Yoma Fleet - Yoma Strategic Holdings",
     frameUrl: "https://www.yomafleet.com/",
     cta: "Visit Live Site",
   },
 ];
 
 export const CONFIDENTIAL_TAGS = [
-  { icon: "bi-box-seam", label: "Inventory Management" },
+  { icon: "bi-box-seam", label: "Inventory Systems" },
   { icon: "bi-graph-up", label: "Stock Management" },
-  { icon: "bi-speedometer2", label: "KPI Dashboards" },
-  { icon: "bi-people", label: "HR Software" },
-  { icon: "bi-clipboard-data", label: "Internal Dashboards" },
+  { icon: "bi-speedometer2", label: "KPI Reporting" },
+  { icon: "bi-people", label: "HR Workflows" },
+  { icon: "bi-clipboard-data", label: "Operational Dashboards" },
 ];
 
 export const CONTACT_CARDS = [
   {
-    label: "Reach out directly",
+    label: "Email",
     lines: [
       {
         href: "mailto:waihynhtun90s@gmail.com",
@@ -385,14 +359,16 @@ export const CONTACT_CARDS = [
     ],
   },
   {
-    label: "Telegram",
-    lines: [
-      {
-        href: "https://t.me/kamkyi",
-        text: "@kamkyi",
-        external: true,
-      },
-    ],
+    label: "Current Base",
+    text: "Bangkok, Thailand",
+  },
+  {
+    label: "Current Company",
+    text: "Issara Institute",
+  },
+  {
+    label: "Interview Availability",
+    text: "Weekdays after 6 PM ICT, weekends by arrangement.",
   },
   {
     label: "Profiles",
@@ -408,9 +384,5 @@ export const CONTACT_CARDS = [
         external: true,
       },
     ],
-  },
-  {
-    label: "Location",
-    text: "Thailand",
   },
 ];

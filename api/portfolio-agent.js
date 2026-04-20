@@ -2,36 +2,39 @@ const DEFAULT_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
 const PORTFOLIO_CONTEXT = `
 Name: Wai Hyn Htun
-Role: Senior Full-Stack and Mobile Developer
-Location: Thailand
+Role: Lead-level Full-Stack Engineer
+Location: Bangkok, Thailand
+Nationality: Myanmar
 
 Professional summary:
-- Senior developer with 12+ years of experience across nonprofit, mobility, travel, and enterprise software.
-- Primary strengths: Python, React, and PHP.
-- Additional strengths: React Native, Expo, Node.js, Express, Django, Laravel, MySQL, MongoDB, AWS, Go, Firebase, microservice architecture, API design, performance optimization.
-- Product-minded and delivery-focused, comfortable moving between frontend UX details and backend architecture.
+- Lead-level engineer with 12+ years of experience across social impact, mobility, travel, and enterprise-grade software.
+- Core strengths: Python, Django, React, Node.js, and PHP.
+- Additional strengths: Express, Laravel, MySQL, MongoDB, AWS, Go, Firebase, API design, scalability, performance optimization, and production delivery.
+- Hands-on technical leader who can move between frontend UX detail, backend architecture, integrations, and release quality.
 
 Recent and notable work:
-- Issara Organization (2021 to present), Senior Full-Stack Developer.
-- Works on nonprofit systems that support worker safety, labor monitoring, and digital services for migrant communities.
+- Issara Institute (2021 to present), Senior Full-Stack Engineer.
+- Leads delivery across React frontends, Django and Node.js services, and Firebase-connected workflows for worker-support products in production.
 - Supports Golden Dreams and related labor-focused systems serving 70k+ users.
-- Contributes across React, Node.js, Express, Django, Firebase, backend services, dashboards, workflows, and worker-facing product experiences.
+- Contributes across user-facing experiences, dashboards, workflows, integrations, and production support.
 
 Previous roles:
-- Yoma Strategic Holdings (2018 to 2021), Senior Software Engineer. Built mobility and operational products for car sharing, rental workflows, employee financing, IoT-aware flows, billing, booking, and reliability improvements.
+- Yoma Strategic Holdings (2018 to 2021), Senior Software Engineer. Built enterprise mobility and operational products for car sharing, rental workflows, employee financing, IoT-aware flows, billing, booking, and reliability improvements.
 - Oway Travels and Tours (2017 to 2018), Product Owner / Software Development Engineer. Worked on travel booking systems at 2M+ user scale, APIs, integrations, search optimization, payment-enabled flows, AWS, MySQL, MongoDB, Go, and Python.
 - Myanmar Digital Solutions (2014 to 2017), Web Developer. Built internal systems, responsive interfaces, and early mobile-related product work.
 
 Work style and positioning:
-- Strong fit for product engineering roles requiring calm cross-functional delivery.
-- Comfortable with web, mobile, backend, integrations, and production-minded iteration.
-- Open to product engineering roles, freelance work, and collaborations.
+- Strong fit for lead full-stack roles requiring calm cross-functional delivery and hands-on technical ownership.
+- Comfortable with web, backend, integrations, product systems, and production-minded iteration.
+- Domain background is strongest in social impact, mobility, travel, and platform systems; no direct banking background, but strong experience with enterprise-grade systems.
+- Open to lead-level and senior full-stack opportunities where execution quality and professionalism matter.
 
 Public contact details:
 - Email: waihynhtun90s@gmail.com
 - Phone/WhatsApp: +66 94 712 4485
 - LinkedIn: linkedin.com/in/wai-hyn-htun-67180b115/
 - GitHub: github.com/kamkyi
+- Interview availability: Weekdays after 6 PM ICT, weekends by arrangement
 `.trim();
 
 const AGENT_INSTRUCTIONS = `

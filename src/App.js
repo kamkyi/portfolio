@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import { A11y, Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import {
   CAPABILITIES,
   CERTIFICATES,
@@ -17,6 +22,7 @@ import {
 } from "./portfolioData";
 
 const TELEGRAM_ENDPOINT = "https://portfolio.waihynhtun1994.workers.dev";
+const SLIDER_MODULES = [A11y, Keyboard, Navigation, Pagination];
 
 const asset = (path) => `${process.env.PUBLIC_URL}/${path}`;
 
@@ -87,16 +93,12 @@ function App() {
     sending: false,
   });
 
-  const sliderPointerRef = useRef({
-    active: false,
-    startX: 0,
-    startY: 0,
-  });
-
   useEffect(() => {
     const handleScroll = () => {
-      const sections = Array.from(document.querySelectorAll("main section[id]"));
-      const offset = window.scrollY + 140;
+      const sections = Array.from(
+        document.querySelectorAll("main section[id]"),
+      );
+      const offset = window.scrollY + 160;
       const currentSection = sections.reduce((currentId, section) => {
         if (offset >= section.offsetTop) {
           return section.id;
@@ -106,7 +108,7 @@ function App() {
       }, sections[0]?.id || "home");
 
       setActiveSection(currentSection);
-      setIsScrolled(window.scrollY > 16);
+      setIsScrolled(window.scrollY > 12);
     };
 
     const handleResize = () => {
@@ -132,10 +134,6 @@ function App() {
       document.body.classList.remove("nav-open");
     };
   }, [expanded]);
-
-  const moveToCertificate = (nextIndex) => {
-    setActiveCertificate((nextIndex + CERTIFICATES.length) % CERTIFICATES.length);
-  };
 
   const handleQuickMessageSubmit = async (event) => {
     event.preventDefault();
@@ -171,13 +169,13 @@ function App() {
         message: "",
       });
       setMessageStatus({
-        text: "Message sent to Telegram!",
+        text: "Message sent.",
         type: "is-success",
         sending: false,
       });
     } catch (error) {
       setMessageStatus({
-        text: "Failed to send. Please try again.",
+        text: "Failed to send. Please email me directly.",
         type: "is-error",
         sending: false,
       });
@@ -185,10 +183,6 @@ function App() {
   };
 
   const currentYear = new Date().getFullYear();
-  const previousCertificate =
-    (activeCertificate - 1 + CERTIFICATES.length) % CERTIFICATES.length;
-  const nextCertificate = (activeCertificate + 1) % CERTIFICATES.length;
-  const progress = (activeCertificate + 1) / CERTIFICATES.length;
 
   return (
     <>
@@ -241,66 +235,79 @@ function App() {
         </Container>
       </header>
 
-      <main>
+      <main className="site-main">
         <section id="home" className="hero-section">
           <Container fluid className="container-shell">
-            <Row className="align-items-center g-4 g-xl-5">
+            <Row className="hero-row align-items-end g-4 g-xl-5">
               <Col lg={7}>
                 <Reveal className="hero-copy">
                   <p className="eyebrow">
-                    Senior full-stack engineer — Python · React · Node.js · PHP ·
-                    TypeScript
+                    Lead Full-Stack Engineer · Python/Django · React · 12+ years
                   </p>
                   <h1 className="hero-title">
-                    I engineer products that perform at scale and convert.
+                    Lead-level full-stack execution for scalable product systems.
                   </h1>
                   <p className="hero-lead">
-                    I am Wai Hyn Htun — a senior full-stack engineer with 12+ years of
-                    production experience across Python, PHP, Node.js, React, and
-                    TypeScript. I have shipped platforms serving 2M+ users, optimized
-                    performance under real traffic, and delivered pixel-perfect
-                    responsive UIs that drive engagement. When your team needs someone
-                    who can own the full stack from database to deploy, I deliver.
+                    I am Wai Hyn Htun, a lead-level full-stack engineer with
+                    12+ years of experience across Python/Django, React,
+                    Node.js, and PHP. I build scalable product systems, support
+                    high-availability workflows, and stay hands-on from
+                    technical direction through production delivery.
                   </p>
 
                   <div className="hero-actions">
                     <a className="button button-primary" href="#contact">
                       <i className="bi bi-envelope"></i>
-                      <span>Start a Conversation</span>
+                      <span>Discuss a Role</span>
                     </a>
                     <a className="button button-secondary" href="#work">
                       <i className="bi bi-grid-1x2"></i>
-                      <span>See Selected Work</span>
+                      <span>Review Work</span>
                     </a>
                     <a
                       className="button button-secondary"
-                      href={asset("mr-wai-hyn-htun-cv.pdf")}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={asset("wai-hyn-htun-resume.docx")}
+                      download="wai-hyn-htun-resume.docx"
                     >
-                      <i className="bi bi-file-earmark-text"></i>
-                      <span>View CV</span>
+                      <i className="bi bi-download"></i>
+                      <span>Download Resume</span>
                     </a>
                   </div>
 
-                  <ul className="hero-points" aria-label="Professional highlights">
-                    {HERO_POINTS.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
+                  <div className="hero-credentials">
+                    <article className="hero-credential">
+                      <p className="panel-label">Role focus</p>
+                      <p>
+                        Technical Lead and senior full-stack roles where
+                        architecture, delivery ownership, and implementation
+                        quality matter.
+                      </p>
+                    </article>
+                    <article className="hero-credential">
+                      <p className="panel-label">Current base</p>
+                      <p>
+                        Based in Bangkok, Thailand and available for weekday
+                        interviews after 6 PM ICT, with weekend availability by
+                        arrangement.
+                      </p>
+                    </article>
+                  </div>
                 </Reveal>
               </Col>
 
               <Col lg={5}>
                 <Reveal as="aside" className="hero-panel">
                   <div className="profile-card">
-                    <img src={asset("profile.jpg")} alt="Portrait of Wai Hyn Htun" />
+                    <img
+                      src={asset("profile.jpg")}
+                      alt="Portrait of Wai Hyn Htun"
+                    />
                     <div className="profile-copy">
-                      <p className="panel-label">Based in Thailand</p>
-                      <h2>Senior Full-Stack Engineer</h2>
+                      <p className="panel-label">Based in Bangkok, Thailand</p>
+                      <h2>Wai Hyn Htun</h2>
                       <p>
-                        Performance-obsessed, delivery-proven, and built to own every
-                        layer from responsive UI to scalable backend.
+                        Lead-level engineer trusted across social impact,
+                        enterprise mobility, and high-traffic platform systems.
                       </p>
                     </div>
                   </div>
@@ -313,6 +320,18 @@ function App() {
                       </article>
                     ))}
                   </div>
+
+                  <div className="hero-panel-foot">
+                    <p className="panel-label">Selected proof points</p>
+                    <ul
+                      className="hero-points"
+                      aria-label="Professional highlights"
+                    >
+                      {HERO_POINTS.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </Reveal>
               </Col>
             </Row>
@@ -321,66 +340,72 @@ function App() {
 
         <section className="trust-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
-              <p className="section-kicker">Why Me</p>
-              <h2>Your next hire should reduce risk, not add it.</h2>
+            <Reveal className="section-header">
+              <p className="section-kicker">Lead-Level Fit</p>
+              <h2>Hands-on leadership across architecture, delivery, and scale.</h2>
               <p className="section-copy">
-                I bring 12+ years of shipping real products at real scale. Every
-                section below is backed by production numbers, not tutorial projects.
-                When you hire me, you get an engineer who has already solved the
-                problems your team is about to face.
+                I work best in lead full-stack roles where teams need strong
+                implementation judgment, clear technical communication, and
+                reliable delivery in production.
               </p>
             </Reveal>
 
-            <Row className="section-card-row g-4">
+            <Reveal className="section-card-grid section-card-grid-3">
               {TRUST_ITEMS.map((item) => (
-                <Col key={item.title} lg={4}>
-                  <Reveal as="article" className="trust-card h-100">
+                <article key={item.title} className="value-card">
+                  <span className="card-icon">
                     <i className={`bi ${item.icon}`}></i>
-                    <h3>{item.title}</h3>
-                    <p>{item.copy}</p>
-                  </Reveal>
-                </Col>
+                  </span>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </article>
               ))}
-            </Row>
+            </Reveal>
           </Container>
         </section>
 
-        <section id="about" className="story-section">
+        <section id="about" className="about-section">
           <Container fluid className="container-shell">
-            <Row className="align-items-start g-4 g-xl-5">
-              <Col lg={6}>
-                <Reveal className="section-intro section-intro-left">
+            <Row className="g-4 g-xl-5 align-items-start">
+              <Col lg={5}>
+                <Reveal className="section-header section-header-left">
                   <p className="section-kicker">About</p>
-                  <h2>
-                    An engineer who owns the full stack and delivers under pressure.
-                  </h2>
+                  <h2>Built for teams that need a technical lead who still ships.</h2>
                   <p className="section-copy">
-                    My 12+ years span Python backends, PHP business platforms,
-                    Node.js microservices, React frontends, and TypeScript-driven
-                    applications. I do not just write code — I optimize performance,
-                    architect for scale, and build responsive interfaces that convert
-                    visitors into users.
+                    I work best with teams that need one senior engineer to
+                    bridge frontend delivery, backend systems, and technical
+                    decision-making without losing execution pace.
                   </p>
-                  <p className="section-copy">
-                    I am the engineer you bring in when your product needs to handle
-                    more users, load faster, look sharper on every screen size, and
-                    ship on time. I have done it across nonprofit, enterprise,
-                    mobility, and travel industries.
-                  </p>
+                </Reveal>
+
+                <Reveal className="about-panel">
+                  <p className="panel-label">Working style</p>
+                  <ul className="detail-list">
+                    <li>
+                      Clear communication with recruiters, managers, and product
+                      stakeholders.
+                    </li>
+                    <li>
+                      Practical architecture choices that keep delivery moving.
+                    </li>
+                    <li>
+                      Hands-on implementation quality without unnecessary
+                      complexity.
+                    </li>
+                  </ul>
                 </Reveal>
               </Col>
 
-              <Col lg={6}>
-                <div className="story-stack">
+              <Col lg={7}>
+                <Reveal className="story-grid">
                   {STORY_ITEMS.map((item) => (
-                    <Reveal key={item.title} as="article" className="story-card">
+                    <article key={item.title} className="story-card">
                       <p className="panel-label">{item.label}</p>
                       <h3>{item.title}</h3>
                       <p>{item.copy}</p>
-                    </Reveal>
+                    </article>
                   ))}
-                </div>
+                </Reveal>
               </Col>
             </Row>
           </Container>
@@ -388,435 +413,358 @@ function App() {
 
         <section id="work" className="work-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
+            <Reveal className="section-header section-header-dark">
               <p className="section-kicker">Selected Work</p>
-              <h2>
-                Products with real users, real traffic, and real business outcomes.
-              </h2>
+              <h2>Production systems that back the profile.</h2>
+              <p className="section-copy">
+                The profile is backed by production engineering responsibility,
+                real users, and delivery in environments where reliability and
+                scale matter.
+              </p>
             </Reveal>
 
-            <Row className="section-card-row g-4">
+            <Reveal className="work-grid">
               {WORK_ITEMS.map((item) => (
-                <Col key={item.title} xs={12} lg={item.featured ? 12 : 6}>
-                  <Reveal
-                    as="article"
-                    className={`work-card h-100${item.featured ? " work-card-featured" : ""}`}
-                  >
-                    <div className="work-header">
+                <article
+                  key={item.title}
+                  className={`case-study${item.featured ? " is-featured" : ""}`}
+                >
+                  <div className="case-study-head">
+                    <div>
                       <p className="work-tag">{item.tag}</p>
                       <h3>{item.title}</h3>
                     </div>
-                    <p className="work-body">{item.body}</p>
-                    <ul className="work-list">
-                      {item.list.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                    {item.impact ? <p className="impact-note">{item.impact}</p> : null}
-                  </Reveal>
-                </Col>
+                    {item.impact ? <p className="impact-pill">{item.impact}</p> : null}
+                  </div>
+                  <p className="case-study-body">{item.body}</p>
+                  <ul className="detail-list">
+                    {item.list.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
               ))}
-            </Row>
+            </Reveal>
           </Container>
         </section>
 
         <section id="experience" className="experience-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
+            <Reveal className="section-header">
               <p className="section-kicker">Experience</p>
-              <h2>12+ years of shipping. Not concepts — production.</h2>
+              <h2>Lead-level delivery across multiple production environments.</h2>
             </Reveal>
 
-            <div className="timeline">
+            <Reveal className="section-card-grid section-card-grid-2">
               {EXPERIENCES.map((experience) => (
-                <Reveal key={experience.company} as="article" className="timeline-card">
+                <article key={experience.company} className="timeline-card">
                   <div className="timeline-meta">
                     <p className="timeline-period">{experience.period}</p>
                     <p className="timeline-role">{experience.role}</p>
                   </div>
                   <h3>{experience.company}</h3>
                   <p>{experience.copy}</p>
-                  <div className="timeline-tags">
+                  <div className="tag-row">
                     {experience.tags.map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
-                </Reveal>
+                </article>
               ))}
-            </div>
+            </Reveal>
           </Container>
         </section>
 
         <section id="skills" className="capabilities-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
-              <p className="section-kicker">Capabilities</p>
-              <h2>
-                Five core strengths. One engineer who delivers across all of them.
-              </h2>
+            <Reveal className="section-header">
+              <p className="section-kicker">Core Strengths</p>
+              <h2>The areas I bring to lead full-stack delivery.</h2>
             </Reveal>
 
-            <Row className="section-card-row g-4">
+            <Reveal className="section-card-grid section-card-grid-3">
               {CAPABILITIES.map((capability) => (
-                <Col key={capability.title} xs={12} md={6} xl={4}>
-                  <Reveal as="article" className="capability-card h-100">
+                <article key={capability.title} className="capability-card">
+                  <span className="card-icon">
                     <i className={`bi ${capability.icon}`}></i>
-                    <h3>{capability.title}</h3>
-                    <p>{capability.copy}</p>
-                    <div className="capability-tags">
-                      {capability.tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                  </Reveal>
-                </Col>
+                  </span>
+                  <h3>{capability.title}</h3>
+                  <p>{capability.copy}</p>
+                  <div className="tag-row">
+                    {capability.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </article>
               ))}
-            </Row>
+            </Reveal>
           </Container>
         </section>
 
         <section id="projects" className="projects-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
-              <p className="section-kicker">My Projects</p>
-              <h2>Mobile product demos presented at real phone scale.</h2>
+            <Reveal className="section-header section-header-dark">
+              <p className="section-kicker">Product Demos</p>
+              <h2>Supplementary demos that show product thinking and mobile execution.</h2>
               <p className="section-copy">
-                Three touch-first builds shown inside phone frames so the layout,
-                spacing, and interaction feel closer to the actual mobile product.
-                Open any app directly to review the full experience.
+                These examples support the broader profile. They are presented
+                one at a time so the interaction work stays readable on both
+                desktop and mobile.
               </p>
             </Reveal>
 
-            <div className="project-showcase">
-              {PROJECTS.map((project) => (
-                <Reveal key={project.title} as="article" className="project-app-card">
-                  <div className="iphone-frame iphone-frame-project">
-                    <div className="iphone-notch">
-                      <div className="iphone-dynamic-island"></div>
-                    </div>
-                    <div className="iphone-screen">
-                      <iframe
-                        src={project.frameUrl}
-                        title={project.frameTitle}
-                        loading="lazy"
-                        allow="accelerometer; gyroscope"
-                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                      ></iframe>
-                    </div>
-                    <div className="iphone-home-bar"></div>
-                    <div className="iphone-button iphone-button-power"></div>
-                    <div className="iphone-button iphone-button-vol-up"></div>
-                    <div className="iphone-button iphone-button-vol-down"></div>
-                  </div>
+            <Reveal>
+              <Swiper
+                className="section-swiper section-swiper-detail"
+                modules={SLIDER_MODULES}
+                navigation
+                pagination={{ clickable: true }}
+                keyboard={{ enabled: true }}
+                grabCursor
+                spaceBetween={21}
+                slidesPerView={1}
+              >
+                {PROJECTS.map((project) => (
+                  <SwiperSlide key={project.title}>
+                    <article className="project-card project-card-single">
+                      <div className="device-stage">
+                        <div className="iphone-frame iphone-frame-project">
+                          <div className="iphone-notch">
+                            <div className="iphone-dynamic-island"></div>
+                          </div>
+                          <div className="iphone-screen">
+                            <iframe
+                              src={project.frameUrl}
+                              title={project.frameTitle}
+                              loading="lazy"
+                              allow="accelerometer; gyroscope"
+                              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                            ></iframe>
+                          </div>
+                          <div className="iphone-home-bar"></div>
+                          <div className="iphone-button iphone-button-power"></div>
+                          <div className="iphone-button iphone-button-vol-up"></div>
+                          <div className="iphone-button iphone-button-vol-down"></div>
+                        </div>
+                      </div>
 
-                  <div className="project-info-card project-info-card-split">
-                    <div className="project-info-head">
-                      <i className={`bi ${project.icon}`}></i>
-                      <p className="panel-label">{project.label}</p>
-                    </div>
-                    <h3>{project.title}</h3>
-                    <p>{project.copy}</p>
-                    <ul className="project-info-list">
-                      {project.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                    <a
-                      className="button button-primary"
-                      href={project.frameUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="bi bi-box-arrow-up-right"></i>
-                      <span>{project.cta}</span>
-                    </a>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+                      <div className="project-copy">
+                        <div className="project-head">
+                          <span className="card-icon">
+                            <i className={`bi ${project.icon}`}></i>
+                          </span>
+                          <p className="panel-label">{project.label}</p>
+                        </div>
+                        <h3>{project.title}</h3>
+                        <p>{project.copy}</p>
+                        <ul className="detail-list">
+                          {project.points.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
+                        <a
+                          className="button button-primary"
+                          href={project.frameUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="bi bi-box-arrow-up-right"></i>
+                          <span>{project.cta}</span>
+                        </a>
+                      </div>
+                    </article>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Reveal>
           </Container>
         </section>
 
         <section id="certificates" className="certificates-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
-              <p className="section-kicker">Certificates</p>
-              <h2>
-                Training records and academic documents that shaped my foundation.
-              </h2>
-              <p className="section-copy">
-                This gallery includes technical course certificates, formal
-                academic records, and early credentials that reflect the path
-                behind my current engineering work.
-              </p>
-            </Reveal>
-
-            <Reveal className="certificate-slider">
-              <div className="certificate-slider-top">
-                <div className="certificate-slider-heading" role="status" aria-live="polite">
-                  <p className="panel-label">Curated Archive</p>
-                  <h3 className="certificate-slider-title">
-                    Verified learning milestones and academic records.
-                  </h3>
-                  <p className="certificate-slider-summary">
-                    Browse the archive like a focused document carousel. Open any
-                    record in full size when you need the original scan.
-                  </p>
-                  <p className="certificate-slider-index">
-                    <span>{String(activeCertificate + 1).padStart(2, "0")}</span>
-                    <span className="certificate-slider-divider" aria-hidden="true"></span>
-                    <span>{String(CERTIFICATES.length).padStart(2, "0")}</span>
+            <Reveal className="certificates-shell">
+              <div className="certificates-top">
+                <div className="section-header section-header-left section-header-tight">
+                  <p className="section-kicker">Certificates</p>
+                  <h2>Verified training records and academic documents.</h2>
+                  <p className="section-copy">
+                    The archive is presented as a proper slider for quick
+                    review. Open any record in full size when you need the
+                    original scan.
                   </p>
                 </div>
 
-                <div className="certificate-slider-actions" aria-label="Certificate navigation">
-                  <button
-                    className="slider-button"
-                    type="button"
-                    onClick={() => moveToCertificate(activeCertificate - 1)}
-                    aria-label="Show previous certificate"
-                  >
-                    <i className="bi bi-arrow-left"></i>
-                  </button>
-                  <button
-                    className="slider-button"
-                    type="button"
-                    onClick={() => moveToCertificate(activeCertificate + 1)}
-                    aria-label="Show next certificate"
-                  >
-                    <i className="bi bi-arrow-right"></i>
-                  </button>
+                <div
+                  className="certificate-counter"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <span>{String(activeCertificate + 1).padStart(2, "0")}</span>
+                  <span className="certificate-counter-divider"></span>
+                  <span>{String(CERTIFICATES.length).padStart(2, "0")}</span>
                 </div>
               </div>
 
-              <div
-                className="certificate-slider-stage"
-                tabIndex="0"
-                aria-label="Certificate showcase"
-                onKeyDown={(event) => {
-                  if (event.key === "ArrowLeft") {
-                    event.preventDefault();
-                    moveToCertificate(activeCertificate - 1);
-                  }
-
-                  if (event.key === "ArrowRight") {
-                    event.preventDefault();
-                    moveToCertificate(activeCertificate + 1);
-                  }
-                }}
-                onPointerDown={(event) => {
-                  sliderPointerRef.current = {
-                    active: true,
-                    startX: event.clientX,
-                    startY: event.clientY,
-                  };
-                }}
-                onPointerUp={(event) => {
-                  const pointer = sliderPointerRef.current;
-
-                  if (!pointer.active) {
-                    return;
-                  }
-
-                  sliderPointerRef.current.active = false;
-                  const deltaX = event.clientX - pointer.startX;
-                  const deltaY = event.clientY - pointer.startY;
-
-                  if (Math.abs(deltaX) <= Math.abs(deltaY) || Math.abs(deltaX) < 48) {
-                    return;
-                  }
-
-                  moveToCertificate(activeCertificate + (deltaX > 0 ? -1 : 1));
-                }}
-                onPointerCancel={() => {
-                  sliderPointerRef.current.active = false;
-                }}
-                onPointerLeave={() => {
-                  sliderPointerRef.current.active = false;
-                }}
+              <Swiper
+                className="certificate-swiper"
+                modules={[A11y, Keyboard, Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                keyboard={{ enabled: true }}
+                spaceBetween={21}
+                slidesPerView={1}
+                onSlideChange={(swiper) =>
+                  setActiveCertificate(swiper.activeIndex)
+                }
               >
-                {CERTIFICATES.map((certificate, index) => {
-                  const slideClassName = [
-                    "certificate-slide",
-                    index === activeCertificate ? "is-active" : "",
-                    index === previousCertificate ? "is-prev" : "",
-                    index === nextCertificate ? "is-next" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ");
-
-                  return (
-                    <article
-                      key={certificate.title}
-                      className={slideClassName}
-                      aria-hidden={index === activeCertificate ? "false" : "true"}
-                      onClick={() => {
-                        if (index !== activeCertificate) {
-                          moveToCertificate(index);
-                        }
-                      }}
-                    >
-                      <div className="certificate-slide-shell">
+                {CERTIFICATES.map((certificate) => (
+                  <SwiperSlide key={certificate.title}>
+                    <article className="certificate-slide">
+                      <a
+                        className="certificate-media"
+                        href={asset(certificate.image)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={certificate.aria}
+                      >
+                        <img
+                          src={asset(certificate.image)}
+                          alt={certificate.alt}
+                          loading="lazy"
+                        />
+                      </a>
+                      <div className="certificate-copy">
+                        <div>
+                          <p className="panel-label">{certificate.type}</p>
+                          <h3>{certificate.title}</h3>
+                          <p>{certificate.copy}</p>
+                        </div>
                         <a
-                          className="certificate-slide-media"
+                          className="button button-secondary"
                           href={asset(certificate.image)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={certificate.aria}
-                          onClick={(event) => event.stopPropagation()}
                         >
-                          <img
-                            src={asset(certificate.image)}
-                            alt={certificate.alt}
-                            loading="lazy"
-                          />
+                          <span>Open Record</span>
+                          <i className="bi bi-box-arrow-up-right"></i>
                         </a>
-                        <div className="certificate-slide-copy">
-                          <div className="certificate-slide-meta">
-                            <p className="certificate-type">{certificate.type}</p>
-                            <h3>{certificate.title}</h3>
-                            <p>{certificate.copy}</p>
-                          </div>
-                          <div className="certificate-slide-actions">
-                            <a
-                              className="button button-secondary certificate-slide-link"
-                              href={asset(certificate.image)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(event) => event.stopPropagation()}
-                            >
-                              <span>Open Record</span>
-                              <i className="bi bi-box-arrow-up-right"></i>
-                            </a>
-                            {index === activeCertificate ? (
-                              <p className="certificate-slide-note">
-                                Swipe, use arrows, or tap the side cards.
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
                       </div>
                     </article>
-                  );
-                })}
-              </div>
-
-              <div className="certificate-slider-bottom">
-                <div className="certificate-slider-progress" aria-hidden="true">
-                  <span style={{ transform: `scaleX(${progress})` }}></span>
-                </div>
-                <div className="certificate-slider-dots" role="tablist" aria-label="Select certificate">
-                  {CERTIFICATES.map((certificate, index) => (
-                    <button
-                      key={certificate.title}
-                      type="button"
-                      className={`slider-dot${index === activeCertificate ? " is-active" : ""}`}
-                      role="tab"
-                      aria-label={`Show certificate ${index + 1}`}
-                      aria-selected={index === activeCertificate}
-                      tabIndex={index === activeCertificate ? 0 : -1}
-                      onClick={() => moveToCertificate(index)}
-                    ></button>
-                  ))}
-                </div>
-              </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </Reveal>
           </Container>
         </section>
 
         <section id="showcase" className="showcase-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-intro">
+            <Reveal className="section-header">
               <p className="section-kicker">Live Products</p>
-              <h2>Production platforms I helped build and ship.</h2>
+              <h2>Live product examples with real delivery context.</h2>
               <p className="section-copy">
-                Real products running in production — explored in device previews
-                that match how each product is actually used.
+                The live examples stay one at a time so each product remains
+                readable, responsive, and easy to review across screen sizes.
               </p>
             </Reveal>
 
-            <div className="showcase-grid">
-              {SHOWCASES.map((showcase) => (
-                <Reveal key={showcase.title} as="article" className="showcase-item">
-                  {showcase.type === "mobile" ? (
-                    <div className="showcase-mobile-wrap">
-                      <div className="iphone-frame iphone-frame-showcase">
-                        <div className="iphone-notch">
-                          <div className="iphone-dynamic-island"></div>
-                        </div>
-                        <div className="iphone-screen">
-                          <iframe
-                            src={showcase.frameUrl}
-                            title={showcase.frameTitle}
-                            loading="lazy"
-                            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                          ></iframe>
-                        </div>
-                        <div className="iphone-home-bar"></div>
-                        <div className="iphone-button iphone-button-power"></div>
-                        <div className="iphone-button iphone-button-vol-up"></div>
-                        <div className="iphone-button iphone-button-vol-down"></div>
-                      </div>
-                      <p className="showcase-device-note">{showcase.note}</p>
-                    </div>
-                  ) : (
-                    <div className="macbook-frame">
-                      <div className="macbook-lid">
-                        <div className="macbook-bezel">
-                          <div className="macbook-camera"></div>
-                          <div className="macbook-viewport">
-                            <iframe
-                              src={showcase.frameUrl}
-                              title={showcase.frameTitle}
-                              loading="lazy"
-                              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                            ></iframe>
+            <Reveal>
+              <Swiper
+                className="section-swiper section-swiper-detail"
+                modules={SLIDER_MODULES}
+                navigation
+                pagination={{ clickable: true }}
+                keyboard={{ enabled: true }}
+                grabCursor
+                spaceBetween={21}
+                slidesPerView={1}
+              >
+                {SHOWCASES.map((showcase) => (
+                  <SwiperSlide key={showcase.title}>
+                    <article className="showcase-card showcase-card-single">
+                      <div className="showcase-device">
+                        {showcase.type === "mobile" ? (
+                          <div className="showcase-mobile-wrap">
+                            <div className="iphone-frame iphone-frame-showcase">
+                              <div className="iphone-notch">
+                                <div className="iphone-dynamic-island"></div>
+                              </div>
+                              <div className="iphone-screen">
+                                <iframe
+                                  src={showcase.frameUrl}
+                                  title={showcase.frameTitle}
+                                  loading="lazy"
+                                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                                ></iframe>
+                              </div>
+                              <div className="iphone-home-bar"></div>
+                              <div className="iphone-button iphone-button-power"></div>
+                              <div className="iphone-button iphone-button-vol-up"></div>
+                              <div className="iphone-button iphone-button-vol-down"></div>
+                            </div>
+                            <p className="device-caption">{showcase.note}</p>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="macbook-frame">
+                            <div className="macbook-lid">
+                              <div className="macbook-bezel">
+                                <div className="macbook-camera"></div>
+                                <div className="macbook-viewport">
+                                  <iframe
+                                    src={showcase.frameUrl}
+                                    title={showcase.frameTitle}
+                                    loading="lazy"
+                                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                                  ></iframe>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="macbook-base">
+                              <div className="macbook-notch"></div>
+                            </div>
+                            <div className="macbook-bottom"></div>
+                          </div>
+                        )}
                       </div>
-                      <div className="macbook-base">
-                        <div className="macbook-notch"></div>
+
+                      <div className="showcase-copy">
+                        <p className="panel-label">{showcase.label}</p>
+                        <h3>{showcase.title}</h3>
+                        <p>{showcase.copy}</p>
+                        <a
+                          className="button button-primary"
+                          href={showcase.frameUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="bi bi-box-arrow-up-right"></i>
+                          <span>{showcase.cta}</span>
+                        </a>
                       </div>
-                      <div className="macbook-bottom"></div>
-                    </div>
-                  )}
+                    </article>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Reveal>
 
-                  <div className="showcase-info">
-                    <p className="panel-label">{showcase.label}</p>
-                    <h3>{showcase.title}</h3>
-                    <p>{showcase.copy}</p>
-                    <a
-                      className="button button-primary"
-                      href={showcase.frameUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="bi bi-box-arrow-up-right"></i>
-                      <span>{showcase.cta}</span>
-                    </a>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal className="showcase-confidential">
-              <div className="showcase-confidential-icon">
+            <Reveal className="confidential-panel">
+              <div className="confidential-mark">
                 <i className="bi bi-shield-lock"></i>
               </div>
-              <div className="showcase-confidential-copy">
-                <h3>In-House Enterprise Software</h3>
+              <div>
+                <p className="panel-label">Additional enterprise work</p>
+                <h3>Internal software shipped under NDA.</h3>
                 <p>
-                  Beyond public-facing products, I have extensive experience
-                  building internal enterprise systems — including inventory
-                  management dashboards, stock management platforms, KPI tracking
-                  tools, and HR management software. These projects remain
-                  confidential under NDA, but the engineering depth they demanded
-                  is reflected across every system I ship.
+                  I have also built internal platforms for inventory management,
+                  stock control, KPI reporting, HR workflows, and operational
+                  dashboards. The product details are confidential, but the
+                  engineering responsibilities were substantial.
                 </p>
-                <div className="showcase-confidential-tags">
+                <div className="tag-row">
                   {CONFIDENTIAL_TAGS.map((tag) => (
                     <span key={tag.label}>
-                      <i className={`bi ${tag.icon}`}></i> {tag.label}
+                      <i className={`bi ${tag.icon}`}></i>
+                      {tag.label}
                     </span>
                   ))}
                 </div>
@@ -827,92 +775,101 @@ function App() {
 
         <section id="contact" className="contact-section">
           <Container fluid className="container-shell">
-            <Row className="align-items-start g-4 g-xl-5">
+            <Row className="g-4 g-xl-5 align-items-start">
               <Col lg={7}>
-                <Reveal className="contact-copy">
+                <Reveal className="section-header section-header-left section-header-tight">
                   <p className="section-kicker">Contact</p>
                   <h2>
-                    If you need someone who can ship across web, mobile, and backend,
-                    let&apos;s talk.
+                    Open to lead-level full-stack opportunities where technical
+                    depth and delivery ownership matter.
                   </h2>
                   <p className="section-copy">
-                    I am open to product engineering roles, freelance work, and
-                    collaborations where strong delivery and clear thinking matter.
+                    If the role needs Python/Django, React, enterprise-grade
+                    systems thinking, and calm hands-on leadership, I am open to
+                    discussing the scope.
                   </p>
-                  <div className="contact-actions">
-                    <a className="button button-primary" href="mailto:waihynhtun90s@gmail.com">
-                      <i className="bi bi-envelope"></i>
-                      <span>Email Me</span>
-                    </a>
-                    <a
-                      className="button button-secondary"
-                      href={asset("wai-hyn-htun-resume.docx")}
-                      download="wai-hyn-htun-resume.docx"
-                    >
-                      <i className="bi bi-download"></i>
-                      <span>Download Resume</span>
-                    </a>
-                    <a
-                      className="button button-secondary"
-                      href="https://t.me/kamkyi"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="bi bi-telegram"></i>
-                      <span>Telegram Me</span>
-                    </a>
-                  </div>
+                </Reveal>
 
-                  <form className="contact-message-form" onSubmit={handleQuickMessageSubmit}>
-                    <label className="panel-label" htmlFor="quick-message-name">
-                      Send me a message via Telegram
-                    </label>
-                    <input
-                      className="contact-message-name"
-                      id="quick-message-name"
-                      name="name"
-                      type="text"
-                      required
-                      maxLength="100"
-                      placeholder="Your name"
-                      value={quickMessage.name}
-                      onChange={(event) =>
-                        setQuickMessage((current) => ({
-                          ...current,
-                          name: event.target.value,
-                        }))
-                      }
-                    />
-                    <textarea
-                      className="contact-message-input"
-                      id="quick-message-input"
-                      name="quick-message"
-                      rows="4"
-                      required
-                      maxLength="1200"
-                      placeholder="Share your role, project scope, timeline, and expected outcomes."
-                      value={quickMessage.message}
-                      onChange={(event) =>
-                        setQuickMessage((current) => ({
-                          ...current,
-                          message: event.target.value,
-                        }))
-                      }
-                    ></textarea>
-                    <div className="contact-message-footer">
-                      <button
-                        className="button button-primary contact-message-send"
-                        type="submit"
-                        disabled={messageStatus.sending}
-                      >
-                        <i className="bi bi-telegram"></i>
-                        <span>Send to Telegram</span>
-                      </button>
-                      <p className={`contact-message-status ${messageStatus.type}`.trim()}>
-                        {messageStatus.text}
-                      </p>
-                    </div>
-                  </form>
+                <Reveal className="contact-actions">
+                  <a
+                    className="button button-primary"
+                    href="mailto:waihynhtun90s@gmail.com"
+                  >
+                    <i className="bi bi-envelope"></i>
+                    <span>Email Me</span>
+                  </a>
+                  <a
+                    className="button button-secondary"
+                    href={asset("wai-hyn-htun-resume.docx")}
+                    download="wai-hyn-htun-resume.docx"
+                  >
+                    <i className="bi bi-download"></i>
+                    <span>Download Resume</span>
+                  </a>
+                  <a
+                    className="button button-secondary"
+                    href="https://linkedin.com/in/wai-hyn-htun-67180b115/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="bi bi-linkedin"></i>
+                    <span>View LinkedIn</span>
+                  </a>
+                </Reveal>
+
+                <Reveal
+                  as="form"
+                  className="contact-form"
+                  onSubmit={handleQuickMessageSubmit}
+                >
+                  <label className="panel-label" htmlFor="quick-message-name">
+                    Send a direct message
+                  </label>
+                  <input
+                    id="quick-message-name"
+                    name="name"
+                    type="text"
+                    required
+                    maxLength="100"
+                    placeholder="Your name"
+                    value={quickMessage.name}
+                    onChange={(event) =>
+                      setQuickMessage((current) => ({
+                        ...current,
+                        name: event.target.value,
+                      }))
+                    }
+                  />
+                  <textarea
+                    id="quick-message-input"
+                    name="quick-message"
+                    rows="4"
+                    required
+                    maxLength="1200"
+                    placeholder="Share the role, team scope, and preferred timeline."
+                    value={quickMessage.message}
+                    onChange={(event) =>
+                      setQuickMessage((current) => ({
+                        ...current,
+                        message: event.target.value,
+                      }))
+                    }
+                  ></textarea>
+                  <div className="contact-form-footer">
+                    <button
+                      className="button button-primary"
+                      type="submit"
+                      disabled={messageStatus.sending}
+                    >
+                      <i className="bi bi-send"></i>
+                      <span>Send Message</span>
+                    </button>
+                    <p
+                      className={`contact-message-status ${messageStatus.type}`.trim()}
+                    >
+                      {messageStatus.text}
+                    </p>
+                  </div>
                 </Reveal>
               </Col>
 
@@ -921,18 +878,24 @@ function App() {
                   {CONTACT_CARDS.map((card) => (
                     <Reveal key={card.label} className="contact-card">
                       <p className="panel-label">{card.label}</p>
-                      {card.lines
-                        ? card.lines.map((line) => (
+                      {card.lines ? (
+                        <div className="contact-card-links">
+                          {card.lines.map((line) => (
                             <a
                               key={line.text}
                               href={line.href}
                               target={line.external ? "_blank" : undefined}
-                              rel={line.external ? "noopener noreferrer" : undefined}
+                              rel={
+                                line.external ? "noopener noreferrer" : undefined
+                              }
                             >
                               {line.text}
                             </a>
-                          ))
-                        : <p>{card.text}</p>}
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="contact-card-text">{card.text}</p>
+                      )}
                     </Reveal>
                   ))}
                 </div>
@@ -945,10 +908,7 @@ function App() {
       <footer className="site-footer">
         <Container fluid className="container-shell footer-shell">
           <p>&copy; {currentYear} Wai Hyn Htun</p>
-          <p>
-            Senior Full-Stack Engineer — Python · React · Node.js · PHP ·
-            TypeScript
-          </p>
+          <p>Lead Full-Stack Engineer · Python/Django · React · Scalable Systems</p>
         </Container>
       </footer>
     </>
