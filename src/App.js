@@ -242,27 +242,28 @@ function App() {
               <Col lg={7}>
                 <Reveal className="hero-copy">
                   <p className="eyebrow">
-                    Lead Full-Stack Engineer · Python/Django · React · 12+ years
+                    Full-Stack Engineer · React · Django · Laravel · 12+ years
                   </p>
                   <h1 className="hero-title">
-                    Lead-level full-stack execution for scalable product systems.
+                    Practical full-stack engineering for real product teams.
                   </h1>
                   <p className="hero-lead">
-                    I am Wai Hyn Htun, a lead-level full-stack engineer with
-                    12+ years of experience across Python/Django, React,
-                    Node.js, and PHP. I build scalable product systems, support
-                    high-availability workflows, and stay hands-on from
-                    technical direction through production delivery.
+                    I am Wai Hyn Htun, a full-stack engineer with 12+ years of
+                    experience across small business systems, travel booking,
+                    mobility platforms, and NGO products. My work is usually
+                    practical: improve slow systems, clean up inherited code,
+                    support production users, and help teams deliver with less
+                    friction.
                   </p>
 
                   <div className="hero-signal-grid" aria-label="Profile summary">
                     <div>
                       <span>Current focus</span>
-                      <strong>Lead full-stack roles</strong>
+                      <strong>Senior full-stack roles</strong>
                     </div>
                     <div>
-                      <span>Core stack</span>
-                      <strong>Python/Django + React</strong>
+                      <span>Core work</span>
+                      <strong>Performance and maintainability</strong>
                     </div>
                     <div>
                       <span>Availability</span>
@@ -293,9 +294,9 @@ function App() {
                     <article className="hero-credential">
                       <p className="panel-label">Role focus</p>
                       <p>
-                        Technical Lead and senior full-stack roles where
-                        architecture, delivery ownership, and implementation
-                        quality matter.
+                        Senior full-stack roles where existing systems need
+                        better performance, cleaner code, and steady production
+                        delivery.
                       </p>
                     </article>
                     <article className="hero-credential">
@@ -321,8 +322,9 @@ function App() {
                       <p className="panel-label">Based in Bangkok, Thailand</p>
                       <h2>Wai Hyn Htun</h2>
                       <p>
-                        Lead-level engineer trusted across social impact,
-                        enterprise mobility, and high-traffic platform systems.
+                        Full-stack engineer with hands-on experience in
+                        small-business software, travel platforms, mobility
+                        systems, and NGO products.
                       </p>
                     </div>
                   </div>
@@ -356,12 +358,12 @@ function App() {
         <section className="trust-section">
           <Container fluid className="container-shell">
             <Reveal className="section-header">
-              <p className="section-kicker">Lead-Level Fit</p>
-              <h2>Hands-on leadership across architecture, delivery, and scale.</h2>
+              <p className="section-kicker">Working Profile</p>
+              <h2>Useful in teams that need practical modernization work.</h2>
               <p className="section-copy">
-                I work best in lead full-stack roles where teams need strong
-                implementation judgment, clear technical communication, and
-                reliable delivery in production.
+                My strongest work has been improving systems that already exist:
+                slow applications, inherited codebases, missing documentation,
+                small teams, and production workflows that need more structure.
               </p>
             </Reveal>
 
@@ -385,11 +387,12 @@ function App() {
               <Col lg={5}>
                 <Reveal className="section-header section-header-left">
                   <p className="section-kicker">About</p>
-                  <h2>Built for teams that need a technical lead who still ships.</h2>
+                  <h2>Shaped by small teams, legacy systems, and production pressure.</h2>
                   <p className="section-copy">
-                    I work best with teams that need one senior engineer to
-                    bridge frontend delivery, backend systems, and technical
-                    decision-making without losing execution pace.
+                    I started in a small company where engineers handled many
+                    different technologies. Since then, I have worked on travel,
+                    mobility, and NGO platforms where reliability, performance,
+                    and maintainability mattered every day.
                   </p>
                 </Reveal>
 
@@ -397,15 +400,15 @@ function App() {
                   <p className="panel-label">Working style</p>
                   <ul className="detail-list">
                     <li>
-                      Clear communication with recruiters, managers, and product
-                      stakeholders.
+                      Understand the existing system before changing it.
                     </li>
                     <li>
-                      Practical architecture choices that keep delivery moving.
+                      Improve performance and security through practical,
+                      measurable steps.
                     </li>
                     <li>
-                      Hands-on implementation quality without unnecessary
-                      complexity.
+                      Communicate clearly with engineers, managers, HR, and
+                      product stakeholders.
                     </li>
                   </ul>
                 </Reveal>
@@ -430,11 +433,11 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header section-header-dark">
               <p className="section-kicker">Selected Work</p>
-              <h2>Production systems that back the profile.</h2>
+              <h2>What I worked on at each company.</h2>
               <p className="section-copy">
-                The profile is backed by production engineering responsibility,
-                real users, and delivery in environments where reliability and
-                scale matter.
+                These are the practical responsibilities behind my resume:
+                performance fixes, inherited applications, frontend and backend
+                delivery, and team support in real production environments.
               </p>
             </Reveal>
 
@@ -467,7 +470,7 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header">
               <p className="section-kicker">Experience</p>
-              <h2>Lead-level delivery across multiple production environments.</h2>
+              <h2>Company-by-company responsibilities and context.</h2>
             </Reveal>
 
             <Reveal className="section-card-grid section-card-grid-2">
@@ -494,7 +497,7 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header">
               <p className="section-kicker">Core Strengths</p>
-              <h2>The areas I bring to lead full-stack delivery.</h2>
+              <h2>Core areas I use in day-to-day delivery.</h2>
             </Reveal>
 
             <Reveal className="section-card-grid section-card-grid-3">
@@ -520,11 +523,10 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header section-header-dark">
               <p className="section-kicker">Product Demos</p>
-              <h2>Supplementary demos that show product thinking and mobile execution.</h2>
+              <h2>Small demos and product references.</h2>
               <p className="section-copy">
-                These examples support the broader profile. They are presented
-                one at a time so the interaction work stays readable on both
-                desktop and mobile.
+                These examples are included as supporting references for mobile
+                layout, product thinking, and interface work.
               </p>
             </Reveal>
 
@@ -772,8 +774,8 @@ function App() {
                 <p>
                   I have also built internal platforms for inventory management,
                   stock control, KPI reporting, HR workflows, and operational
-                  dashboards. The product details are confidential, but the
-                  engineering responsibilities were substantial.
+                  dashboards. The product details are confidential, but the work
+                  involved real production maintenance and business workflows.
                 </p>
                 <div className="tag-row">
                   {CONFIDENTIAL_TAGS.map((tag) => (
@@ -795,13 +797,13 @@ function App() {
                 <Reveal className="section-header section-header-left section-header-tight">
                   <p className="section-kicker">Contact</p>
                   <h2>
-                    Open to lead-level full-stack opportunities where technical
-                    depth and delivery ownership matter.
+                    Open to senior full-stack opportunities where practical
+                    engineering work matters.
                   </h2>
                   <p className="section-copy">
-                    If the role needs Python/Django, React, enterprise-grade
-                    systems thinking, and calm hands-on leadership, I am open to
-                    discussing the scope.
+                    If your team needs React, Django, Laravel, performance
+                    improvement, inherited system cleanup, or steady production
+                    support, I am open to discussing the role.
                   </p>
                 </Reveal>
 
@@ -923,7 +925,7 @@ function App() {
       <footer className="site-footer">
         <Container fluid className="container-shell footer-shell">
           <p>&copy; {currentYear} Wai Hyn Htun</p>
-          <p>Lead Full-Stack Engineer · Python/Django · React · Scalable Systems</p>
+          <p>Full-Stack Engineer · React · Django · Laravel · Production Systems</p>
         </Container>
       </footer>
     </>

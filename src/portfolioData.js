@@ -10,64 +10,64 @@ export const NAV_ITEMS = [
 ];
 
 export const HERO_POINTS = [
-  "12+ years across social impact, mobility, travel, and platform systems",
-  "Lead-level ownership across architecture, delivery, and stakeholder communication",
-  "Hands-on depth in Python/Django, React, Node.js, PHP, and production integrations",
-  "Experience spanning 70k+ user platforms and large-scale travel systems serving 2M+ users",
+  "Started in small-business software and grew into senior full-stack ownership",
+  "Worked across HTML, CSS, Bootstrap, JavaScript, PHP, Laravel, CodeIgniter, React, Django, Node.js, WordPress, and JSP/Servlet",
+  "Practical experience improving slow queries, API behavior, caching, frontend rendering, package upgrades, and security hygiene",
+  "Comfortable with inherited systems, lean teams, production support, and step-by-step modernization work",
 ];
 
 export const METRICS = [
   {
-    value: "Lead-Level",
-    copy: "Hands-on technical leadership across solution design, delivery sequencing, and release quality.",
-  },
-  {
     value: "12+ Years",
-    copy: "Production engineering experience across enterprise, nonprofit, mobility, and platform teams.",
+    copy: "Full-stack engineering experience across small business, travel, mobility, and nonprofit product systems.",
   },
   {
-    value: "Python/Django + React",
-    copy: "Core stack for scalable product systems, maintainable interfaces, and reliable business workflows.",
+    value: "Multi-Stack",
+    copy: "Hands-on work across PHP/Laravel, Python/Django, React, Node.js, WordPress, JSP/Servlet, and Cordova/PhoneGap.",
   },
   {
-    value: "70k+ / 2M+",
-    copy: "Experience supporting live systems from worker platforms to high-traffic travel demand.",
+    value: "Performance Work",
+    copy: "Improved slow application areas through query cleanup, eager loading, caching, indexing, and frontend optimization.",
+  },
+  {
+    value: "Team Support",
+    copy: "Helped stabilize inherited codebases, improve delivery habits, and support hiring when teams were short-handed.",
   },
 ];
 
 export const TRUST_ITEMS = [
   {
-    icon: "bi-diagram-3",
-    title: "Hands-on technical leadership",
-    copy: "I lead from inside the codebase: shaping architecture, sequencing delivery, reviewing implementation quality, and keeping technical decisions aligned with product goals.",
-  },
-  {
-    icon: "bi-filetype-py",
-    title: "Full-stack strength in Python/Django and React",
-    copy: "I can own modern frontend delivery in React while also driving backend systems in Python/Django, integrations, workflows, and production support.",
+    icon: "bi-tools",
+    title: "Comfortable with inherited systems",
+    copy: "A lot of my work has been inside existing applications: understanding old patterns, reducing risk, improving performance, and making the codebase easier for the team to maintain.",
   },
   {
     icon: "bi-speedometer2",
-    title: "Built for scalable, high-availability systems",
-    copy: "My work consistently sits in environments where uptime, maintainability, performance, and operational clarity matter to real users and business teams.",
+    title: "Performance and reliability focus",
+    copy: "I look for practical bottlenecks such as inefficient queries, missing indexes, unnecessary frontend rendering, outdated packages, and weak deployment or security practices.",
+  },
+  {
+    icon: "bi-people",
+    title: "Useful in small or changing teams",
+    copy: "I have worked in teams where engineers were limited, systems were being transferred in-house, or the team needed support with interviews, onboarding, and technical direction.",
   },
 ];
 
 export const STORY_ITEMS = [
   {
-    label: "For hiring teams",
-    title: "A lead profile that still ships.",
-    copy: "I am strongest in roles where a team needs technical leadership without losing hands-on execution speed. That reduces handoff risk and keeps delivery grounded in reality.",
+    label: "Career foundation",
+    title: "Started broad in a small company.",
+    copy: "My early years required switching between websites, POS systems, WordPress, PHP, JavaScript, Java JSP/Servlet, and mobile work with Cordova. That shaped me into a practical generalist.",
   },
   {
-    label: "Domain background",
-    title: "Social impact, mobility, travel, and platform systems.",
-    copy: "My background is strongest in mission-driven platforms, enterprise mobility products, and high-traffic booking systems, with engineering practices that transfer well into other regulated or enterprise environments.",
+    label: "How I improve systems",
+    title: "Diagnose first, then improve step by step.",
+    copy: "In travel, mobility, and NGO systems, I usually start by finding the slow or fragile parts: query patterns, API structure, rendering behavior, package health, and deployment flow.",
   },
   {
-    label: "How I lead",
-    title: "Calm delivery with technical clarity.",
-    copy: "I work well across engineers, managers, recruiters, and product stakeholders. The goal is clear delivery, sound technical judgment, and fewer surprises during execution.",
+    label: "Team contribution",
+    title: "I help beyond only writing code.",
+    copy: "When teams are small, I help with handover, code hygiene, interviews, onboarding, and technical planning while still staying close to implementation.",
   },
 ];
 
@@ -75,36 +75,51 @@ export const WORK_ITEMS = [
   {
     featured: true,
     tag: "Issara Institute",
-    title: "Lead-level full-stack delivery for a 70k+ user platform",
-    body: "Lead delivery across React frontends, Django and Node.js services, and Firebase-connected workflows for a production platform supporting migrant workers at scale.",
+    title: "React and Django work for a production NGO platform",
+    body: "Joined mainly for React work, then expanded into Python/Django because the product needed full-stack support. Worked on performance, API cleanup, frontend stability, upgrades, and team rebuilding.",
     list: [
-      "Owned delivery decisions across user-facing flows, backend integrations, and operational tooling",
-      "Supported scalable workflows spanning React, Python/Django, Node.js, and service integrations",
-      "Improved clarity, reliability, and day-to-day usability for production users and internal teams",
+      "Reduced N+1 query problems API by API and added caching where it made sense",
+      "Improved React screens by removing unnecessary rendering, unused imports, lint issues, and deprecated logic",
+      "Supported Node package, Node version, Python version, and framework upgrade work",
+      "Helped with interviews, hiring coordination, team rebuilding, and early AI/ML application discussions",
     ],
-    impact: "70k+ users supported in production.",
+    impact: "Production platform supporting migrant workers.",
   },
   {
     tag: "Yoma Strategic Holdings",
-    title: "Enterprise mobility and operational systems",
-    body: "Built and improved web systems for car sharing, rental operations, employee financing, billing, and IoT-aware workflows inside a business-critical enterprise environment.",
+    title: "Brought outsourced mobility systems in-house",
+    body: "Joined a lean tech team that was taking ownership of five applications returned from outside vendors. Maintained PHP/Laravel and React systems while improving delivery flow, security, and performance.",
     list: [
-      "Delivered production interfaces and backend workflows for operational business software",
-      "Handled PHP/Laravel integrations, business logic, and product iterations under active demand",
-      "Worked on reliability and execution quality for systems used in live business operations",
+      "Handled five applications across car share, rental, financing, Yoma Home, and internal workflows",
+      "Supported secure repository transfer and helped stabilize the codebases after handover",
+      "Introduced better deployment discipline, code hygiene, and a testing mindset",
+      "Contributed car share APIs for the mobile app and improved performance/security in inherited systems",
     ],
-    impact: "Enterprise-grade delivery under real usage.",
+    impact: "Stabilized multiple inherited applications.",
   },
   {
     tag: "Oway Travels & Tours",
-    title: "High-traffic booking systems at 2M+ user scale",
-    body: "Contributed to large-scale travel booking and payment systems with performance-sensitive user flows, API-heavy product requirements, and real operational traffic.",
+    title: "Backend performance work for a travel booking platform",
+    body: "Worked mainly as a backend software development engineer, with frontend integration when needed. Focused on slow database queries, legacy patterns, and application stability for a high-traffic travel product.",
     list: [
-      "Worked across backend services, search flows, integrations, and payment-related user journeys",
-      "Supported product behavior shaped by large traffic volumes and conversion-sensitive workflows",
-      "Contributed across Python, PHP, data handling, and performance-aware engineering work",
+      "Improved inefficient Laravel query patterns using lazy loading, eager loading, and indexing",
+      "Worked with infrastructure teammates on AWS, Elasticsearch, caching, and non-blocking processing ideas",
+      "Helped make slow areas more stable, secure, and performance-conscious",
+      "Integrated backend behavior with frontend screens when product delivery required it",
     ],
-    impact: "2M+ users served at scale.",
+    impact: "2M+ user product environment.",
+  },
+  {
+    tag: "Myanmar Digital Solutions",
+    title: "Small-business websites, POS systems, and multi-stack delivery",
+    body: "Started as an intern and grew into more senior responsibilities in a small company where engineers had to cover many technologies for small business clients.",
+    list: [
+      "Built responsive interfaces with HTML, CSS, Bootstrap, JavaScript, and PHP",
+      "Customized WordPress free themes and handled SEO, page speed, and basic security improvements",
+      "Worked on PHP/CodeIgniter POS systems with performance, reliability, and maintainability improvements",
+      "Used Java JSP/Servlet and Cordova/PhoneGap when client projects required them",
+    ],
+    impact: "Intern to senior responsibility in a small team.",
   },
 ];
 
@@ -113,68 +128,68 @@ export const EXPERIENCES = [
     period: "2021 - Present",
     role: "Senior Full-Stack Engineer",
     company: "Issara Institute",
-    copy: "Lead delivery across React, Django, Node.js, and Firebase-backed systems for a live platform serving migrant workers in production.",
-    tags: ["React", "Python", "Django", "Node.js", "Firebase"],
+    copy: "Work across React, Django, Node.js, and Firebase-backed systems, with a focus on API performance, frontend cleanup, upgrades, production support, and rebuilding team capability.",
+    tags: ["React", "Python", "Django", "Node.js", "Performance"],
   },
   {
     period: "2018 - 2021",
     role: "Senior Software Engineer",
     company: "Yoma Strategic Holdings",
-    copy: "Shipped enterprise mobility and operations software spanning React interfaces, PHP/Laravel workflows, integrations, and business-critical features.",
-    tags: ["React", "PHP", "Laravel", "MySQL", "AWS"],
+    copy: "Maintained and improved multiple in-house mobility and operations applications after vendor handover, including PHP/Laravel systems, React interfaces, APIs, and deployment workflow.",
+    tags: ["React", "PHP", "Laravel", "APIs", "Deployment"],
   },
   {
     period: "2017 - 2018",
-    role: "Product Owner / Software Development Engineer",
+    role: "Software Development Engineer",
     company: "Oway Travels & Tours",
-    copy: "Worked on high-traffic travel systems across Python, PHP, APIs, search, booking, and performance-sensitive production flows.",
-    tags: ["Python", "PHP", "APIs", "MongoDB", "Elasticsearch"],
+    copy: "Focused on backend performance and stability for travel booking systems, including Laravel query optimization, caching ideas, search infrastructure discussions, and frontend integration when needed.",
+    tags: ["PHP", "Laravel", "AWS", "Elasticsearch", "Optimization"],
   },
   {
     period: "2014 - 2017",
     role: "Web Developer",
     company: "Myanmar Digital Solutions",
-    copy: "Built business applications and responsive interfaces, forming the engineering base behind later senior full-stack and leadership work.",
-    tags: ["PHP", "CodeIgniter", "Laravel", "Responsive UI", "MySQL"],
+    copy: "Started as an intern and grew through small-business projects covering responsive websites, WordPress customization, PHP/CodeIgniter POS systems, JavaScript, JSP/Servlet, and Cordova/PhoneGap.",
+    tags: ["PHP", "CodeIgniter", "WordPress", "Bootstrap", "Cordova"],
   },
 ];
 
 export const CAPABILITIES = [
   {
-    icon: "bi-diagram-3",
-    title: "Technical Leadership",
-    copy: "Hands-on leadership across architecture decisions, delivery planning, code quality, stakeholder alignment, and execution risk management.",
-    tags: ["Architecture", "Planning", "Code Review", "Stakeholder Alignment"],
+    icon: "bi-tools",
+    title: "Inherited System Stabilization",
+    copy: "Understanding existing systems, reducing fragile patterns, improving handover quality, and making codebases easier for teams to own.",
+    tags: ["Legacy Apps", "Handover", "Refactoring", "Code Hygiene"],
   },
   {
     icon: "bi-filetype-tsx",
-    title: "React Architecture",
-    copy: "Frontend delivery in React with strong component structure, responsive behavior, and maintainable UI systems for product teams.",
-    tags: ["React", "TypeScript", "Component Systems", "Responsive UX"],
+    title: "React Frontend Work",
+    copy: "Building and cleaning up React interfaces, fixing unnecessary rendering, improving responsive behavior, and keeping UI code maintainable.",
+    tags: ["React", "Rendering", "Responsive UI", "Linting"],
   },
   {
     icon: "bi-filetype-py",
     title: "Python / Django",
-    copy: "Backend engineering in Python and Django for APIs, service workflows, business logic, and stable production systems.",
-    tags: ["Python", "Django", "REST APIs", "Business Logic"],
+    copy: "Backend work in Django for APIs, data access, framework upgrades, and production support, built on earlier backend experience in PHP and Java.",
+    tags: ["Python", "Django", "APIs", "Upgrades"],
   },
   {
-    icon: "bi-hdd-stack",
-    title: "Node.js Services",
-    copy: "Service delivery in Node.js for integrations, workflow orchestration, APIs, and practical full-stack product needs.",
-    tags: ["Node.js", "Express", "Integrations", "Service Design"],
+    icon: "bi-speedometer2",
+    title: "Performance Optimization",
+    copy: "Practical improvements such as query cleanup, eager loading, indexing, caching, frontend render cleanup, and dependency upgrades.",
+    tags: ["Queries", "Caching", "Indexing", "Frontend Performance"],
   },
   {
     icon: "bi-filetype-php",
     title: "PHP / Laravel",
-    copy: "Production PHP work across Laravel applications, enterprise workflows, and operational platforms that require reliability and speed.",
-    tags: ["PHP", "Laravel", "Enterprise Apps", "REST APIs"],
+    copy: "Production PHP experience across Laravel and CodeIgniter systems, POS applications, business workflows, APIs, and integrations.",
+    tags: ["PHP", "Laravel", "CodeIgniter", "POS Systems"],
   },
   {
-    icon: "bi-speedometer2",
-    title: "Scalability & Reliability",
-    copy: "Engineering shaped for performance, maintainability, high availability, and operational clarity in systems used by real teams and customers.",
-    tags: ["Scalability", "Performance", "Reliability", "Operational Support"],
+    icon: "bi-people",
+    title: "Team and Delivery Support",
+    copy: "Helping with interviews, onboarding, technical planning, deployment discipline, and communication with managers, HR, and stakeholders.",
+    tags: ["Hiring", "Onboarding", "Deployment", "Communication"],
   },
 ];
 
@@ -313,7 +328,7 @@ export const SHOWCASES = [
     type: "desktop",
     label: "Oway Travel and Tours",
     title: "Travel Booking Platform",
-    copy: "A high-traffic travel platform with booking, payments, and large-scale product workflows shaped by backend and performance demands.",
+    copy: "A travel platform with booking, payments, and product workflows where backend performance and reliability were important day-to-day concerns.",
     frameTitle: "Oway Travel and Tours",
     frameUrl: "https://oway.com.mm/",
     cta: "Visit Live Site",
