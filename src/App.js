@@ -255,6 +255,21 @@ function App() {
                     technical direction through production delivery.
                   </p>
 
+                  <div className="hero-signal-grid" aria-label="Profile summary">
+                    <div>
+                      <span>Current focus</span>
+                      <strong>Lead full-stack roles</strong>
+                    </div>
+                    <div>
+                      <span>Core stack</span>
+                      <strong>Python/Django + React</strong>
+                    </div>
+                    <div>
+                      <span>Availability</span>
+                      <strong>Bangkok / ICT</strong>
+                    </div>
+                  </div>
+
                   <div className="hero-actions">
                     <a className="button button-primary" href="#contact">
                       <i className="bi bi-envelope"></i>
