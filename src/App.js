@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import {
-  CAPABILITIES,
   CERTIFICATES,
   CONFIDENTIAL_TAGS,
   CONTACT_CARDS,
@@ -15,7 +14,9 @@ import {
   METRICS,
   NAV_ITEMS,
   PROJECTS,
+  RESUMES,
   SHOWCASES,
+  SKILL_GROUPS,
   STORY_ITEMS,
   TRUST_ITEMS,
   WORK_ITEMS,
@@ -183,6 +184,8 @@ function App() {
   };
 
   const currentYear = new Date().getFullYear();
+  const primaryResume = RESUMES.find((resume) => resume.primary);
+  const targetedResumes = RESUMES.filter((resume) => !resume.primary);
 
   return (
     <>
@@ -238,22 +241,22 @@ function App() {
       <main className="site-main">
         <section id="home" className="hero-section">
           <Container fluid className="container-shell">
-            <Row className="hero-row align-items-end g-4 g-xl-5">
+            <Row className="hero-row align-items-start g-4 g-xl-5">
               <Col lg={7}>
                 <Reveal className="hero-copy">
                   <p className="eyebrow">
-                    Full-Stack Engineer · React · Django · Laravel · 12+ years
+                    Python/Django · React.js · TypeScript · Node.js · Laravel/PHP
                   </p>
-                  <h1 className="hero-title">
-                    Practical full-stack engineering for real product teams.
-                  </h1>
+                  <h1 className="hero-title">Senior Full Stack Developer</h1>
                   <p className="hero-lead">
-                    I am Wai Hyn Htun, a full-stack engineer with 12+ years of
-                    experience across small business systems, travel booking,
-                    mobility platforms, and NGO products. My work is usually
-                    practical: improve slow systems, clean up inherited code,
-                    support production users, and help teams deliver with less
-                    friction.
+                    I build and maintain production web and mobile applications
+                    using Python/Django, React.js, TypeScript, Node.js, and
+                    Laravel/PHP.
+                  </p>
+                  <p className="hero-lead hero-lead-secondary">
+                    I have 12+ years of experience working across backend APIs,
+                    frontend systems, database performance, mobile app releases,
+                    CI/CD pipelines, and production troubleshooting.
                   </p>
 
                   <div className="hero-signal-grid" aria-label="Profile summary">
@@ -272,21 +275,22 @@ function App() {
                   </div>
 
                   <div className="hero-actions">
-                    <a className="button button-primary" href="#contact">
-                      <i className="bi bi-envelope"></i>
-                      <span>Discuss a Role</span>
-                    </a>
-                    <a className="button button-secondary" href="#work">
-                      <i className="bi bi-grid-1x2"></i>
-                      <span>Review Work</span>
+                    <a className="button button-primary" href="#experience">
+                      <i className="bi bi-briefcase"></i>
+                      <span>View Experience</span>
                     </a>
                     <a
                       className="button button-secondary"
-                      href={asset("wai-hyn-htun-resume.docx")}
-                      download="wai-hyn-htun-resume.docx"
+                      href={asset(primaryResume.file)}
+                      download={primaryResume.downloadName}
+                      aria-label="Download Senior Full Stack Developer resume"
                     >
                       <i className="bi bi-download"></i>
                       <span>Download Resume</span>
+                    </a>
+                    <a className="button button-secondary" href="#projects">
+                      <i className="bi bi-grid-1x2"></i>
+                      <span>View Projects</span>
                     </a>
                   </div>
 
@@ -294,9 +298,9 @@ function App() {
                     <article className="hero-credential">
                       <p className="panel-label">Role focus</p>
                       <p>
-                        Senior full-stack roles where existing systems need
-                        better performance, cleaner code, and steady production
-                        delivery.
+                        Senior full-stack, backend, frontend, and technical
+                        lead roles where production ownership and practical
+                        delivery matter.
                       </p>
                     </article>
                     <article className="hero-credential">
@@ -322,9 +326,9 @@ function App() {
                       <p className="panel-label">Based in Bangkok, Thailand</p>
                       <h2>Wai Hyn Htun</h2>
                       <p>
-                        Full-stack engineer with hands-on experience in
-                        small-business software, travel platforms, mobility
-                        systems, and NGO products.
+                        Senior Full Stack Developer with production experience
+                        across social impact, mobility, travel, and enterprise
+                        platforms.
                       </p>
                     </div>
                   </div>
@@ -359,11 +363,11 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header">
               <p className="section-kicker">Working Profile</p>
-              <h2>Useful in teams that need practical modernization work.</h2>
+              <h2>Practical engineering for production product teams.</h2>
               <p className="section-copy">
-                My strongest work has been improving systems that already exist:
-                slow applications, inherited codebases, missing documentation,
-                small teams, and production workflows that need more structure.
+                I work across backend APIs, frontend applications, mobile
+                support, database performance, CI/CD, and production
+                troubleshooting.
               </p>
             </Reveal>
 
@@ -387,12 +391,17 @@ function App() {
               <Col lg={5}>
                 <Reveal className="section-header section-header-left">
                   <p className="section-kicker">About</p>
-                  <h2>Shaped by small teams, legacy systems, and production pressure.</h2>
+                  <h2>Senior Full Stack Developer based in Bangkok.</h2>
                   <p className="section-copy">
-                    I started in a small company where engineers handled many
-                    different technologies. Since then, I have worked on travel,
-                    mobility, and NGO platforms where reliability, performance,
-                    and maintainability mattered every day.
+                    I am a Senior Full Stack Developer based in Bangkok,
+                    Thailand, with experience across social impact, mobility,
+                    travel, and enterprise platforms.
+                  </p>
+                  <p className="section-copy">
+                    My work usually involves building backend APIs, developing
+                    frontend applications, improving database performance,
+                    maintaining legacy systems, and supporting production
+                    releases.
                   </p>
                 </Reveal>
 
@@ -433,11 +442,10 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header section-header-dark">
               <p className="section-kicker">Selected Work</p>
-              <h2>What I worked on at each company.</h2>
+              <h2>Production work across product platforms.</h2>
               <p className="section-copy">
-                These are the practical responsibilities behind my resume:
-                performance fixes, inherited applications, frontend and backend
-                delivery, and team support in real production environments.
+                These examples focus on responsibilities recruiters and hiring
+                managers usually need to understand quickly.
               </p>
             </Reveal>
 
@@ -470,7 +478,7 @@ function App() {
           <Container fluid className="container-shell">
             <Reveal className="section-header">
               <p className="section-kicker">Experience</p>
-              <h2>Company-by-company responsibilities and context.</h2>
+              <h2>Company-by-company responsibilities.</h2>
             </Reveal>
 
             <Reveal className="section-card-grid section-card-grid-2">
@@ -482,6 +490,11 @@ function App() {
                   </div>
                   <h3>{experience.company}</h3>
                   <p>{experience.copy}</p>
+                  <ul className="detail-list">
+                    {experience.list.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                   <div className="tag-row">
                     {experience.tags.map((tag) => (
                       <span key={tag}>{tag}</span>
@@ -496,20 +509,19 @@ function App() {
         <section id="skills" className="capabilities-section">
           <Container fluid className="container-shell">
             <Reveal className="section-header">
-              <p className="section-kicker">Core Strengths</p>
-              <h2>Core areas I use in day-to-day delivery.</h2>
+              <p className="section-kicker">Skills</p>
+              <h2>Grouped by day-to-day engineering use.</h2>
             </Reveal>
 
             <Reveal className="section-card-grid section-card-grid-3">
-              {CAPABILITIES.map((capability) => (
-                <article key={capability.title} className="capability-card">
+              {SKILL_GROUPS.map((group) => (
+                <article key={group.title} className="capability-card skill-card">
                   <span className="card-icon">
-                    <i className={`bi ${capability.icon}`}></i>
+                    <i className={`bi ${group.icon}`}></i>
                   </span>
-                  <h3>{capability.title}</h3>
-                  <p>{capability.copy}</p>
                   <div className="tag-row">
-                    {capability.tags.map((tag) => (
+                    <h3>{group.title}</h3>
+                    {group.tags.map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
@@ -522,77 +534,88 @@ function App() {
         <section id="projects" className="projects-section">
           <Container fluid className="container-shell">
             <Reveal className="section-header section-header-dark">
-              <p className="section-kicker">Product Demos</p>
-              <h2>Small demos and product references.</h2>
+              <p className="section-kicker">Projects</p>
+              <h2>Practical project work.</h2>
               <p className="section-copy">
-                These examples are included as supporting references for mobile
-                layout, product thinking, and interface work.
+                These summaries describe the kind of implementation and
+                maintenance work I handled across recent roles.
               </p>
             </Reveal>
 
-            <Reveal>
-              <Swiper
-                className="section-swiper section-swiper-detail"
-                modules={SLIDER_MODULES}
-                navigation
-                pagination={{ clickable: true }}
-                keyboard={{ enabled: true }}
-                grabCursor
-                spaceBetween={21}
-                slidesPerView={1}
-              >
-                {PROJECTS.map((project) => (
-                  <SwiperSlide key={project.title}>
-                    <article className="project-card project-card-single">
-                      <div className="device-stage">
-                        <div className="iphone-frame iphone-frame-project">
-                          <div className="iphone-notch">
-                            <div className="iphone-dynamic-island"></div>
-                          </div>
-                          <div className="iphone-screen">
-                            <iframe
-                              src={project.frameUrl}
-                              title={project.frameTitle}
-                              loading="lazy"
-                              allow="accelerometer; gyroscope"
-                              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                            ></iframe>
-                          </div>
-                          <div className="iphone-home-bar"></div>
-                          <div className="iphone-button iphone-button-power"></div>
-                          <div className="iphone-button iphone-button-vol-up"></div>
-                          <div className="iphone-button iphone-button-vol-down"></div>
-                        </div>
-                      </div>
+            <Reveal className="project-summary-grid">
+              {PROJECTS.map((project) => (
+                <article key={project.title} className="project-card">
+                  <div className="project-head">
+                    <span className="card-icon">
+                      <i className={`bi ${project.icon}`}></i>
+                    </span>
+                    <p className="panel-label">{project.label}</p>
+                  </div>
+                  <div className="project-copy">
+                    <h3>{project.title}</h3>
+                    <p>{project.copy}</p>
+                    <ul className="detail-list">
+                      {project.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </Reveal>
+          </Container>
+        </section>
 
-                      <div className="project-copy">
-                        <div className="project-head">
-                          <span className="card-icon">
-                            <i className={`bi ${project.icon}`}></i>
-                          </span>
-                          <p className="panel-label">{project.label}</p>
-                        </div>
-                        <h3>{project.title}</h3>
-                        <p>{project.copy}</p>
-                        <ul className="detail-list">
-                          {project.points.map((point) => (
-                            <li key={point}>{point}</li>
-                          ))}
-                        </ul>
-                        <a
-                          className="button button-primary"
-                          href={project.frameUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className="bi bi-box-arrow-up-right"></i>
-                          <span>{project.cta}</span>
-                        </a>
-                      </div>
-                    </article>
-                  </SwiperSlide>
+        <section id="resume" className="resume-section">
+          <Container fluid className="container-shell">
+            <Reveal className="section-header">
+              <p className="section-kicker">Resume</p>
+              <h2>Choose the resume version that fits the role.</h2>
+              <p className="section-copy">
+                I maintain different resume versions for different hiring
+                needs. For most opportunities, please use my Senior Full Stack
+                Developer resume. For specialized roles, you can download a
+                targeted version below.
+              </p>
+            </Reveal>
+
+            <Reveal className="resume-layout">
+              <article className="resume-card resume-card-primary">
+                <div>
+                  <p className="panel-label">Recommended resume</p>
+                  <h3>{primaryResume.title}</h3>
+                  <p>{primaryResume.description}</p>
+                </div>
+                <a
+                  className="button button-primary"
+                  href={asset(primaryResume.file)}
+                  download={primaryResume.downloadName}
+                  aria-label={`Download ${primaryResume.title}`}
+                >
+                  <i className="bi bi-download"></i>
+                  <span>{primaryResume.buttonText}</span>
+                </a>
+              </article>
+
+              <div className="resume-grid">
+                {targetedResumes.map((resume) => (
+                  <article key={resume.title} className="resume-card">
+                    <div>
+                      <h3>{resume.title}</h3>
+                      <p>{resume.description}</p>
+                    </div>
+                    <a
+                      className="button button-secondary"
+                      href={asset(resume.file)}
+                      download={resume.downloadName}
+                      aria-label={`Download ${resume.title}`}
+                    >
+                      <i className="bi bi-download"></i>
+                      <span>{resume.buttonText}</span>
+                    </a>
+                  </article>
                 ))}
-              </Swiper>
+              </div>
             </Reveal>
           </Container>
         </section>
@@ -796,14 +819,14 @@ function App() {
               <Col lg={7}>
                 <Reveal className="section-header section-header-left section-header-tight">
                   <p className="section-kicker">Contact</p>
-                  <h2>
-                    Open to senior full-stack opportunities where practical
-                    engineering work matters.
-                  </h2>
+                  <h2>Contact</h2>
                   <p className="section-copy">
-                    If your team needs React, Django, Laravel, performance
-                    improvement, inherited system cleanup, or steady production
-                    support, I am open to discussing the role.
+                    I am open to senior full-stack, backend, frontend, and
+                    technical lead opportunities.
+                  </p>
+                  <p className="section-copy">
+                    For work opportunities, collaboration, or technical
+                    discussions, feel free to contact me.
                   </p>
                 </Reveal>
 
@@ -817,20 +840,30 @@ function App() {
                   </a>
                   <a
                     className="button button-secondary"
-                    href={asset("wai-hyn-htun-resume.docx")}
-                    download="wai-hyn-htun-resume.docx"
-                  >
-                    <i className="bi bi-download"></i>
-                    <span>Download Resume</span>
-                  </a>
-                  <a
-                    className="button button-secondary"
                     href="https://linkedin.com/in/wai-hyn-htun-67180b115/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <i className="bi bi-linkedin"></i>
                     <span>View LinkedIn</span>
+                  </a>
+                  <a
+                    className="button button-secondary"
+                    href="https://github.com/kamkyi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="bi bi-github"></i>
+                    <span>View GitHub</span>
+                  </a>
+                  <a
+                    className="button button-secondary"
+                    href={asset(primaryResume.file)}
+                    download={primaryResume.downloadName}
+                    aria-label="Download Senior Full Stack Developer resume"
+                  >
+                    <i className="bi bi-download"></i>
+                    <span>Download Resume</span>
                   </a>
                 </Reveal>
 
@@ -925,7 +958,10 @@ function App() {
       <footer className="site-footer">
         <Container fluid className="container-shell footer-shell">
           <p>&copy; {currentYear} Wai Hyn Htun</p>
-          <p>Full-Stack Engineer · React · Django · Laravel · Production Systems</p>
+          <p>
+            Senior Full Stack Developer · React.js · Django · Laravel/PHP ·
+            Production Systems
+          </p>
         </Container>
       </footer>
     </>

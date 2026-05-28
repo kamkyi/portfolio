@@ -390,6 +390,7 @@ main section > .container-shell {
 .showcase-copy h3,
 .confidential-panel h3,
 .timeline-card h3,
+.resume-card h3,
 .value-card h3,
 .story-card h3,
 .case-study h3,
@@ -415,6 +416,7 @@ main section > .container-shell {
 .story-card p,
 .case-study-body,
 .timeline-card p,
+.resume-card p,
 .capability-card p,
 .project-copy p,
 .showcase-copy p,
@@ -433,6 +435,11 @@ main section > .container-shell {
   font-size: 1.05rem;
   line-height: 1.68;
   color: var(--color-text-muted);
+}
+
+.hero-lead-secondary {
+  max-width: 68ch;
+  font-size: 0.98rem;
 }
 
 .hero-signal-grid {
@@ -562,6 +569,7 @@ main section > .container-shell {
 .value-card,
 .story-card,
 .timeline-card,
+.resume-card,
 .capability-card,
 .contact-card,
 .contact-form {
@@ -731,6 +739,10 @@ main section > .container-shell {
   background: var(--color-surface-dark);
 }
 
+.resume-section {
+  background: var(--color-bg);
+}
+
 .certificates-section {
   background: var(--color-bg);
 }
@@ -790,7 +802,9 @@ main section > .container-shell {
 
 .section-card-grid,
 .story-grid,
-.work-grid {
+.work-grid,
+.project-summary-grid,
+.resume-grid {
   margin-top: var(--space-md);
   display: grid;
   gap: var(--space-md);
@@ -809,9 +823,19 @@ main section > .container-shell {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.project-summary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resume-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .section-card-grid > *,
 .story-grid > *,
-.work-grid > * {
+.work-grid > *,
+.project-summary-grid > *,
+.resume-grid > * {
   min-width: 0;
   height: 100%;
 }
@@ -1114,6 +1138,15 @@ main section > .container-shell {
   height: 100%;
 }
 
+.skill-card .tag-row {
+  margin-top: 0;
+}
+
+.skill-card .tag-row h3 {
+  flex-basis: 100%;
+  margin-bottom: var(--space-xs);
+}
+
 /* ================================================
    PROJECTS (dark section)
    ================================================ */
@@ -1148,6 +1181,11 @@ main section > .container-shell {
   box-shadow: var(--shadow-sm);
 }
 
+.project-summary-grid .project-card {
+  align-content: start;
+  gap: var(--space-md);
+}
+
 .project-card-single {
   grid-template-columns: minmax(248px, 0.72fr) minmax(0, 1fr);
   align-items: center;
@@ -1175,6 +1213,54 @@ main section > .container-shell {
 
 .project-copy .detail-list {
   margin-top: 0;
+}
+
+/* ================================================
+   RESUME
+   ================================================ */
+
+.resume-layout {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.resume-card {
+  display: grid;
+  align-content: space-between;
+  gap: var(--space-md);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.resume-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.resume-card h3 {
+  font-size: 1.22rem;
+}
+
+.resume-card p {
+  margin-top: var(--space-sm);
+  line-height: 1.62;
+}
+
+.resume-card-primary {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: var(--space-lg);
+  border-color: rgba(180, 61, 47, 0.24);
+  background:
+    linear-gradient(90deg, var(--color-accent-soft), rgba(255, 255, 255, 0)),
+    var(--color-surface);
+}
+
+.resume-card-primary h3 {
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
 }
 
 /* ================================================
@@ -1734,7 +1820,8 @@ main section > .container-shell {
 
 @media (max-width: 1080px) {
   .section-card-grid-3,
-  .story-grid {
+  .story-grid,
+  .resume-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1850,14 +1937,19 @@ main section > .container-shell {
 
   .section-card-grid,
   .story-grid,
-  .work-grid {
+  .work-grid,
+  .project-summary-grid,
+  .resume-grid {
     gap: var(--space-sm);
   }
 
   .section-card-grid-2,
   .section-card-grid-3,
   .story-grid,
-  .work-grid {
+  .work-grid,
+  .project-summary-grid,
+  .resume-grid,
+  .resume-card-primary {
     grid-template-columns: 1fr;
   }
 
@@ -1973,7 +2065,8 @@ main section > .container-shell {
   .button,
   .nav-link-accent,
   .contact-actions .button,
-  .contact-form .button {
+  .contact-form .button,
+  .resume-card .button {
     width: 100%;
   }
 
@@ -1992,6 +2085,7 @@ main section > .container-shell {
   .hero-panel,
   .case-study,
   .project-card,
+  .resume-card,
   .showcase-card,
   .confidential-panel,
   .certificates-shell,
