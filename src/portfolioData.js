@@ -11,46 +11,46 @@ export const NAV_ITEMS = [
 ];
 
 export const HERO_POINTS = [
-  "12+ years across backend APIs, frontend systems, databases, mobile releases, and production support",
-  "Production work with Python/Django, React.js, TypeScript, Node.js, Laravel/PHP, MySQL, PostgreSQL, Redis, Docker, AWS, Firebase, and React Native",
-  "Practical experience with query optimization, indexing, caching, CI/CD, release coordination, and troubleshooting",
-  "Comfortable maintaining inherited systems, refactoring legacy code, reviewing pull requests, and documenting delivery workflows",
+  "12+ years building and scaling production web and mobile systems across social impact, travel, mobility, and enterprise platforms",
+  "Full-stack ownership across Python/Django, React.js, TypeScript, Node.js, Laravel/PHP, PostgreSQL, MySQL, Redis, Docker, AWS, Firebase, and React Native",
+  "Improved high-traffic API response times by 20-30% through query profiling, Redis caching, and database indexing",
+  "Hands-on ownership of architecture, code review, CI/CD, mobile releases, API security, and production incident response",
 ];
 
 export const METRICS = [
   {
     value: "12+ Years",
-    copy: "Full-stack engineering experience across social impact, mobility, travel, and enterprise platforms.",
+    copy: "Full-stack engineering experience across social impact, travel, mobility, and enterprise platforms.",
   },
   {
-    value: "Senior Full Stack",
-    copy: "Hands-on work with Python/Django, React.js, TypeScript, Node.js, Laravel/PHP, and React Native.",
+    value: "50,000+ Users",
+    copy: "Contributed to Golden Dreams, a migrant worker support and job marketplace platform operating across Southeast Asia.",
   },
   {
-    value: "Production Systems",
-    copy: "Built, maintained, optimized, and supported web and mobile applications used by real product teams.",
+    value: "20-30% Faster APIs",
+    copy: "Improved high-traffic worker-facing endpoints with Django ORM cleanup, caching, and indexing.",
   },
   {
-    value: "Delivery Support",
-    copy: "Worked with product, QA, DevOps, and stakeholders on releases, incidents, documentation, and technical debt.",
+    value: "Senior Ownership",
+    copy: "Led feature delivery, code review, mobile releases, incident response, and technical debt prioritization.",
   },
 ];
 
 export const TRUST_ITEMS = [
   {
-    icon: "bi-tools",
-    title: "Production maintenance",
-    copy: "I have maintained existing applications, investigated production issues, improved slow workflows, and kept releases moving with measured changes.",
+    icon: "bi-diagram-3",
+    title: "End-to-end ownership",
+    copy: "I take features from architecture and API design through frontend delivery, mobile release support, documentation, and production follow-up.",
   },
   {
     icon: "bi-speedometer2",
-    title: "Backend and frontend delivery",
-    copy: "My day-to-day work spans API development, React screens, mobile support, database queries, integrations, and release coordination.",
+    title: "Measurable performance work",
+    copy: "I improve slow systems through query profiling, ORM cleanup, Redis caching, indexing, SQL rewrites, and practical frontend cleanup.",
   },
   {
-    icon: "bi-people",
-    title: "Cross-functional communication",
-    copy: "I coordinate with engineering, product, QA, DevOps, HR, and international stakeholders in a clear and practical way.",
+    icon: "bi-shield-check",
+    title: "Production reliability",
+    copy: "I support secure APIs, token-based authentication, RBAC, release planning, incident triage, and code review standards for live systems.",
   },
 ];
 
@@ -58,17 +58,17 @@ export const STORY_ITEMS = [
   {
     label: "Current profile",
     title: "Senior Full Stack Developer based in Bangkok.",
-    copy: "I am a Senior Full Stack Developer based in Bangkok, Thailand, with experience across social impact, mobility, travel, and enterprise platforms.",
+    copy: "I am a Senior Full Stack Developer based in Bangkok, Thailand, with 12+ years of experience across social impact, travel, mobility, and enterprise platforms.",
   },
   {
     label: "Core work",
-    title: "I work across application delivery and maintenance.",
-    copy: "My work usually involves building backend APIs, developing frontend applications, improving database performance, maintaining legacy systems, and supporting production releases.",
+    title: "I work across architecture, delivery, and maintenance.",
+    copy: "My work usually involves backend APIs, React applications, mobile app support, database performance, secure auth flows, inherited codebase modernization, and production releases.",
   },
   {
     label: "Recent work",
     title: "I contribute to product and engineering improvements.",
-    copy: "Recent work includes worker-support platforms, job marketplace features, booking systems, payment integrations, search improvements, mobile app releases, and internal engineering improvements.",
+    copy: "Recent work includes a 50,000+ user worker-support platform, marketplace features, OpenAI API integration, booking systems, payment flows, search improvements, and Android release ownership.",
   },
 ];
 
@@ -77,28 +77,29 @@ export const WORK_ITEMS = [
     featured: true,
     tag: "Issara Institute",
     title: "Golden Dreams worker support and job marketplace platform",
-    body: "Worked on Golden Dreams, a worker support and job marketplace platform used by migrant worker communities. Contributed across backend, frontend, mobile, and deployment workflows.",
+    body: "Owned full-stack delivery across Golden Dreams, a Southeast Asia migrant worker support and job marketplace platform serving 50,000+ active users.",
     list: [
-      "Built and maintained Django, React.js, Node.js, and React Native applications",
-      "Developed marketplace features for worker-to-recruiter job applications",
-      "Improved backend performance through query optimization, Redis caching, and database indexing",
-      "Supported Android release management, Google Play Store deployment, and compliance updates",
-      "Coordinated with product, QA, DevOps, and international stakeholders on releases and production issues",
-      "Reviewed pull requests, supported engineering best practices, and helped reduce technical debt",
+      "Built and maintained Django, React.js, Node.js, TypeScript, and React Native applications",
+      "Architected and delivered marketplace workflows for worker-to-recruiter job applications",
+      "Improved high-traffic API response times by 20-30% through query profiling, Redis caching, and database indexing",
+      "Owned Android build signing, staged Google Play Store rollouts, compliance reviews, and release documentation",
+      "Integrated OpenAI API for backend content processing and workflow automation",
+      "Implemented RBAC, token-based authentication, authorization, and secure API permission layers",
+      "Led code review and engineering standards across a team of 3-5 engineers",
     ],
     impact: "Senior Full Stack Developer · Nov 2021 - Present",
   },
   {
     tag: "Yoma Strategic Holdings",
     title: "Mobility, rental, and property platforms",
-    body: "Worked on mobility, rental, and property platforms during the transition from outsourced vendors to an internal engineering team.",
+    body: "Led backend engineering for mobility, rental, and property platforms during the transition from outsourced vendors to internal engineering ownership.",
     list: [
-      "Built backend APIs for vehicle booking and rental systems",
-      "Maintained real-time availability and reservation workflows",
-      "Integrated local payment gateways",
-      "Refactored inherited Laravel codebases",
-      "Improved database queries, indexing, and platform stability",
-      "Supported code review, release checklists, and documentation practices",
+      "Managed codebase assessment, risk planning, and phased delivery for live systems",
+      "Reduced platform response times and post-release incidents by roughly 50%",
+      "Built vehicle booking and fleet rental systems with real-time availability and reservation workflows",
+      "Integrated payment gateways with local payment providers",
+      "Eliminated N+1 query patterns, added database indexes, and rewrote inefficient SQL",
+      "Established code review standards, deployment checklists, and documentation practices",
     ],
     impact: "Senior Software Engineer · Jul 2018 - Oct 2021",
   },
@@ -107,11 +108,11 @@ export const WORK_ITEMS = [
     title: "Travel booking backend systems",
     body: "Worked on backend systems for a travel booking platform covering airline, bus, and hotel booking workflows.",
     list: [
-      "Developed booking APIs and backend workflows",
-      "Supported payment gateway integrations",
-      "Improved search performance with Elasticsearch",
-      "Tuned database queries and indexes",
-      "Worked with infrastructure teams on reliability and scalability improvements",
+      "Developed and maintained backend APIs and booking workflow services",
+      "Integrated Elasticsearch for real-time travel search",
+      "Reduced search latency through query tuning and indexing strategies",
+      "Built server-to-server payment processing flows",
+      "Implemented authentication and authorization controls for financial data endpoints",
     ],
     impact: "Software Development Engineer · Feb 2017 - Jun 2018",
   },
@@ -120,10 +121,10 @@ export const WORK_ITEMS = [
     title: "Business web applications and client systems",
     body: "Built and maintained web applications for small and medium business clients.",
     list: [
-      "Developed POS systems, inventory systems, and business websites",
+      "Developed POS systems, inventory management, business directory applications, and websites",
       "Built responsive frontend interfaces with HTML, CSS, Bootstrap, and JavaScript",
       "Worked with Laravel, CodeIgniter, PHP, MySQL, and WordPress",
-      "Supported SEO, frontend performance, and WordPress customization",
+      "Supported frontend/backend optimization, SEO, and WordPress customization",
       "Integrated Google Maps APIs and location-based features",
     ],
     impact: "Web Application Developer · Jan 2014 - Jan 2017",
@@ -135,31 +136,32 @@ export const EXPERIENCES = [
     period: "Nov 2021 - Present",
     role: "Senior Full Stack Developer",
     company: "Issara Institute",
-    copy: "Worked on Golden Dreams, a worker support and job marketplace platform used by migrant worker communities. Contributed across backend, frontend, mobile, and deployment workflows.",
+    copy: "Owned full-stack development for Golden Dreams, a worker support and job marketplace platform serving 50,000+ migrant workers across Southeast Asia.",
     list: [
-      "Built and maintained Django, React.js, Node.js, and React Native applications",
-      "Developed marketplace features for worker-to-recruiter job applications",
-      "Improved backend performance through query optimization, Redis caching, and database indexing",
-      "Supported Android release management, Google Play Store deployment, and compliance updates",
-      "Coordinated with product, QA, DevOps, and international stakeholders on releases and production issues",
-      "Reviewed pull requests, supported engineering best practices, and helped reduce technical debt",
+      "Built and maintained Django, React.js, Node.js, TypeScript, and React Native applications",
+      "Improved high-traffic API response times by 20-30% using Django ORM profiling, Redis caching, and database indexing",
+      "Architected and delivered marketplace workflows for worker-to-recruiter job applications",
+      "Owned Android build signing, staged Google Play Store rollouts, compliance reviews, and release documentation",
+      "Integrated OpenAI API for backend content processing and workflow automation",
+      "Implemented RBAC, token-based authentication, authorization, and secure API permission layers",
+      "Led code review and engineering standards across a team of 3-5 engineers",
     ],
-    tags: ["Python/Django", "React.js", "Node.js", "React Native", "Redis"],
+    tags: ["Python/Django", "React.js", "TypeScript", "React Native", "Redis", "OpenAI API"],
   },
   {
     period: "Jul 2018 - Oct 2021",
     role: "Senior Software Engineer",
     company: "Yoma Strategic Holdings",
-    copy: "Worked on mobility, rental, and property platforms during the transition from outsourced vendors to an internal engineering team.",
+    copy: "Led backend engineering for mobility, rental, and property platforms while bringing outsourced systems into internal engineering ownership.",
     list: [
-      "Built backend APIs for vehicle booking and rental systems",
-      "Maintained real-time availability and reservation workflows",
-      "Integrated local payment gateways",
-      "Refactored inherited Laravel codebases",
-      "Improved database queries, indexing, and platform stability",
-      "Supported code review, release checklists, and documentation practices",
+      "Managed codebase assessment, risk planning, and phased delivery for live systems",
+      "Reduced platform response times and post-release incidents by roughly 50%",
+      "Built vehicle booking and fleet rental systems with real-time availability and reservation workflows",
+      "Integrated payment gateways with local payment providers",
+      "Eliminated N+1 query patterns, added database indexes, and rewrote inefficient SQL",
+      "Established code review standards, deployment checklists, and documentation practices",
     ],
-    tags: ["Laravel/PHP", "React.js", "REST APIs", "Payments", "MySQL"],
+    tags: ["Laravel/PHP", "React.js", "REST APIs", "Payments", "MySQL", "AWS"],
   },
   {
     period: "Feb 2017 - Jun 2018",
@@ -167,13 +169,13 @@ export const EXPERIENCES = [
     company: "Oway.com.mm",
     copy: "Worked on backend systems for a travel booking platform covering airline, bus, and hotel booking workflows.",
     list: [
-      "Developed booking APIs and backend workflows",
-      "Supported payment gateway integrations",
-      "Improved search performance with Elasticsearch",
-      "Tuned database queries and indexes",
-      "Worked with infrastructure teams on reliability and scalability improvements",
+      "Developed and maintained backend APIs and booking workflow services",
+      "Integrated Elasticsearch for real-time travel search",
+      "Reduced search latency through query tuning and indexing strategies",
+      "Built server-to-server payment processing flows",
+      "Implemented authentication and authorization controls for financial data endpoints",
     ],
-    tags: ["Laravel/PHP", "Booking APIs", "Payments", "Elasticsearch", "SQL"],
+    tags: ["Laravel/PHP", "Booking APIs", "Payments", "Elasticsearch", "MongoDB", "AWS"],
   },
   {
     period: "Jan 2014 - Jan 2017",
@@ -181,10 +183,10 @@ export const EXPERIENCES = [
     company: "Myanmar Digital Solutions",
     copy: "Built and maintained web applications for small and medium business clients.",
     list: [
-      "Developed POS systems, inventory systems, and business websites",
+      "Developed POS systems, inventory management, business directory applications, and websites",
       "Built responsive frontend interfaces with HTML, CSS, Bootstrap, and JavaScript",
       "Worked with Laravel, CodeIgniter, PHP, MySQL, and WordPress",
-      "Supported SEO, frontend performance, and WordPress customization",
+      "Supported frontend/backend optimization, SEO, and WordPress customization",
       "Integrated Google Maps APIs and location-based features",
     ],
     tags: ["PHP", "Laravel", "CodeIgniter", "WordPress", "Bootstrap"],
@@ -201,6 +203,7 @@ export const SKILL_GROUPS = [
       "Laravel/PHP",
       "REST APIs",
       "API security",
+      "RBAC",
       "Authentication and authorization",
     ],
   },
@@ -211,10 +214,12 @@ export const SKILL_GROUPS = [
       "React.js",
       "TypeScript",
       "JavaScript",
+      "Vue.js",
       "HTML",
       "CSS",
       "Tailwind CSS",
       "Bootstrap",
+      "Figma",
     ],
   },
   {
@@ -223,6 +228,7 @@ export const SKILL_GROUPS = [
     tags: [
       "PostgreSQL",
       "MySQL",
+      "MongoDB",
       "Redis",
       "Elasticsearch",
       "Query optimization",
@@ -252,7 +258,20 @@ export const SKILL_GROUPS = [
       "Linux",
       "Git",
       "Code review",
+      "Agile/Scrum",
+      "Unit and integration testing",
       "Technical documentation",
+    ],
+  },
+  {
+    icon: "bi-cpu",
+    title: "AI & Integrations",
+    tags: [
+      "OpenAI API",
+      "Workflow automation",
+      "Payment gateways",
+      "Google Maps API",
+      "Third-party integrations",
     ],
   },
 ];
@@ -261,26 +280,26 @@ export const CAPABILITIES = [
   {
     icon: "bi-tools",
     title: "Application Maintenance",
-    copy: "Maintaining existing systems, improving reliability, refactoring inherited code, and documenting practical engineering decisions.",
-    tags: ["Maintenance", "Refactoring", "Documentation", "Support"],
+    copy: "Maintaining existing systems, improving reliability, modernizing inherited codebases, and documenting practical engineering decisions.",
+    tags: ["Maintenance", "Modernization", "Documentation", "Support"],
   },
   {
     icon: "bi-speedometer2",
     title: "Performance Troubleshooting",
-    copy: "Improving slow workflows through query optimization, indexing, caching, API review, and frontend performance cleanup.",
+    copy: "Improving slow workflows through query profiling, ORM cleanup, SQL rewrites, indexing, Redis caching, API review, and frontend performance cleanup.",
     tags: ["Queries", "Caching", "Indexing", "APIs"],
   },
   {
     icon: "bi-people",
     title: "Release Coordination",
-    copy: "Coordinating with product, QA, DevOps, and stakeholders on release planning, production issues, and follow-up fixes.",
+    copy: "Coordinating with product, QA, DevOps, and international stakeholders on release planning, production issues, and follow-up fixes.",
     tags: ["QA", "DevOps", "Releases", "Stakeholders"],
   },
   {
     icon: "bi-code-slash",
     title: "Full-Stack Delivery",
-    copy: "Building backend APIs, React interfaces, mobile app support features, integrations, and internal tooling.",
-    tags: ["Backend", "Frontend", "Mobile", "Integrations"],
+    copy: "Building backend APIs, React interfaces, mobile app support features, secure auth flows, integrations, and internal tooling.",
+    tags: ["Backend", "Frontend", "Mobile", "Security"],
   },
 ];
 
@@ -289,18 +308,18 @@ export const PROJECTS = [
     icon: "bi-phone",
     label: "Issara Institute",
     title: "Golden Dreams Platform",
-    copy: "A worker support and job marketplace platform built with Python/Django, React.js, React Native, and Node.js. I contributed to backend APIs, frontend features, mobile app support, marketplace workflows, push notifications, surveys, analytics dashboards, and Google Play Store release management.",
+    copy: "A worker support and job marketplace platform serving 50,000+ migrant workers across Southeast Asia, built with Python/Django, React.js, React Native, TypeScript, and Node.js. I contributed to backend APIs, frontend features, mobile support, marketplace workflows, push notifications, surveys, analytics dashboards, OpenAI API integration, RBAC, and Google Play Store release management.",
     points: [
-      "Backend APIs and data workflows",
+      "Backend APIs, RBAC, and data workflows",
       "Frontend and mobile application support",
-      "Marketplace workflows, notifications, surveys, and analytics",
+      "Marketplace workflows, notifications, surveys, analytics, and AI-assisted automation",
     ],
   },
   {
     icon: "bi-briefcase",
     label: "Issara Institute",
     title: "Marketplace Feature",
-    copy: "A job marketplace feature that allows workers to browse and apply for opportunities posted by recruiters and suppliers. My work included backend API development, frontend implementation, data flow design, and integration with the existing Golden Dreams platform.",
+    copy: "A job marketplace feature that allows workers to browse and apply for recruiter-posted opportunities. My work included architecture, backend API development, frontend implementation, secure data flow design, and integration with the existing Golden Dreams platform.",
     points: [
       "Worker-to-recruiter application flow",
       "API development and frontend implementation",
@@ -311,7 +330,7 @@ export const PROJECTS = [
     icon: "bi-car-front",
     label: "Yoma Strategic Holdings",
     title: "Vehicle Booking and Rental Systems",
-    copy: "Booking and rental systems for mobility and fleet operations. My work included backend API development, reservation workflows, real-time availability, payment gateway integration, SQL optimization, and Laravel codebase refactoring.",
+    copy: "Booking and rental systems for mobility and fleet operations. My work included backend API development, reservation workflows, real-time availability, payment gateway integration, SQL optimization, inherited Laravel modernization, and release documentation.",
     points: [
       "Reservation and availability workflows",
       "Payment gateway integration",
@@ -322,7 +341,7 @@ export const PROJECTS = [
     icon: "bi-airplane",
     label: "Oway.com.mm",
     title: "Travel Booking Platform",
-    copy: "Backend systems for airline, bus, and hotel booking workflows. My work included booking APIs, payment gateway integrations, Elasticsearch search improvements, and database performance tuning.",
+    copy: "Backend systems for airline, bus, and hotel booking workflows. My work included booking APIs, payment gateway integrations, Elasticsearch search improvements, MongoDB/MySQL data work, database performance tuning, and auth controls for financial endpoints.",
     points: [
       "Booking APIs and backend workflows",
       "Payment gateway integrations",
@@ -335,7 +354,7 @@ export const RESUMES = [
   {
     title: "Senior Full Stack Developer Resume",
     description:
-      "Recommended for general senior full-stack, product engineering, and technical lead opportunities. Covers Python/Django, React.js, TypeScript, Node.js, Laravel/PHP, cloud, CI/CD, mobile release management, and production system ownership.",
+      "Recommended for senior full-stack, product engineering, backend, frontend, and technical lead opportunities. Covers Python/Django, React.js, TypeScript, Node.js, React Native, Laravel/PHP, cloud, CI/CD, API security, OpenAI API integration, mobile release management, and production system ownership.",
     file: "resume/Wai_Hyn_Htun_Senior_Full_Stack_Developer_Resume.docx",
     downloadName: "Wai_Hyn_Htun_Senior_Full_Stack_Developer_Resume.docx",
     primary: true,
@@ -344,7 +363,7 @@ export const RESUMES = [
   {
     title: "Python / Django Backend Resume",
     description:
-      "Focused on backend APIs, Django, database optimization, Redis caching, performance tuning, REST APIs, and production troubleshooting.",
+      "Focused on backend APIs, Django, database optimization, Redis caching, performance tuning, REST APIs, API security, auth/authorization, and production troubleshooting.",
     file: "resume/Wai_Hyn_Htun_Python_Django_Backend_Resume.docx",
     downloadName: "Wai_Hyn_Htun_Python_Django_Backend_Resume.docx",
     primary: false,
@@ -353,7 +372,7 @@ export const RESUMES = [
   {
     title: "React / Frontend Resume",
     description:
-      "Focused on React.js, TypeScript, frontend architecture, responsive UI, API integration, performance optimization, and modern web application development.",
+      "Focused on React.js, TypeScript, frontend architecture, responsive UI, API integration, Figma handoff, performance optimization, and modern web application development.",
     file: "resume/Wai_Hyn_Htun_React_Frontend_Resume.docx",
     downloadName: "Wai_Hyn_Htun_React_Frontend_Resume.docx",
     primary: false,
@@ -362,7 +381,7 @@ export const RESUMES = [
   {
     title: "Technical Lead Resume",
     description:
-      "Focused on architecture decisions, code review, release planning, production ownership, mentoring, stakeholder communication, and cross-functional delivery.",
+      "Focused on architecture decisions, code review, release planning, mobile release ownership, production incident response, stakeholder communication, and cross-functional delivery.",
     file: "resume/Wai_Hyn_Htun_Technical_Lead_Resume.docx",
     downloadName: "Wai_Hyn_Htun_Technical_Lead_Resume.docx",
     primary: false,
@@ -510,6 +529,10 @@ export const CONTACT_CARDS = [
     text: "Bangkok, Thailand",
   },
   {
+    label: "Work Preference",
+    text: "Open to Singapore/SEA relocation and remote global engagement.",
+  },
+  {
     label: "Current Company",
     text: "Issara Institute",
   },
@@ -521,7 +544,7 @@ export const CONTACT_CARDS = [
     label: "Profiles",
     lines: [
       {
-        href: "https://linkedin.com/in/wai-hyn-htun-67180b115/",
+        href: "https://linkedin.com/in/waihynhtun",
         text: "LinkedIn",
         external: true,
       },

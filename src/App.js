@@ -245,32 +245,33 @@ function App() {
               <Col lg={7}>
                 <Reveal className="hero-copy">
                   <p className="eyebrow">
-                    Python/Django · React.js · TypeScript · Node.js · Laravel/PHP
+                    Python/Django · React.js · TypeScript · React Native · Node.js
                   </p>
                   <h1 className="hero-title">Senior Full Stack Developer</h1>
                   <p className="hero-lead">
-                    I build and maintain production web and mobile applications
-                    using Python/Django, React.js, TypeScript, Node.js, and
-                    Laravel/PHP.
+                    I build, scale, and maintain production web and mobile
+                    systems using Python/Django, React.js, TypeScript, Node.js,
+                    React Native, and Laravel/PHP.
                   </p>
                   <p className="hero-lead hero-lead-secondary">
-                    I have 12+ years of experience working across backend APIs,
-                    frontend systems, database performance, mobile app releases,
-                    CI/CD pipelines, and production troubleshooting.
+                    I have 12+ years of experience across backend APIs,
+                    frontend systems, database performance, API security,
+                    mobile app releases, CI/CD, OpenAI API integration, and
+                    production incident response.
                   </p>
 
                   <div className="hero-signal-grid" aria-label="Profile summary">
                     <div>
                       <span>Current focus</span>
-                      <strong>Senior full-stack roles</strong>
+                      <strong>Senior full-stack and backend roles</strong>
                     </div>
                     <div>
                       <span>Core work</span>
-                      <strong>Performance and maintainability</strong>
+                      <strong>Architecture, performance, and reliability</strong>
                     </div>
                     <div>
                       <span>Availability</span>
-                      <strong>Bangkok / ICT</strong>
+                      <strong>Bangkok / SEA / Remote</strong>
                     </div>
                   </div>
 
@@ -299,16 +300,16 @@ function App() {
                       <p className="panel-label">Role focus</p>
                       <p>
                         Senior full-stack, backend, frontend, and technical
-                        lead roles where production ownership and practical
-                        delivery matter.
+                        lead roles where architecture, production ownership,
+                        and practical delivery matter.
                       </p>
                     </article>
                     <article className="hero-credential">
                       <p className="panel-label">Current base</p>
                       <p>
-                        Based in Bangkok, Thailand and available for weekday
-                        interviews after 6 PM ICT, with weekend availability by
-                        arrangement.
+                        Based in Bangkok, Thailand. Open to Singapore/SEA
+                        relocation and remote global engagement, with weekday
+                        interviews after 6 PM ICT.
                       </p>
                     </article>
                   </div>
@@ -327,7 +328,7 @@ function App() {
                       <h2>Wai Hyn Htun</h2>
                       <p>
                         Senior Full Stack Developer with production experience
-                        across social impact, mobility, travel, and enterprise
+                        across social impact, travel, mobility, and enterprise
                         platforms.
                       </p>
                     </div>
@@ -366,8 +367,8 @@ function App() {
               <h2>Practical engineering for production product teams.</h2>
               <p className="section-copy">
                 I work across backend APIs, frontend applications, mobile
-                support, database performance, CI/CD, and production
-                troubleshooting.
+                support, database performance, API security, CI/CD, and
+                production incident response.
               </p>
             </Reveal>
 
@@ -394,14 +395,14 @@ function App() {
                   <h2>Senior Full Stack Developer based in Bangkok.</h2>
                   <p className="section-copy">
                     I am a Senior Full Stack Developer based in Bangkok,
-                    Thailand, with experience across social impact, mobility,
-                    travel, and enterprise platforms.
+                    Thailand, with 12+ years of experience across social
+                    impact, travel, mobility, and enterprise platforms.
                   </p>
                   <p className="section-copy">
-                    My work usually involves building backend APIs, developing
-                    frontend applications, improving database performance,
-                    maintaining legacy systems, and supporting production
-                    releases.
+                    My work usually involves architecture, backend APIs,
+                    frontend applications, database performance, secure auth
+                    flows, inherited system modernization, mobile release
+                    ownership, and production support.
                   </p>
                 </Reveal>
 
@@ -822,7 +823,8 @@ function App() {
                   <h2>Contact</h2>
                   <p className="section-copy">
                     I am open to senior full-stack, backend, frontend, and
-                    technical lead opportunities.
+                    technical lead opportunities, including Singapore/SEA
+                    relocation and remote global engagement.
                   </p>
                   <p className="section-copy">
                     For work opportunities, collaboration, or technical
@@ -840,7 +842,7 @@ function App() {
                   </a>
                   <a
                     className="button button-secondary"
-                    href="https://linkedin.com/in/wai-hyn-htun-67180b115/"
+                    href="https://linkedin.com/in/waihynhtun"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -959,8 +961,8 @@ function App() {
         <Container fluid className="container-shell footer-shell">
           <p>&copy; {currentYear} Wai Hyn Htun</p>
           <p>
-            Senior Full Stack Developer · React.js · Django · Laravel/PHP ·
-            Production Systems
+            Senior Full Stack Developer · Python/Django · React.js ·
+            TypeScript · Production Systems
           </p>
         </Container>
       </footer>
