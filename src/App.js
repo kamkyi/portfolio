@@ -441,7 +441,7 @@ function App() {
 
         <section id="work" className="work-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-header section-header-dark">
+            <Reveal className="section-header">
               <p className="section-kicker">Selected Work</p>
               <h2>Production work across product platforms.</h2>
               <p className="section-copy">
@@ -534,7 +534,7 @@ function App() {
 
         <section id="projects" className="projects-section">
           <Container fluid className="container-shell">
-            <Reveal className="section-header section-header-dark">
+            <Reveal className="section-header">
               <p className="section-kicker">Projects</p>
               <h2>Practical project work.</h2>
               <p className="section-copy">
