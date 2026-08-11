@@ -1,30 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import { A11y, Keyboard, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CERTIFICATES,
   CONFIDENTIAL_TAGS,
   CONTACT_CARDS,
+  CORE_STACK,
   EXPERIENCES,
   HERO_POINTS,
+  HERO_STACK,
+  HIRING_SNAPSHOT,
   METRICS,
   NAV_ITEMS,
-  PROJECTS,
+  PROFILE,
   RESUMES,
   SHOWCASES,
   SKILL_GROUPS,
-  STORY_ITEMS,
   TRUST_ITEMS,
   WORK_ITEMS,
 } from "./portfolioData";
 
 const TELEGRAM_ENDPOINT = "https://portfolio.waihynhtun1994.workers.dev";
-const SLIDER_MODULES = [A11y, Keyboard, Navigation, Pagination];
 
+/* GitHub Pages serves the app from /portfolio, so every static asset goes through PUBLIC_URL. */
 const asset = (path) => `${process.env.PUBLIC_URL}/${path}`;
 
 function Reveal({ as: Tag = "div", className = "", children, ...props }) {
@@ -57,10 +53,7 @@ function Reveal({ as: Tag = "div", className = "", children, ...props }) {
           currentObserver.unobserve(entry.target);
         });
       },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -48px 0px",
-      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
     );
 
     observer.observe(element);
@@ -79,62 +72,236 @@ function Reveal({ as: Tag = "div", className = "", children, ...props }) {
   );
 }
 
+/* Google's four-color "G". Brand guidelines require the mark to keep its own
+   colors on a light field, so it always renders on a white disc instead of
+   inheriting the surrounding tint the way an icon-font glyph would. */
+function GoogleMark({ className = "" }) {
+  return (
+    <span className={`google-mark ${className}`.trim()} aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path
+          fill="#4285F4"
+          d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+        />
+        <path
+          fill="#34A853"
+          d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+        />
+        <path
+          fill="#FBBC05"
+          d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+        />
+        <path
+          fill="#EA4335"
+          d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function SectionHeading({ index, kicker, title, copy, align = "center" }) {
+  return (
+    <Reveal className={`section-heading is-${align}`}>
+      <p className="section-kicker">
+        {index ? <span className="section-index">{index}</span> : null}
+        {kicker}
+      </p>
+      <h2>{title}</h2>
+      {copy ? <p className="section-copy">{copy}</p> : null}
+    </Reveal>
+  );
+}
+
+function CertificateCard({ certificate, onOpen }) {
+  const isFeatured = Boolean(certificate.featured);
+
+  return (
+    <article className={`cert-card${isFeatured ? " is-featured" : ""}`}>
+      <button
+        type="button"
+        className="cert-thumb"
+        onClick={() => onOpen(certificate)}
+        aria-label={certificate.aria}
+      >
+        <img src={asset(certificate.image)} alt={certificate.alt} loading="lazy" />
+        <span className="cert-thumb-hint">
+          <i className="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+          View full size
+        </span>
+      </button>
+
+      <div className="cert-body">
+        <div className="cert-meta">
+          <span className={`cert-issuer${isFeatured ? " is-google" : ""}`}>
+            {isFeatured ? <GoogleMark className="is-sm" /> : null}
+            {certificate.issuer}
+          </span>
+          <span className="cert-type">
+            {certificate.type}
+            {certificate.date ? ` · ${certificate.date}` : ""}
+          </span>
+        </div>
+
+        <h3>{certificate.title}</h3>
+        <p>{certificate.copy}</p>
+
+        {certificate.skills ? (
+          <div className="chip-row">
+            {certificate.skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
+        ) : null}
+
+        <div className="cert-actions">
+          <button
+            type="button"
+            className="btn btn-ghost btn-sm"
+            onClick={() => onOpen(certificate)}
+          >
+            <i className="bi bi-eye" aria-hidden="true"></i>
+            <span>Preview</span>
+          </button>
+
+          {certificate.credentialUrl ? (
+            <a
+              className="btn btn-primary btn-sm"
+              href={certificate.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="bi bi-patch-check" aria-hidden="true"></i>
+              <span>Verify credential</span>
+            </a>
+          ) : null}
+
+          {certificate.file ? (
+            <a
+              className="btn btn-ghost btn-sm"
+              href={asset(certificate.file)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="bi bi-filetype-pdf" aria-hidden="true"></i>
+              <span>PDF</span>
+            </a>
+          ) : null}
+        </div>
+
+        {certificate.credentialId ? (
+          <p className="cert-credential">
+            Credential ID <strong>{certificate.credentialId}</strong>
+            {certificate.date ? ` · Issued ${certificate.date}` : ""}
+          </p>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
 function App() {
-  const [expanded, setExpanded] = useState(false);
+  const navRef = useRef(null);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeCertificate, setActiveCertificate] = useState(0);
-  const [quickMessage, setQuickMessage] = useState({
-    name: "",
-    message: "",
-  });
+  const [progress, setProgress] = useState(0);
+  const [lightbox, setLightbox] = useState(null);
+  const [activeShowcase, setActiveShowcase] = useState(SHOWCASES[0].id);
+  const [quickMessage, setQuickMessage] = useState({ name: "", message: "" });
   const [messageStatus, setMessageStatus] = useState({
     text: "",
     type: "",
     sending: false,
   });
 
+  const primaryResume = useMemo(
+    () => RESUMES.find((resume) => resume.primary),
+    [],
+  );
+  const targetedResumes = useMemo(
+    () => RESUMES.filter((resume) => !resume.primary),
+    [],
+  );
+  const featuredCertificate = useMemo(
+    () => CERTIFICATES.find((certificate) => certificate.featured),
+    [],
+  );
+  const otherCertificates = useMemo(
+    () => CERTIFICATES.filter((certificate) => !certificate.featured),
+    [],
+  );
+  const showcase = useMemo(
+    () => SHOWCASES.find((item) => item.id === activeShowcase) || SHOWCASES[0],
+    [activeShowcase],
+  );
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = Array.from(
-        document.querySelectorAll("main section[id]"),
+      const sections = Array.from(document.querySelectorAll("main section[id]"));
+      const offset = window.scrollY + 180;
+      const currentSection = sections.reduce(
+        (currentId, section) =>
+          offset >= section.offsetTop ? section.id : currentId,
+        sections[0]?.id || "home",
       );
-      const offset = window.scrollY + 160;
-      const currentSection = sections.reduce((currentId, section) => {
-        if (offset >= section.offsetTop) {
-          return section.id;
-        }
 
-        return currentId;
-      }, sections[0]?.id || "home");
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
 
       setActiveSection(currentSection);
       setIsScrolled(window.scrollY > 12);
-    };
-
-    const handleResize = () => {
-      if (window.innerWidth > 991) {
-        setExpanded(false);
-      }
+      setProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("nav-open", expanded);
+    if (!window.matchMedia("(max-width: 1100px)").matches) {
+      return;
+    }
 
-    return () => {
-      document.body.classList.remove("nav-open");
+    const activeLink = navRef.current?.querySelector(
+      `[data-nav-id="${activeSection}"]`,
+    );
+
+    activeLink?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeSection]);
+
+  useEffect(() => {
+    document.body.classList.toggle("is-locked", Boolean(lightbox));
+
+    return () => document.body.classList.remove("is-locked");
+  }, [lightbox]);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => {
+    if (!lightbox) {
+      return undefined;
+    }
+
+    const handleKey = (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
     };
-  }, [expanded]);
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
 
   const handleQuickMessageSubmit = async (event) => {
     event.preventDefault();
@@ -146,18 +313,12 @@ function App() {
       return;
     }
 
-    setMessageStatus({
-      text: "Sending...",
-      type: "",
-      sending: true,
-    });
+    setMessageStatus({ text: "Sending...", type: "", sending: true });
 
     try {
       const response = await fetch(TELEGRAM_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, message }),
       });
 
@@ -165,12 +326,9 @@ function App() {
         throw new Error("Failed to send");
       }
 
-      setQuickMessage({
-        name: "",
-        message: "",
-      });
+      setQuickMessage({ name: "", message: "" });
       setMessageStatus({
-        text: "Message sent.",
+        text: "Message sent. I will reply by email shortly.",
         type: "is-success",
         sending: false,
       });
@@ -184,789 +342,774 @@ function App() {
   };
 
   const currentYear = new Date().getFullYear();
-  const primaryResume = RESUMES.find((resume) => resume.primary);
-  const targetedResumes = RESUMES.filter((resume) => !resume.primary);
 
   return (
-    <>
+    <div className="app-shell">
+      <a className="skip-link" href="#snapshot">
+        Skip to hiring snapshot
+      </a>
+
       <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
-        <Container fluid className="container-shell">
-          <Navbar
-            expand="lg"
-            expanded={expanded}
-            className="site-nav"
-            onToggle={(nextExpanded) => setExpanded(nextExpanded)}
+        <div className="scroll-progress" style={{ width: `${progress}%` }} />
+
+        <div className="shell header-inner">
+          <a className="brand" href="#home">
+            <span className="brand-badge">WH</span>
+            <span className="brand-text">
+              <strong>{PROFILE.name}</strong>
+              <span>{PROFILE.role}</span>
+            </span>
+          </a>
+
+          <nav
+            ref={navRef}
+            id="primary-nav"
+            className="primary-nav"
+            aria-label="Primary"
           >
-            <Navbar.Brand className="brand-mark" href="#home">
-              <span className="brand-dot" aria-hidden="true"></span>
-              <span className="brand-name">
-                <span className="brand-name-main">Wai Hyn</span>
-                <span className="brand-name-accent">Htun</span>
-              </span>
-            </Navbar.Brand>
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                data-nav-id={item.id}
+                href={`#${item.id}`}
+                className={[
+                  "nav-link",
+                  item.accent ? "is-accent" : "",
+                  activeSection === item.id ? "is-active" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-            <Navbar.Toggle
-              aria-controls="nav-panel"
-              aria-label="Open navigation"
-              className="nav-toggle"
-            >
-              <span></span>
-              <span></span>
-            </Navbar.Toggle>
-
-            <Navbar.Collapse id="nav-panel" className="nav-panel">
-              <Nav className="ms-auto nav-links">
-                {NAV_ITEMS.map((item) => (
-                  <Nav.Link
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className={[
-                      "nav-link",
-                      item.accent ? "nav-link-accent" : "",
-                      activeSection === item.id ? "is-active" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={() => setExpanded(false)}
-                  >
-                    {item.label}
-                  </Nav.Link>
-                ))}
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </Container>
+          <a
+            className="btn btn-primary btn-sm nav-cta"
+            href={asset(primaryResume.file)}
+            download={primaryResume.downloadName}
+          >
+            <i className="bi bi-download" aria-hidden="true"></i>
+            <span>Resume</span>
+          </a>
+        </div>
       </header>
 
       <main className="site-main">
-        <section id="home" className="hero-section">
-          <Container fluid className="container-shell">
-            <Row className="hero-row align-items-start g-4 g-xl-5">
-              <Col lg={7}>
-                <Reveal className="hero-copy">
-                  <p className="eyebrow">
-                    Python/Django · React.js · TypeScript · React Native · Node.js
-                  </p>
-                  <h1 className="hero-title">Senior Full Stack Developer</h1>
-                  <p className="hero-lead">
-                    I build, scale, and maintain production web and mobile
-                    systems using Python/Django, React.js, TypeScript, Node.js,
-                    React Native, and Laravel/PHP.
-                  </p>
-                  <p className="hero-lead hero-lead-secondary">
-                    I have 12+ years of experience across backend APIs,
-                    frontend systems, database performance, API security,
-                    mobile app releases, CI/CD, OpenAI API integration, and
-                    production incident response.
-                  </p>
+        {/* ---------------- HERO ---------------- */}
+        <section id="home" className="hero">
+          <div className="hero-glow" aria-hidden="true" />
+          <div className="hero-grid-lines" aria-hidden="true" />
 
-                  <div className="hero-signal-grid" aria-label="Profile summary">
-                    <div>
-                      <span>Current focus</span>
-                      <strong>Senior full-stack and backend roles</strong>
-                    </div>
-                    <div>
-                      <span>Core work</span>
-                      <strong>Architecture, performance, and reliability</strong>
-                    </div>
-                    <div>
-                      <span>Availability</span>
-                      <strong>Bangkok / SEA / Remote</strong>
-                    </div>
-                  </div>
-
-                  <div className="hero-actions">
-                    <a className="button button-primary" href="#experience">
-                      <i className="bi bi-briefcase"></i>
-                      <span>View Experience</span>
-                    </a>
-                    <a
-                      className="button button-secondary"
-                      href={asset(primaryResume.file)}
-                      download={primaryResume.downloadName}
-                      aria-label="Download Senior Full Stack Developer resume"
-                    >
-                      <i className="bi bi-download"></i>
-                      <span>Download Resume</span>
-                    </a>
-                    <a className="button button-secondary" href="#projects">
-                      <i className="bi bi-grid-1x2"></i>
-                      <span>View Projects</span>
-                    </a>
-                  </div>
-
-                  <div className="hero-credentials">
-                    <article className="hero-credential">
-                      <p className="panel-label">Role focus</p>
-                      <p>
-                        Senior full-stack, backend, frontend, and technical
-                        lead roles where architecture, production ownership,
-                        and practical delivery matter.
-                      </p>
-                    </article>
-                    <article className="hero-credential">
-                      <p className="panel-label">Current base</p>
-                      <p>
-                        Based in Bangkok, Thailand. Open to Singapore/SEA
-                        relocation and remote global engagement, with weekday
-                        interviews after 6 PM ICT.
-                      </p>
-                    </article>
-                  </div>
-                </Reveal>
-              </Col>
-
-              <Col lg={5}>
-                <Reveal as="aside" className="hero-panel">
-                  <div className="profile-card">
-                    <img
-                      src={asset("profile.jpg")}
-                      alt="Portrait of Wai Hyn Htun"
-                    />
-                    <div className="profile-copy">
-                      <p className="panel-label">Based in Bangkok, Thailand</p>
-                      <h2>Wai Hyn Htun</h2>
-                      <p>
-                        Senior Full Stack Developer with production experience
-                        across social impact, travel, mobility, and enterprise
-                        platforms.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="metric-grid">
-                    {METRICS.map((metric) => (
-                      <article key={metric.value} className="metric-card">
-                        <span className="metric-value">{metric.value}</span>
-                        <p className="metric-copy">{metric.copy}</p>
-                      </article>
-                    ))}
-                  </div>
-
-                  <div className="hero-panel-foot">
-                    <p className="panel-label">Selected proof points</p>
-                    <ul
-                      className="hero-points"
-                      aria-label="Professional highlights"
-                    >
-                      {HERO_POINTS.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
-        <section className="trust-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Working Profile</p>
-              <h2>Practical engineering for production product teams.</h2>
-              <p className="section-copy">
-                I work across backend APIs, frontend applications, mobile
-                support, database performance, API security, CI/CD, and
-                production incident response.
+          <div className="shell hero-inner">
+            <Reveal className="hero-copy">
+              <p className="status-pill">
+                <span className="status-dot" aria-hidden="true" />
+                Open to technical lead and senior full-stack roles
               </p>
+
+              <h1 className="hero-title">
+                I build <span className="hl-python">Python</span> platforms that{" "}
+                <span className="hl-count">50,000+</span> people rely on.
+              </h1>
+
+              <p className="hero-lead">
+                Technical lead and hands-on full-stack developer with 12+ years
+                delivering internal platforms, secure APIs, workflow automation,
+                and high-traffic products.
+              </p>
+
+              <p className="hero-sub">
+                Python/Django and React/TypeScript are my core stack. I take work
+                from requirements and system design through testing, release,
+                documentation, and production support.
+              </p>
+
+              <div className="hero-stack" aria-label="Primary technologies">
+                {HERO_STACK.map((tech) => (
+                  <span key={tech}>{tech}</span>
+                ))}
+              </div>
+
+              <div className="hero-actions">
+                <a
+                  className="btn btn-primary"
+                  href={asset(primaryResume.file)}
+                  download={primaryResume.downloadName}
+                >
+                  <i className="bi bi-download" aria-hidden="true"></i>
+                  <span>Technical Lead Resume</span>
+                </a>
+                <a className="btn btn-outline" href="#experience">
+                  <i className="bi bi-briefcase" aria-hidden="true"></i>
+                  <span>View Experience</span>
+                </a>
+                <a className="btn btn-ghost" href="#contact">
+                  <i className="bi bi-send" aria-hidden="true"></i>
+                  <span>Contact Me</span>
+                </a>
+              </div>
             </Reveal>
 
-            <Reveal className="section-card-grid section-card-grid-3">
+            <Reveal as="aside" className="hero-card">
+              <div className="hero-card-top">
+                <img
+                  className="hero-avatar"
+                  src={asset("profile.jpg")}
+                  alt={`Portrait of ${PROFILE.name}`}
+                />
+                <div>
+                  <h2>{PROFILE.name}</h2>
+                  <p className="hero-card-role">{PROFILE.subRole}</p>
+                  <p className="hero-card-loc">
+                    <i className="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    {PROFILE.location}
+                  </p>
+                </div>
+              </div>
+
+              <ul className="hero-points">
+                {HERO_POINTS.map((point) => (
+                  <li key={point}>
+                    <i className="bi bi-check2" aria-hidden="true"></i>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {featuredCertificate?.credentialUrl ? (
+                <a
+                  className="hero-credential"
+                  href={featuredCertificate.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GoogleMark />
+                  <span className="hero-credential-text">
+                    <strong>{featuredCertificate.issuer}-verified Python credential</strong>
+                    <span>
+                      {featuredCertificate.title} · ID {featuredCertificate.credentialId}
+                    </span>
+                  </span>
+                  <i className="bi bi-patch-check-fill" aria-hidden="true"></i>
+                </a>
+              ) : null}
+
+              <div className="hero-card-links">
+                <a href={`mailto:${PROFILE.email}`}>
+                  <i className="bi bi-envelope-fill" aria-hidden="true"></i>
+                  Email
+                </a>
+                <a
+                  href={PROFILE.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-linkedin" aria-hidden="true"></i>
+                  LinkedIn
+                </a>
+                <a
+                  href={PROFILE.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-github" aria-hidden="true"></i>
+                  GitHub
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="shell">
+            <Reveal className="metric-strip">
+              {METRICS.map((metric) => (
+                <article key={metric.unit} className="metric">
+                  <p className="metric-value">{metric.value}</p>
+                  <p className="metric-unit">{metric.unit}</p>
+                  <p className="metric-copy">{metric.copy}</p>
+                </article>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ---------------- HIRING SNAPSHOT ---------------- */}
+        <section id="snapshot" className="section section-snapshot">
+          <div className="shell">
+            <SectionHeading
+              index="01"
+              kicker="Role fit"
+              title="Built for complex, business-critical work."
+              copy="A concise view of the experience, delivery scope, and working style I bring."
+            />
+
+            <Reveal className="snapshot-grid">
+              {HIRING_SNAPSHOT.map((item) => (
+                <article key={item.label} className="snapshot-card">
+                  <span className="snapshot-icon">
+                    <i className={`bi ${item.icon}`} aria-hidden="true"></i>
+                  </span>
+                  <p className="snapshot-label">{item.label}</p>
+                  <p className="snapshot-value">{item.value}</p>
+                  <p className="snapshot-note">{item.note}</p>
+                </article>
+              ))}
+            </Reveal>
+
+            <Reveal className="trust-row">
               {TRUST_ITEMS.map((item) => (
-                <article key={item.title} className="value-card">
-                  <span className="card-icon">
-                    <i className={`bi ${item.icon}`}></i>
+                <article key={item.title} className="trust-card">
+                  <span className="trust-icon">
+                    <i className={`bi ${item.icon}`} aria-hidden="true"></i>
                   </span>
                   <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                 </article>
               ))}
             </Reveal>
-          </Container>
+          </div>
         </section>
 
-        <section id="about" className="about-section">
-          <Container fluid className="container-shell">
-            <Row className="g-4 g-xl-5 align-items-start">
-              <Col lg={5}>
-                <Reveal className="section-header section-header-left">
-                  <p className="section-kicker">About</p>
-                  <h2>Senior Full Stack Developer based in Bangkok.</h2>
-                  <p className="section-copy">
-                    I am a Senior Full Stack Developer based in Bangkok,
-                    Thailand, with 12+ years of experience across social
-                    impact, travel, mobility, and enterprise platforms.
-                  </p>
-                  <p className="section-copy">
-                    My work usually involves architecture, backend APIs,
-                    frontend applications, database performance, secure auth
-                    flows, inherited system modernization, mobile release
-                    ownership, and production support.
-                  </p>
-                </Reveal>
+        {/* ---------------- CORE STACK ---------------- */}
+        <section id="stack" className="section section-stack">
+          <div className="shell">
+            <SectionHeading
+              index="02"
+              kicker="Technical expertise"
+              title="Hands-on across application, data, and delivery."
+              copy="Focused on the tools and practices I use in real production systems."
+            />
 
-                <Reveal className="about-panel">
-                  <p className="panel-label">Working style</p>
-                  <ul className="detail-list">
-                    <li>
-                      Understand the existing system before changing it.
-                    </li>
-                    <li>
-                      Improve performance and security through practical,
-                      measurable steps.
-                    </li>
-                    <li>
-                      Communicate clearly with engineers, managers, HR, and
-                      product stakeholders.
-                    </li>
-                  </ul>
-                </Reveal>
-              </Col>
-
-              <Col lg={7}>
-                <Reveal className="story-grid">
-                  {STORY_ITEMS.map((item) => (
-                    <article key={item.title} className="story-card">
-                      <p className="panel-label">{item.label}</p>
-                      <h3>{item.title}</h3>
-                      <p>{item.copy}</p>
-                    </article>
-                  ))}
-                </Reveal>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
-        <section id="work" className="work-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Selected Work</p>
-              <h2>Production work across product platforms.</h2>
-              <p className="section-copy">
-                These examples focus on responsibilities recruiters and hiring
-                managers usually need to understand quickly.
-              </p>
+            <Reveal className="stack-grid">
+              {CORE_STACK.map((item) => (
+                <article
+                  key={item.name}
+                  className={`stack-card${item.lead ? " is-lead" : ""}`}
+                >
+                  <div className="stack-head">
+                    <span className="stack-icon">
+                      <i className={`bi ${item.icon}`} aria-hidden="true"></i>
+                    </span>
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p className="stack-meta">
+                        <span
+                          className={`level-badge${item.lead ? " is-lead" : ""}`}
+                        >
+                          {item.level}
+                        </span>
+                        <span>{item.years}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <p className="stack-copy">{item.copy}</p>
+                  <div className="chip-row">
+                    {item.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
             </Reveal>
 
-            <Reveal className="work-grid">
-              {WORK_ITEMS.map((item) => (
-                <article
-                  key={item.title}
-                  className={`case-study${item.featured ? " is-featured" : ""}`}
-                >
-                  <div className="case-study-head">
-                    <div>
-                      <p className="work-tag">{item.tag}</p>
-                      <h3>{item.title}</h3>
+            <Reveal className="skills-panel">
+              <p className="panel-label">Supporting capabilities</p>
+              <div className="skills-grid">
+                {SKILL_GROUPS.map((group) => (
+                  <div key={group.title} className="skill-group">
+                    <h4>
+                      <i className={`bi ${group.icon}`} aria-hidden="true"></i>
+                      {group.title}
+                    </h4>
+                    <div className="chip-row">
+                      {group.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
                     </div>
-                    {item.impact ? <p className="impact-pill">{item.impact}</p> : null}
                   </div>
-                  <p className="case-study-body">{item.body}</p>
-                  <ul className="detail-list">
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ---------------- EXPERIENCE ---------------- */}
+        <section id="experience" className="section section-experience">
+          <div className="shell">
+            <SectionHeading
+              index="03"
+              kicker="Experience"
+              title="A clear record of increasing ownership."
+              copy="12+ years across social impact, mobility, travel, and business software."
+            />
+
+            <div className="timeline">
+              {EXPERIENCES.map((experience) => (
+                <Reveal
+                  as="article"
+                  key={experience.company}
+                  className={`timeline-item${experience.current ? " is-current" : ""}`}
+                >
+                  <div className="timeline-marker" aria-hidden="true">
+                    <span />
+                  </div>
+
+                  <div className="timeline-card">
+                    <div className="timeline-head">
+                      <div>
+                        <h3>{experience.role}</h3>
+                        <p className="timeline-company">{experience.company}</p>
+                      </div>
+                      <p className="timeline-period">
+                        {experience.current ? (
+                          <span className="current-tag">Current</span>
+                        ) : null}
+                        {experience.period}
+                      </p>
+                    </div>
+
+                    <p className="timeline-copy">{experience.copy}</p>
+
+                    <ul className="bullet-list">
+                      {experience.list.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+
+                    <div className="chip-row">
+                      {experience.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                    {experience.companyUrl ? (
+                      <a
+                        className="text-link"
+                        href={experience.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {experience.companyLinkLabel}
+                        <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
+                      </a>
+                    ) : null}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------- SELECTED WORK ---------------- */}
+        <section id="work" className="section section-work">
+          <div className="shell">
+            <SectionHeading
+              index="04"
+              kicker="Selected impact"
+              title="What I will bring to the team."
+              copy="Direct evidence across architecture, automation, engineering quality, and production delivery."
+            />
+
+            <div className="work-grid">
+              {WORK_ITEMS.map((item) => (
+                <Reveal
+                  as="article"
+                  key={item.title}
+                  className={`work-card${item.featured ? " is-featured" : ""}`}
+                >
+                  <div className="work-head">
+                    <p className="work-tag">{item.tag}</p>
+                    <p className="work-impact">{item.impact}</p>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="work-body">{item.body}</p>
+                  <ul className="bullet-list">
                     {item.list.map((point) => (
                       <li key={point}>{point}</li>
                     ))}
                   </ul>
-                </article>
+                  {item.url ? (
+                    <a
+                      className="text-link"
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.urlLabel}
+                      <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                  ) : null}
+                </Reveal>
               ))}
-            </Reveal>
-          </Container>
+            </div>
+          </div>
         </section>
 
-        <section id="experience" className="experience-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Experience</p>
-              <h2>Company-by-company responsibilities.</h2>
-            </Reveal>
+        {/* ---------------- CERTIFICATES ---------------- */}
+        <section id="certificates" className="section section-certificates">
+          <div className="shell">
+            <SectionHeading
+              index="05"
+              kicker="Credentials"
+              title="Qualifications with visible proof."
+              copy="Professional training and academic records are available in full; the Google Python credential is independently verifiable."
+            />
 
-            <Reveal className="section-card-grid section-card-grid-2">
-              {EXPERIENCES.map((experience) => (
-                <article key={experience.company} className="timeline-card">
-                  <div className="timeline-meta">
-                    <p className="timeline-period">{experience.period}</p>
-                    <p className="timeline-role">{experience.role}</p>
-                  </div>
-                  <h3>{experience.company}</h3>
-                  <p>{experience.copy}</p>
-                  <ul className="detail-list">
-                    {experience.list.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className="tag-row">
-                    {experience.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </article>
+            {featuredCertificate ? (
+              <Reveal className="cert-featured-wrap">
+                <p className="featured-flag">
+                  <i className="bi bi-star-fill" aria-hidden="true"></i>
+                  Featured credential — issued by Google
+                </p>
+                <CertificateCard
+                  certificate={featuredCertificate}
+                  onOpen={setLightbox}
+                />
+              </Reveal>
+            ) : null}
+
+            <Reveal className="cert-grid">
+              {otherCertificates.map((certificate) => (
+                <CertificateCard
+                  key={certificate.id}
+                  certificate={certificate}
+                  onOpen={setLightbox}
+                />
               ))}
             </Reveal>
-          </Container>
+          </div>
         </section>
 
-        <section id="skills" className="capabilities-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Skills</p>
-              <h2>Grouped by day-to-day engineering use.</h2>
-            </Reveal>
+        {/* ---------------- LIVE PRODUCTS ---------------- */}
+        <section id="showcase" className="section section-showcase">
+          <div className="shell">
+            <SectionHeading
+              index="06"
+              kicker="Production portfolio"
+              title="Live systems, including CASCADE."
+              copy="Public products that show the environments and workflows behind my experience."
+            />
 
-            <Reveal className="section-card-grid section-card-grid-3">
-              {SKILL_GROUPS.map((group) => (
-                <article key={group.title} className="capability-card skill-card">
-                  <span className="card-icon">
-                    <i className={`bi ${group.icon}`}></i>
-                  </span>
-                  <div className="tag-row">
-                    <h3>{group.title}</h3>
-                    {group.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </article>
+            <Reveal className="showcase-tabs" role="tablist" aria-label="Live products">
+              {SHOWCASES.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={item.id === showcase.id}
+                  className={`showcase-tab${item.id === showcase.id ? " is-active" : ""}`}
+                  onClick={() => setActiveShowcase(item.id)}
+                >
+                  <i
+                    className={`bi ${item.type === "mobile" ? "bi-phone" : "bi-display"}`}
+                    aria-hidden="true"
+                  ></i>
+                  <span>{item.title}</span>
+                </button>
               ))}
             </Reveal>
-          </Container>
-        </section>
 
-        <section id="projects" className="projects-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Projects</p>
-              <h2>Practical project work.</h2>
-              <p className="section-copy">
-                These summaries describe the kind of implementation and
-                maintenance work I handled across recent roles.
-              </p>
-            </Reveal>
-
-            <Reveal className="project-summary-grid">
-              {PROJECTS.map((project) => (
-                <article key={project.title} className="project-card">
-                  <div className="project-head">
-                    <span className="card-icon">
-                      <i className={`bi ${project.icon}`}></i>
-                    </span>
-                    <p className="panel-label">{project.label}</p>
+            <Reveal className="showcase-panel">
+              <div className={`device device-${showcase.type}`}>
+                {showcase.type === "mobile" ? (
+                  <div className="phone-frame">
+                    <div className="phone-island" aria-hidden="true" />
+                    <div className="phone-screen">
+                      <iframe
+                        key={showcase.id}
+                        src={showcase.frameUrl}
+                        title={showcase.frameTitle}
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                      />
+                    </div>
+                    <div className="phone-bar" aria-hidden="true" />
                   </div>
-                  <div className="project-copy">
-                    <h3>{project.title}</h3>
-                    <p>{project.copy}</p>
-                    <ul className="detail-list">
-                      {project.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
+                ) : (
+                  <div className="laptop-frame">
+                    <div className="laptop-lid">
+                      <div className="laptop-screen">
+                        <iframe
+                          key={showcase.id}
+                          src={showcase.frameUrl}
+                          title={showcase.frameTitle}
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                        />
+                      </div>
+                    </div>
+                    <div className="laptop-base" aria-hidden="true" />
                   </div>
-                </article>
-              ))}
-            </Reveal>
-          </Container>
-        </section>
+                )}
+              </div>
 
-        <section id="resume" className="resume-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Resume</p>
-              <h2>Choose the resume version that fits the role.</h2>
-              <p className="section-copy">
-                I maintain different resume versions for different hiring
-                needs. For most opportunities, please use my Senior Full Stack
-                Developer resume. For specialized roles, you can download a
-                targeted version below.
-              </p>
-            </Reveal>
-
-            <Reveal className="resume-layout">
-              <article className="resume-card resume-card-primary">
-                <div>
-                  <p className="panel-label">Recommended resume</p>
-                  <h3>{primaryResume.title}</h3>
-                  <p>{primaryResume.description}</p>
+              <div className="showcase-copy">
+                <p className="panel-label">{showcase.label}</p>
+                <h3>{showcase.title}</h3>
+                <p>{showcase.copy}</p>
+                <div className="chip-row">
+                  {showcase.stack.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
                 </div>
                 <a
-                  className="button button-primary"
-                  href={asset(primaryResume.file)}
-                  download={primaryResume.downloadName}
-                  aria-label={`Download ${primaryResume.title}`}
+                  className="btn btn-primary"
+                  href={showcase.frameUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <i className="bi bi-download"></i>
-                  <span>{primaryResume.buttonText}</span>
+                  <i className="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                  <span>{showcase.cta}</span>
                 </a>
-              </article>
-
-              <div className="resume-grid">
-                {targetedResumes.map((resume) => (
-                  <article key={resume.title} className="resume-card">
-                    <div>
-                      <h3>{resume.title}</h3>
-                      <p>{resume.description}</p>
-                    </div>
-                    <a
-                      className="button button-secondary"
-                      href={asset(resume.file)}
-                      download={resume.downloadName}
-                      aria-label={`Download ${resume.title}`}
-                    >
-                      <i className="bi bi-download"></i>
-                      <span>{resume.buttonText}</span>
-                    </a>
-                  </article>
-                ))}
               </div>
             </Reveal>
-          </Container>
-        </section>
 
-        <section id="certificates" className="certificates-section">
-          <Container fluid className="container-shell">
-            <Reveal className="certificates-shell">
-              <div className="certificates-top">
-                <div className="section-header section-header-left section-header-tight">
-                  <p className="section-kicker">Certificates</p>
-                  <h2>Verified training records and academic documents.</h2>
-                  <p className="section-copy">
-                    The archive is presented as a proper slider for quick
-                    review. Open any record in full size when you need the
-                    original scan.
-                  </p>
-                </div>
-
-                <div
-                  className="certificate-counter"
-                  role="status"
-                  aria-live="polite"
-                >
-                  <span>{String(activeCertificate + 1).padStart(2, "0")}</span>
-                  <span className="certificate-counter-divider"></span>
-                  <span>{String(CERTIFICATES.length).padStart(2, "0")}</span>
-                </div>
-              </div>
-
-              <Swiper
-                className="certificate-swiper"
-                modules={[A11y, Keyboard, Navigation, Pagination]}
-                navigation
-                pagination={{ clickable: true }}
-                keyboard={{ enabled: true }}
-                spaceBetween={21}
-                slidesPerView={1}
-                onSlideChange={(swiper) =>
-                  setActiveCertificate(swiper.activeIndex)
-                }
-              >
-                {CERTIFICATES.map((certificate) => (
-                  <SwiperSlide key={certificate.title}>
-                    <article className="certificate-slide">
-                      <a
-                        className="certificate-media"
-                        href={asset(certificate.image)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={certificate.aria}
-                      >
-                        <img
-                          src={asset(certificate.image)}
-                          alt={certificate.alt}
-                          loading="lazy"
-                        />
-                      </a>
-                      <div className="certificate-copy">
-                        <div>
-                          <p className="panel-label">{certificate.type}</p>
-                          <h3>{certificate.title}</h3>
-                          <p>{certificate.copy}</p>
-                        </div>
-                        <a
-                          className="button button-secondary"
-                          href={asset(certificate.image)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span>Open Record</span>
-                          <i className="bi bi-box-arrow-up-right"></i>
-                        </a>
-                      </div>
-                    </article>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Reveal>
-          </Container>
-        </section>
-
-        <section id="showcase" className="showcase-section">
-          <Container fluid className="container-shell">
-            <Reveal className="section-header">
-              <p className="section-kicker">Live Products</p>
-              <h2>Live product examples with real delivery context.</h2>
-              <p className="section-copy">
-                The live examples stay one at a time so each product remains
-                readable, responsive, and easy to review across screen sizes.
-              </p>
-            </Reveal>
-
-            <Reveal>
-              <Swiper
-                className="section-swiper section-swiper-detail"
-                modules={SLIDER_MODULES}
-                navigation
-                pagination={{ clickable: true }}
-                keyboard={{ enabled: true }}
-                grabCursor
-                spaceBetween={21}
-                slidesPerView={1}
-              >
-                {SHOWCASES.map((showcase) => (
-                  <SwiperSlide key={showcase.title}>
-                    <article className="showcase-card showcase-card-single">
-                      <div className="showcase-device">
-                        {showcase.type === "mobile" ? (
-                          <div className="showcase-mobile-wrap">
-                            <div className="iphone-frame iphone-frame-showcase">
-                              <div className="iphone-notch">
-                                <div className="iphone-dynamic-island"></div>
-                              </div>
-                              <div className="iphone-screen">
-                                <iframe
-                                  src={showcase.frameUrl}
-                                  title={showcase.frameTitle}
-                                  loading="lazy"
-                                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                                ></iframe>
-                              </div>
-                              <div className="iphone-home-bar"></div>
-                              <div className="iphone-button iphone-button-power"></div>
-                              <div className="iphone-button iphone-button-vol-up"></div>
-                              <div className="iphone-button iphone-button-vol-down"></div>
-                            </div>
-                            <p className="device-caption">{showcase.note}</p>
-                          </div>
-                        ) : (
-                          <div className="macbook-frame">
-                            <div className="macbook-lid">
-                              <div className="macbook-bezel">
-                                <div className="macbook-camera"></div>
-                                <div className="macbook-viewport">
-                                  <iframe
-                                    src={showcase.frameUrl}
-                                    title={showcase.frameTitle}
-                                    loading="lazy"
-                                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                                  ></iframe>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="macbook-base">
-                              <div className="macbook-notch"></div>
-                            </div>
-                            <div className="macbook-bottom"></div>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="showcase-copy">
-                        <p className="panel-label">{showcase.label}</p>
-                        <h3>{showcase.title}</h3>
-                        <p>{showcase.copy}</p>
-                        <a
-                          className="button button-primary"
-                          href={showcase.frameUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className="bi bi-box-arrow-up-right"></i>
-                          <span>{showcase.cta}</span>
-                        </a>
-                      </div>
-                    </article>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Reveal>
-
-            <Reveal className="confidential-panel">
-              <div className="confidential-mark">
-                <i className="bi bi-shield-lock"></i>
-              </div>
+            <Reveal className="nda-panel">
+              <span className="nda-icon">
+                <i className="bi bi-shield-lock" aria-hidden="true"></i>
+              </span>
               <div>
                 <p className="panel-label">Additional enterprise work</p>
                 <h3>Internal software shipped under NDA.</h3>
                 <p>
                   I have also built internal platforms for inventory management,
                   stock control, KPI reporting, HR workflows, and operational
-                  dashboards. The product details are confidential, but the work
+                  dashboards. Product details are confidential, but the work
                   involved real production maintenance and business workflows.
                 </p>
-                <div className="tag-row">
+                <div className="chip-row">
                   {CONFIDENTIAL_TAGS.map((tag) => (
                     <span key={tag.label}>
-                      <i className={`bi ${tag.icon}`}></i>
+                      <i className={`bi ${tag.icon}`} aria-hidden="true"></i>
                       {tag.label}
                     </span>
                   ))}
                 </div>
               </div>
             </Reveal>
-          </Container>
+          </div>
         </section>
 
-        <section id="contact" className="contact-section">
-          <Container fluid className="container-shell">
-            <Row className="g-4 g-xl-5 align-items-start">
-              <Col lg={7}>
-                <Reveal className="section-header section-header-left section-header-tight">
-                  <p className="section-kicker">Contact</p>
-                  <h2>Contact</h2>
-                  <p className="section-copy">
-                    I am open to senior full-stack, backend, frontend, and
-                    technical lead opportunities, including Singapore/SEA
-                    relocation and remote global engagement.
-                  </p>
-                  <p className="section-copy">
-                    For work opportunities, collaboration, or technical
-                    discussions, feel free to contact me.
-                  </p>
-                </Reveal>
+        {/* ---------------- RESUME ---------------- */}
+        <section id="resume" className="section section-resume">
+          <div className="shell">
+            <SectionHeading
+              index="07"
+              kicker="Resume"
+              title="Start with the Technical Lead resume."
+              copy="Role-specific versions are also available for deeper technical screening."
+            />
 
-                <Reveal className="contact-actions">
-                  <a
-                    className="button button-primary"
-                    href="mailto:waihynhtun90s@gmail.com"
-                  >
-                    <i className="bi bi-envelope"></i>
-                    <span>Email Me</span>
-                  </a>
-                  <a
-                    className="button button-secondary"
-                    href="https://linkedin.com/in/waihynhtun"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="bi bi-linkedin"></i>
-                    <span>View LinkedIn</span>
-                  </a>
-                  <a
-                    className="button button-secondary"
-                    href="https://github.com/kamkyi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="bi bi-github"></i>
-                    <span>View GitHub</span>
-                  </a>
-                  <a
-                    className="button button-secondary"
-                    href={asset(primaryResume.file)}
-                    download={primaryResume.downloadName}
-                    aria-label="Download Senior Full Stack Developer resume"
-                  >
-                    <i className="bi bi-download"></i>
-                    <span>Download Resume</span>
-                  </a>
-                </Reveal>
+            <Reveal className="resume-primary">
+              <div>
+                <p className="panel-label">Recommended</p>
+                <h3>{primaryResume.title}</h3>
+                <p>{primaryResume.description}</p>
+              </div>
+              <a
+                className="btn btn-primary btn-lg"
+                href={asset(primaryResume.file)}
+                download={primaryResume.downloadName}
+              >
+                <i className="bi bi-download" aria-hidden="true"></i>
+                <span>{primaryResume.buttonText}</span>
+              </a>
+            </Reveal>
 
-                <Reveal
-                  as="form"
-                  className="contact-form"
-                  onSubmit={handleQuickMessageSubmit}
-                >
-                  <label className="panel-label" htmlFor="quick-message-name">
-                    Send a direct message
-                  </label>
-                  <input
-                    id="quick-message-name"
-                    name="name"
-                    type="text"
-                    required
-                    maxLength="100"
-                    placeholder="Your name"
-                    value={quickMessage.name}
-                    onChange={(event) =>
-                      setQuickMessage((current) => ({
-                        ...current,
-                        name: event.target.value,
-                      }))
-                    }
-                  />
-                  <textarea
-                    id="quick-message-input"
-                    name="quick-message"
-                    rows="4"
-                    required
-                    maxLength="1200"
-                    placeholder="Share the role, team scope, and preferred timeline."
-                    value={quickMessage.message}
-                    onChange={(event) =>
-                      setQuickMessage((current) => ({
-                        ...current,
-                        message: event.target.value,
-                      }))
-                    }
-                  ></textarea>
-                  <div className="contact-form-footer">
-                    <button
-                      className="button button-primary"
-                      type="submit"
-                      disabled={messageStatus.sending}
-                    >
-                      <i className="bi bi-send"></i>
-                      <span>Send Message</span>
-                    </button>
-                    <p
-                      className={`contact-message-status ${messageStatus.type}`.trim()}
-                    >
-                      {messageStatus.text}
-                    </p>
+            <Reveal className="resume-grid">
+              {targetedResumes.map((resume) => (
+                <article key={resume.title} className="resume-card">
+                  <h3>{resume.title}</h3>
+                  <p>{resume.description}</p>
+                  <a
+                    className="btn btn-outline btn-sm"
+                    href={asset(resume.file)}
+                    download={resume.downloadName}
+                  >
+                    <i className="bi bi-download" aria-hidden="true"></i>
+                    <span>{resume.buttonText}</span>
+                  </a>
+                </article>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ---------------- CONTACT ---------------- */}
+        <section id="contact" className="section section-contact">
+          <div className="shell contact-inner">
+            <div className="contact-main">
+              <SectionHeading
+                index="08"
+                kicker="Contact"
+                title="Let's discuss the role."
+                copy="Open to technical lead, corporate tooling, internal platform, and senior full-stack opportunities in Bangkok, Singapore/SEA, or remote."
+                align="left"
+              />
+
+              <Reveal as="form" className="contact-form" onSubmit={handleQuickMessageSubmit}>
+                <label className="field-label" htmlFor="quick-message-name">
+                  Your name
+                </label>
+                <input
+                  id="quick-message-name"
+                  name="name"
+                  type="text"
+                  required
+                  maxLength="100"
+                  placeholder="Recruiter or hiring manager name"
+                  value={quickMessage.name}
+                  onChange={(event) =>
+                    setQuickMessage((current) => ({
+                      ...current,
+                      name: event.target.value,
+                    }))
+                  }
+                />
+
+                <label className="field-label" htmlFor="quick-message-input">
+                  Message
+                </label>
+                <textarea
+                  id="quick-message-input"
+                  name="quick-message"
+                  rows="5"
+                  required
+                  maxLength="1200"
+                  placeholder="Share the role, team scope, and preferred timeline."
+                  value={quickMessage.message}
+                  onChange={(event) =>
+                    setQuickMessage((current) => ({
+                      ...current,
+                      message: event.target.value,
+                    }))
+                  }
+                />
+
+                <div className="contact-form-foot">
+                  <button
+                    className="btn btn-primary"
+                    type="submit"
+                    disabled={messageStatus.sending}
+                  >
+                    <i className="bi bi-send" aria-hidden="true"></i>
+                    <span>Send Message</span>
+                  </button>
+                  <p
+                    className={`form-status ${messageStatus.type}`.trim()}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {messageStatus.text}
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="contact-aside">
+              {CONTACT_CARDS.map((card) => (
+                <Reveal as="article" key={card.label} className="contact-card">
+                  <span className="contact-icon">
+                    <i className={`bi ${card.icon}`} aria-hidden="true"></i>
+                  </span>
+                  <div>
+                    <p className="panel-label">{card.label}</p>
+                    {card.lines ? (
+                      <div className="contact-links">
+                        {card.lines.map((line) => (
+                          <a
+                            key={line.text}
+                            href={line.href}
+                            target={line.external ? "_blank" : undefined}
+                            rel={line.external ? "noopener noreferrer" : undefined}
+                          >
+                            {line.text}
+                          </a>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="contact-text">{card.text}</p>
+                    )}
                   </div>
                 </Reveal>
-              </Col>
-
-              <Col lg={5}>
-                <div className="contact-panel">
-                  {CONTACT_CARDS.map((card) => (
-                    <Reveal key={card.label} className="contact-card">
-                      <p className="panel-label">{card.label}</p>
-                      {card.lines ? (
-                        <div className="contact-card-links">
-                          {card.lines.map((line) => (
-                            <a
-                              key={line.text}
-                              href={line.href}
-                              target={line.external ? "_blank" : undefined}
-                              rel={
-                                line.external ? "noopener noreferrer" : undefined
-                              }
-                            >
-                              {line.text}
-                            </a>
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="contact-card-text">{card.text}</p>
-                      )}
-                    </Reveal>
-                  ))}
-                </div>
-              </Col>
-            </Row>
-          </Container>
+              ))}
+            </div>
+          </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <Container fluid className="container-shell footer-shell">
-          <p>&copy; {currentYear} Wai Hyn Htun</p>
+        <div className="shell footer-inner">
           <p>
-            Senior Full Stack Developer · Python/Django · React.js ·
-            TypeScript · Production Systems
+            &copy; {currentYear} {PROFILE.name}
           </p>
-        </Container>
+          <p className="footer-role">
+            Technical Lead · Python / Django &amp; React · Bangkok, Thailand
+          </p>
+          <div className="footer-links">
+            <a href={`mailto:${PROFILE.email}`}>Email</a>
+            <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href={PROFILE.github} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </div>
+        </div>
       </footer>
-    </>
+
+      {lightbox ? (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.title}
+          onClick={closeLightbox}
+        >
+          <div className="lightbox-inner" onClick={(event) => event.stopPropagation()}>
+            <div className="lightbox-head">
+              <div>
+                <p className="panel-label">{lightbox.issuer}</p>
+                <h3>{lightbox.title}</h3>
+              </div>
+              <button
+                type="button"
+                className="lightbox-close"
+                onClick={closeLightbox}
+                aria-label="Close certificate preview"
+              >
+                <i className="bi bi-x-lg" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <img src={asset(lightbox.image)} alt={lightbox.alt} />
+
+            <div className="lightbox-foot">
+              <a
+                className="btn btn-ghost btn-sm"
+                href={asset(lightbox.file || lightbox.image)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                <span>Open original</span>
+              </a>
+              {lightbox.credentialUrl ? (
+                <a
+                  className="btn btn-primary btn-sm"
+                  href={lightbox.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-patch-check" aria-hidden="true"></i>
+                  <span>Verify credential</span>
+                </a>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </div>
   );
 }
 

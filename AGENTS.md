@@ -6,10 +6,12 @@
 - Keep tone professional, concise, and credibility-focused (not overly casual).
 
 ## Visual Direction
-- The UI direction is **Tesla-inspired** (minimal, premium, restrained, and confident).
-- Keep layouts clean, high-contrast, and uncluttered.
+- The UI direction is **"Midnight Navy"**: a dark theme built on near-black (`--black`) grounds
+  layered with deep navy blue (`--navy-*`) surfaces and a single electric-blue accent (`--accent`).
+- Gold (`--gold`) is reserved exclusively for the featured Google credential. Do not reuse it elsewhere.
+- Keep layouts clean, high-contrast, and uncluttered; the site is read by recruiters and HR first.
 - Prefer strong typography, generous whitespace, and simple geometry over decorative effects.
-- Avoid noisy gradients, flashy neon effects, and excessive motion.
+- Avoid neon rainbows and excessive motion. Glows are subtle and used only to mark emphasis.
 
 ## Design System Rules (Must Follow)
 - Do not introduce random spacing, radius, or colors.
@@ -33,11 +35,11 @@
 
 ## Color Theory
 - Keep the palette professional and cohesive.
-- Follow the `60-30-10` balance with a Tesla-like neutral base:
-  - `60%` neutral whites/grays
-  - `30%` charcoal/black structure
-  - `10%` restrained accent (only for CTA/highlight)
-- Default to monochrome unless an accent is clearly justified.
+- Follow the `60-30-10` balance on a dark base:
+  - `60%` black / deep-navy grounds and surfaces
+  - `30%` navy structure, borders, and muted text
+  - `10%` electric blue accent (CTAs, active states, highlights)
+- Default to navy/neutral unless an accent is clearly justified.
 - Ensure text/background contrast meets WCAG AA at minimum.
 - Avoid adding new colors if an existing token can satisfy the need.
 

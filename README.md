@@ -1,13 +1,12 @@
 # Wai Hyn Htun Portfolio
 
-This repository now runs as a Create React App-style portfolio built with React and React Bootstrap, with GitHub Pages deployment handled by GitHub Actions.
+This repository runs as a Create React App portfolio with GitHub Pages deployment handled by GitHub Actions. The UI is a dependency-free React build using a custom "Midnight Navy" design system (navy blue over near-black) tuned for recruiters and hiring managers.
 
 ## Stack
 
-- React 18
-- React Bootstrap
-- Bootstrap 5
-- Custom CSS design system in `src/styles.css`
+- React 18 (no UI framework — plain JSX + CSS Grid/Flexbox)
+- Custom CSS design system in `src/styles.css` (tokens in `:root`)
+- Bootstrap Icons via CDN
 - GitHub Actions Pages deployment
 
 ## Project Structure
@@ -19,7 +18,9 @@ portfolio/
 │   ├── profile.jpg
 │   ├── mr-wai-hyn-htun-cv.pdf
 │   ├── wai-hyn-htun-resume.docx
-│   └── images/
+│   ├── certificates/          # Google/Coursera credential (PDF + preview image)
+│   ├── resume/                # Role-targeted resume downloads
+│   └── images/                # Certificate and document scans
 ├── src/
 │   ├── App.js
 │   ├── index.js
@@ -77,7 +78,8 @@ If the repository name or owner changes, update the `homepage` field in `package
 ## Notes
 
 - Portfolio content is centralized in `src/portfolioData.js`
-- Static assets used by the React app live under `public/`
+- Static assets used by the React app live under `public/` and are referenced through `process.env.PUBLIC_URL` so they resolve correctly under the `/portfolio` Pages base path
+- Certificates render from `CERTIFICATES` in `src/portfolioData.js`. The entry flagged `featured: true` (the Google/Coursera Python credential) always renders first, in the large highlighted card
 - The Telegram quick-message form still posts to the existing Cloudflare Worker endpoint
 
 Optional environment variable:
@@ -112,4 +114,4 @@ Feel free to fork this project and customize it for your own portfolio. If you c
 
 ---
 
-_Built with ❤️ using vanilla HTML, CSS, and JavaScript_
+_Built with React 18 and a custom CSS design system._
