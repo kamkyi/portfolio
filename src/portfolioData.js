@@ -1,6 +1,6 @@
 export const PROFILE = {
   name: "Wai Hyn Htun",
-  role: "Technical Lead · Python / Django & React",
+  role: "Technical Lead · Python / Django Full Stack",
   subRole: "Senior Full Stack Developer · 12+ years",
   location: "Bangkok, Thailand",
   email: "waihynhtun90s@gmail.com",
@@ -26,10 +26,11 @@ export const HERO_STACK = [
   "Django REST",
   "React.js",
   "TypeScript",
+  "Node.js",
   "REST APIs",
   "PostgreSQL",
-  "MySQL",
   "Redis",
+  "Celery",
   "Docker",
   "CI/CD",
   "Linux",
@@ -69,7 +70,7 @@ export const HIRING_SNAPSHOT = [
   {
     icon: "bi-person-badge",
     label: "Target role",
-    value: "Technical Lead / Senior Full Stack Developer",
+    value: "Technical Lead / Python · Django Full Stack Developer",
     note: "Corporate tooling, internal platforms, and process automation",
   },
   {
@@ -118,7 +119,7 @@ export const TRUST_ITEMS = [
   {
     icon: "bi-diagram-3",
     title: "Systems thinking",
-    copy: "I design secure integrations, improve data performance, modernize inherited systems, and stay accountable after release.",
+    copy: "I design secure integrations, improve data performance, and modernize inherited systems. I use AI tools selectively as accelerators while keeping ownership of design, code, and verification.",
   },
 ];
 
@@ -129,15 +130,16 @@ export const CORE_STACK = [
     level: "Primary",
     years: "8+ years",
     lead: true,
-    copy: "Production APIs, service design, ORM profiling, Redis caching, RBAC, secure authentication, and workflow automation.",
+    copy: "Production APIs, object-oriented service design, ORM profiling, Redis caching, Celery task queues, RBAC, and secure authentication.",
     tags: [
       "Django",
       "Django REST Framework",
       "Python 3",
+      "Node.js",
       "ORM optimization",
-      "Redis caching",
+      "Celery / Redis",
       "OpenAI API",
-      "Pytest",
+      "Pytest / TDD",
     ],
   },
   {
@@ -176,19 +178,21 @@ export const CORE_STACK = [
   },
   {
     icon: "bi-hdd-rack",
-    name: "Engineering Delivery",
+    name: "Architecture & Delivery",
     level: "Strong",
     years: "8+ years",
-    copy: "Change planning, code review, unit and integration testing, CI/CD, Linux environments, release controls, and production support.",
+    copy: "Solution and system design, secure integrations, change planning, code review, testing, CI/CD, release controls, and production incident response.",
     tags: [
+      "Solution design",
+      "UML & data modelling",
+      "WorkOS AuthKit / OIDC",
+      "JWT / JWKS",
       "Docker",
       "GitHub Actions",
-      "CI/CD",
       "AWS",
       "Linux",
       "Agile / Scrum",
-      "Release management",
-      "Technical documentation",
+      "Release & change management",
     ],
   },
 ];
@@ -251,13 +255,23 @@ export const EXPERIENCES = [
     current: true,
     companyUrl: "https://www.issarainstitute.org/golden-dreams",
     companyLinkLabel: "View Golden Dreams",
-    copy: "Own full-stack engineering for Golden Dreams, an Issara Institute platform that helps migrant workers access information, support, and ethical job opportunities.",
+    copy: "Own product and technical delivery across the Golden Dreams, CASCADE, and ILM platforms, which help migrant workers access information, support, and ethical job opportunities.",
     list: [
-      "Lead requirements translation, architecture, implementation, code review, QA coordination, and release planning",
-      "Improved high-traffic API response times by 20-30% with ORM profiling, Redis caching, and indexing",
-      "Deliver secure marketplace, automation, mobile release, and internal administration workflows; contribute to CASCADE architecture and foundation work",
+      "Own requirements discovery, solution design, implementation, code review, QA coordination, release planning, documentation, and production support",
+      "Improved high-traffic Django API response times by 20-30% with ORM profiling, N+1 removal, Redis caching, and indexing",
+      "Integrated WorkOS AuthKit/OIDC across React and Django services with JWT/JWKS validation, refresh flows, and RBAC",
+      "Build ILM/CASCADE case management, due-diligence, KPI, and notification workflows on Celery/Redis background processing",
+      "Lead code review and technical direction for 3-5 engineers while staying hands-on in complex implementation and debugging",
     ],
-    tags: ["Python/Django", "React", "TypeScript", "React Native", "Redis", "CI/CD"],
+    tags: [
+      "Python/Django",
+      "React",
+      "TypeScript",
+      "React Native",
+      "Celery/Redis",
+      "WorkOS AuthKit",
+      "CI/CD",
+    ],
   },
   {
     period: "Jul 2018 - Oct 2021",
@@ -310,10 +324,26 @@ export const SKILL_GROUPS = [
       "Node.js",
       "Laravel/PHP",
       "REST APIs",
+      "Celery / Redis task queues",
+      "Scheduled batch workflows",
       "Workflow automation",
       "API security",
       "RBAC",
       "Authentication and authorization",
+    ],
+  },
+  {
+    icon: "bi-diagram-3",
+    title: "Architecture & Integration",
+    tags: [
+      "Solution and system design",
+      "Object-oriented design",
+      "UML and data modelling",
+      "Microservice integration",
+      "Service-to-service integration",
+      "WorkOS AuthKit",
+      "OAuth / OIDC",
+      "JWT / JWKS",
     ],
   },
   {
@@ -356,9 +386,13 @@ export const SKILL_GROUPS = [
       "Git",
       "Code review",
       "Agile/Scrum",
+      "Pytest",
+      "TDD principles",
       "Unit and integration testing",
       "Release planning",
       "Change controls",
+      "Shell scripting",
+      "Monitoring and incident response",
       "Technical documentation",
     ],
   },
@@ -368,10 +402,12 @@ export const SKILL_GROUPS = [
     tags: [
       "OpenAI API",
       "WorkOS AuthKit",
+      "OIDC / JWT / JWKS",
       "Workflow automation",
       "Payment gateways",
       "Elasticsearch",
       "React Native / Firebase",
+      "Google Play release management",
       "Google Maps API",
       "Third-party integrations",
     ],
@@ -431,40 +467,53 @@ export const PROJECTS = [
 
 export const RESUMES = [
   {
+    title: "Technical Lead · Python / Django Full Stack Resume",
+    description:
+      "Current resume. Requirements and solution design, object-oriented implementation, engineering review, CI/CD, testing, release and change management, and production incident response across Python/Django and React/TypeScript.",
+    file: "resume/Wai_Hyn_Htun_Technical_Lead_Python_Full_Stack_Resume.docx",
+    downloadName: "Wai_Hyn_Htun_Technical_Lead_Python_Full_Stack_Resume.docx",
+    updated: "August 2026",
+    primary: true,
+    buttonText: "Download Current Resume",
+  },
+];
+
+/*
+ * Superseded, role-specific resumes kept for reference only.
+ * The current resume above consolidates all of these profiles.
+ */
+export const ARCHIVED_RESUMES = [
+  {
+    title: "Technical Lead Resume",
+    description:
+      "Earlier technical-lead version focused on architecture, requirements, engineering quality, and stakeholder delivery.",
+    file: "resume/archive/Wai_Hyn_Htun_Technical_Lead_Resume.docx",
+    downloadName: "Wai_Hyn_Htun_Technical_Lead_Resume.docx",
+    archivedNote: "Superseded · Jun 2026",
+  },
+  {
     title: "Senior Full Stack Developer Resume",
     description:
       "Broad full-stack profile covering Python/Django, React, TypeScript, mobile, cloud, security, and production ownership.",
-    file: "resume/Wai_Hyn_Htun_Senior_Full_Stack_Developer_Resume.docx",
+    file: "resume/archive/Wai_Hyn_Htun_Senior_Full_Stack_Developer_Resume.docx",
     downloadName: "Wai_Hyn_Htun_Senior_Full_Stack_Developer_Resume.docx",
-    primary: false,
-    buttonText: "Download",
+    archivedNote: "Superseded · Jun 2026",
   },
   {
     title: "Python / Django Backend Resume",
     description:
-      "Focused on backend APIs, Django, database optimization, Redis caching, performance tuning, REST APIs, API security, auth/authorization, and production troubleshooting.",
-    file: "resume/Wai_Hyn_Htun_Python_Django_Backend_Resume.docx",
+      "Backend-focused version covering Django APIs, database optimization, Redis caching, API security, and production troubleshooting.",
+    file: "resume/archive/Wai_Hyn_Htun_Python_Django_Backend_Resume.docx",
     downloadName: "Wai_Hyn_Htun_Python_Django_Backend_Resume.docx",
-    primary: false,
-    buttonText: "Download",
+    archivedNote: "Superseded · May 2026",
   },
   {
     title: "React / TypeScript Frontend Resume",
     description:
-      "Focused on React.js, TypeScript, frontend architecture, responsive UI, API integration, Figma handoff, performance optimization, and modern web application development.",
-    file: "resume/Wai_Hyn_Htun_React_Frontend_Resume.docx",
+      "Frontend-focused version covering React.js, TypeScript, component architecture, responsive UI, and API integration.",
+    file: "resume/archive/Wai_Hyn_Htun_React_Frontend_Resume.docx",
     downloadName: "Wai_Hyn_Htun_React_Frontend_Resume.docx",
-    primary: false,
-    buttonText: "Download",
-  },
-  {
-    title: "Technical Lead Resume",
-    description:
-      "Best match for corporate tooling and internal-platform roles: architecture, requirements, engineering quality, release planning, and stakeholder delivery.",
-    file: "resume/Wai_Hyn_Htun_Technical_Lead_Resume.docx",
-    downloadName: "Wai_Hyn_Htun_Technical_Lead_Resume.docx",
-    primary: true,
-    buttonText: "Download Technical Lead Resume",
+    archivedNote: "Superseded · May 2026",
   },
 ];
 

@@ -2070,6 +2070,84 @@ ul {
   justify-self: start;
 }
 
+.resume-archive {
+  margin-top: var(--s-4);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s-4);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.resume-archive > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.resume-archive > summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-archive > summary:hover,
+.resume-archive[open] > summary {
+  color: var(--text);
+}
+
+.resume-archive-note {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  margin: var(--s-3) 0 var(--s-3);
+}
+
+.resume-archive-list {
+  display: grid;
+  gap: var(--s-2, 12px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resume-archive-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  opacity: 0.85;
+}
+
+.resume-archive-list h3 {
+  font-size: 0.98rem;
+  margin: 0 0 6px;
+}
+
+.resume-archive-list p {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  margin: 0;
+}
+
+.resume-archive-tag {
+  margin-top: 6px !important;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 640px) {
+  .resume-archive-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* --------------------------------------------------------------------------
    Contact
    -------------------------------------------------------------------------- */

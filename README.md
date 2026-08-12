@@ -19,7 +19,7 @@ portfolio/
 │   ├── mr-wai-hyn-htun-cv.pdf
 │   ├── wai-hyn-htun-resume.docx
 │   ├── certificates/          # Google/Coursera credential (PDF + preview image)
-│   ├── resume/                # Role-targeted resume downloads
+│   ├── resume/                # Current resume (+ archive/ for superseded versions)
 │   └── images/                # Certificate and document scans
 ├── src/
 │   ├── App.js

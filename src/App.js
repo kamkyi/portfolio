@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  ARCHIVED_RESUMES,
   CERTIFICATES,
   CONFIDENTIAL_TAGS,
   CONTACT_CARDS,
@@ -216,10 +217,6 @@ function App() {
 
   const primaryResume = useMemo(
     () => RESUMES.find((resume) => resume.primary),
-    [],
-  );
-  const targetedResumes = useMemo(
-    () => RESUMES.filter((resume) => !resume.primary),
     [],
   );
   const featuredCertificate = useMemo(
@@ -439,7 +436,7 @@ function App() {
                   download={primaryResume.downloadName}
                 >
                   <i className="bi bi-download" aria-hidden="true"></i>
-                  <span>Technical Lead Resume</span>
+                  <span>Download Resume</span>
                 </a>
                 <a className="btn btn-outline" href="#experience">
                   <i className="bi bi-briefcase" aria-hidden="true"></i>
@@ -896,13 +893,16 @@ function App() {
             <SectionHeading
               index="07"
               kicker="Resume"
-              title="Start with the Technical Lead resume."
-              copy="Role-specific versions are also available for deeper technical screening."
+              title="One current resume, kept up to date."
+              copy="Earlier role-specific versions are archived below for reference."
             />
 
             <Reveal className="resume-primary">
               <div>
-                <p className="panel-label">Recommended</p>
+                <p className="panel-label">
+                  Current
+                  {primaryResume.updated ? ` · Updated ${primaryResume.updated}` : ""}
+                </p>
                 <h3>{primaryResume.title}</h3>
                 <p>{primaryResume.description}</p>
               </div>
@@ -916,21 +916,36 @@ function App() {
               </a>
             </Reveal>
 
-            <Reveal className="resume-grid">
-              {targetedResumes.map((resume) => (
-                <article key={resume.title} className="resume-card">
-                  <h3>{resume.title}</h3>
-                  <p>{resume.description}</p>
-                  <a
-                    className="btn btn-outline btn-sm"
-                    href={asset(resume.file)}
-                    download={resume.downloadName}
-                  >
-                    <i className="bi bi-download" aria-hidden="true"></i>
-                    <span>{resume.buttonText}</span>
-                  </a>
-                </article>
-              ))}
+            <Reveal as="details" className="resume-archive">
+              <summary>
+                <i className="bi bi-archive" aria-hidden="true"></i>
+                <span>
+                  Archived versions ({ARCHIVED_RESUMES.length})
+                </span>
+              </summary>
+              <p className="resume-archive-note">
+                These versions are superseded by the current resume and are kept
+                for reference only.
+              </p>
+              <ul className="resume-archive-list">
+                {ARCHIVED_RESUMES.map((resume) => (
+                  <li key={resume.title}>
+                    <div>
+                      <h3>{resume.title}</h3>
+                      <p>{resume.description}</p>
+                      <p className="resume-archive-tag">{resume.archivedNote}</p>
+                    </div>
+                    <a
+                      className="btn btn-ghost btn-sm"
+                      href={asset(resume.file)}
+                      download={resume.downloadName}
+                    >
+                      <i className="bi bi-download" aria-hidden="true"></i>
+                      <span>Download</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </section>
